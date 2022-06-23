@@ -1,4 +1,6 @@
 import React from "react";
+import s from "./Nav.module.css";
+
 
 type NavPropsType = {
     profile: string,
@@ -9,25 +11,22 @@ type NavPropsType = {
 }
 
 export const Nav: React.FC<NavPropsType> = (props) => {
-    return (<div className="nav">
-        <nav >
-            <div>
+    return (
+        <nav className={s.nav}>
+            <div className={s.item}>
                 <a href="">{props.profile}</a>
             </div>
-            <div>
+            <div className={s.item}>
                 <a href="">{props.message}</a>
             </div>
-            <div>
+            <div className={s.item}>
                 <a href="">{props.news}</a>
             </div>
-            <div>
+            <div className={s.item}>
                 <a href="">{props.music}</a>
             </div>
-            <div>
+            <div className={s.item}>
                 <a href="">{props.settings}</a>
             </div>
         </nav>
-    </div>);
-}
-
-
+    )}

@@ -44,32 +44,19 @@
 /*}*/
 
 .app-wrapper {
-  display: grid;
-  width: 1200px;
-  margin: 0 auto;
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  /*grid-gap: 10px;*/
+    display: grid;
+    width: 1200px;
+    margin: 0 auto;
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+    /*grid-gap: 10px;*/
 
-  grid-template-areas: "header header"
-  "nav content"
-}
-.header {
-  grid-area: header;
-  background-color: blue;
+    grid-template-areas:
+          "header header"
+  "nav profile"
 }
 
-.header img {
-  width: 140px;
-}
 
-.nav {
-  grid-area: nav;
-  background-color: aqua;
-}
 
-.content {
-  grid-area: content;
-  background-color: chartreuse;
 
-}
+
