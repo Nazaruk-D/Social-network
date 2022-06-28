@@ -15,19 +15,19 @@ export const Nav: React.FC<NavPropsType> = (props) => {
         <nav className={s.nav}>
             <div className={s.block}>
                 <div className={s.btn}>
-                    <a href="src/components/Nav/Nav">{props.profile}</a>
+                    <a href="/profile">{props.profile}</a>
                 </div>
                 <div className={s.btn}>
-                    <a href="src/components/Nav/Nav">{props.message}</a>
+                    <a href="/dialogs">{props.message}</a>
                 </div>
                 <div className={s.btn}>
-                    <a href="src/components/Nav/Nav">{props.news}</a>
+                    <a href="/news">{props.news}</a>
                 </div>
                 <div className={s.btn}>
-                    <a href="src/components/Nav/Nav">{props.music}</a>
+                    <a href="/music">{props.music}</a>
                 </div>
                 <div className={s.btn}>
-                    <a href="src/components/Nav/Nav">{props.settings}</a>
+                    <a href="/settings">{props.settings}</a>
                 </div>
             </div>
         </nav>
