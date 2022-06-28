@@ -8,7 +8,7 @@ type ProfilePropType = {
 }
 
 export const Profile: React.FC<ProfilePropType> = (props) => {
-    return (<div className={s.content}>
+    return (<div>
         <div>
             <img src={props.img} style={{width: "1000px", height: "300px"}} alt=""/>
         </div>

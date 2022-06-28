@@ -57,6 +57,9 @@
 }
 
 
-
+.app-wrapper-content{
+    grid-area: profile;
+    background-color: yellow;
+}
 
 
