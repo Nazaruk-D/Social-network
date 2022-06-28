@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./Nav.module.css";
+import {NavLink} from "react-router-dom";
 
 
 type NavPropsType = {
@@ -14,20 +15,20 @@ export const Nav: React.FC<NavPropsType> = (props) => {
     return (
         <nav className={s.nav}>
             <div className={s.block}>
-                <div className={s.btn}>
-                    <a href="/profile">{props.profile}</a>
+                <div className={s.item}>
+                    <NavLink to="/profile" activeClassName={s.activeLink}>{props.profile}</NavLink>
                 </div>
-                <div className={s.btn}>
-                    <a href="/dialogs">{props.message}</a>
+                <div className={s.item}>
+                    <NavLink to="/dialogs" activeClassName={s.activeLink}>{props.message}</NavLink>
                 </div>
-                <div className={s.btn}>
-                    <a href="/news">{props.news}</a>
+                <div className={s.item}>
+                    <NavLink to="/news" activeClassName={s.activeLink}>{props.news}</NavLink>
                 </div>
-                <div className={s.btn}>
-                    <a href="/music">{props.music}</a>
+                <div className={s.item}>
+                    <NavLink to="/music" activeClassName={s.activeLink}>{props.music}</NavLink>
                 </div>
-                <div className={s.btn}>
-                    <a href="/settings">{props.settings}</a>
+                <div className={s.item}>
+                    <NavLink to="/settings" activeClassName={s.activeLink}>{props.settings}</NavLink>
                 </div>
             </div>
         </nav>
