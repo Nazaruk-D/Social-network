@@ -46,9 +46,9 @@
 .app-wrapper {
     display: grid;
     width: 1200px;
-    margin: 0 auto;
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 1fr 8fr;
+    margin-left: 200px;
+    grid-template-rows: 65px 1fr;
+    grid-template-columns: 125px 1100px;
     /*grid-gap: 10px;*/
 
     grid-template-areas:
@@ -59,7 +59,10 @@
 
 .app-wrapper-content{
     grid-area: profile;
-    background-color: yellow;
+    background-color: #bcbcca;
+    box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+
+
 }
 
 

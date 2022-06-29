@@ -1,10 +1,30 @@
 
 .item {
-    color: blueviolet;
-    margin-top: 10px;
+
+    box-sizing: border-box;
+    padding: 0 20px 10px;
+    margin: 15px 15px 15px 20px;
+    outline: none;
+    line-height: 50px;
+    font-size: 12px;
+    text-align: center;
+    width: 150px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #444;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    transition: box-shadow 0.2s;
+    border-radius: 5px;
 }
 
 .item img {
     width: 50px;
     border-radius: 50%;
+    margin-top: 20px;
 }

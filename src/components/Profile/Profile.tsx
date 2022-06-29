@@ -3,14 +3,12 @@ import s from "./Profile.module.css";
 import {MyPosts} from "./Myposts/MyPosts";
 
 
-type ProfilePropType = {
-    img: string,
-}
 
-export const Profile: React.FC<ProfilePropType> = (props) => {
-    return (<div>
-        <div>
-            <img src={props.img} style={{width: "1000px", height: "300px"}} alt=""/>
+
+export const Profile = () => {
+    return (<div className={s.profile}>
+        <div className={s.main}>
+            <img src="https://www.eurohandball.com/media/f0rhclep/microsoftteams-image-267.png?center=0.40662327708788731,0.27796471311115661&mode=crop&width=1980&height=768&rnd=132863759739570000"  alt=""/>
         </div>
         <MyPosts/>
     </div>);

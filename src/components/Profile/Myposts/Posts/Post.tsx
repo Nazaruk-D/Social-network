@@ -10,13 +10,13 @@ type PostPropType = {
 
 export const Post: React.FC<PostPropType> = (props) => {
     return (
-        <div>
+        <span>
         <div className={s.item}>
             <span><img src={props.img} alt=""/></span>
-            <span>{props.post}</span>
+            <div>{props.post}</div>
             <button>{props.buttonName}</button>
         </div>
-    </div>);
+    </span>);
 }
 
 
