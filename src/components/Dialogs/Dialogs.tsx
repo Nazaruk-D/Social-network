@@ -5,37 +5,48 @@ import {DialogItem} from "./DialogsComponents/DialogItem";
 import {Message} from "./DialogsComponents/Message";
 
 
-    export const Dialogs = () => {
 
-        let dialogsData = [
-            {id: 1, name: "Dima"},
-            {id: 2, name: "Alex"},
-            {id: 3, name: "Kate"},
-            {id: 4, name: "Nik"},
-        ]
-
-        let messagesData = [
-            {id: 1, message: "Hello"},
-            {id: 2, message: "Whats UUPP!"},
-            {id: 3, message: "OMG LoL"}
-        ]
+type dialogsDataProps = {
+    id: number,
+    name: string
+}
+type messageDataProps = {
+    id: number,
+    message: string
+}
 
 
-        return (
-            <div className={s.dialogs}>
-                    <div className={s.dialog}>
-                        <DialogItem name={dialogsData[0].name} id={dialogsData[0].id}/>
-                        <DialogItem name={dialogsData[1].name} id={dialogsData[1].id}/>
-                        <DialogItem name={dialogsData[2].name} id={dialogsData[2].id}/>
-                        <DialogItem name={dialogsData[3].name} id={dialogsData[3].id}/>
-                    </div>
-                <div className={s.messages}>
-                    <Message text={messagesData[0].message}/>
-                    <Message text={messagesData[1].message}/>
-                    <Message text={messagesData[2].message}/>
-                </div>
 
 
+export const Dialogs = () => {
+
+    let dialogsData: dialogsDataProps[] = [
+        {id: 1, name: "Dima"},
+        {id: 2, name: "Alex"},
+        {id: 3, name: "Kate"},
+        {id: 4, name: "Nik"},
+    ]
+
+    let messagesData: messageDataProps[] = [
+        {id: 1, message: "Hello"},
+        {id: 2, message: "Whats UUPP!"},
+        {id: 3, message: "OMG LoL"}
+    ]
+
+    let dialogElements = dialogsData.map(dialog => <div key={dialog.id}><DialogItem name={dialog.name} id={dialog.id}/></div>)
+    let messageElements = messagesData.map(message => <div key={message.id}><Message text={message.message}/></div>)
+
+
+    return (
+        <div className={s.dialogs}>
+            <div className={s.dialog}>
+                {dialogElements}
             </div>
-        )
-    }
+            <div className={s.messages}>
+                {messageElements}
+            </div>
+
+
+        </div>
+    )
+}
