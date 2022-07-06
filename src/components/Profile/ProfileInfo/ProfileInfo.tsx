@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
-import {MyPosts} from "../Myposts/MyPosts";
 
 
 type ProfileInfoType = {

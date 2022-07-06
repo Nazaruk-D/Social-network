@@ -8,9 +8,16 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
+import {DataTypeProps, dialogsDataProps, messageDataProps} from "./index";
 
 
-const App = () => {
+type appPropsType = {
+    postData: DataTypeProps[]
+    dialogsData: dialogsDataProps[]
+    messagesData: messageDataProps[]
+}
+
+const App: React.FC<appPropsType> = (props) => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -22,8 +29,9 @@ const App = () => {
                      music={"Music"}
                      settings={"Settings"}/>
                 <div className={"app-wrapper-content"}>
-                    <Route path="/dialogs" render={() => <Dialogs/>}/>
-                    <Route path="/profile" render={() => <Profile/>}/>
+                    <Route path="/dialogs"
+                           render={() => <Dialogs dialogsData={props.dialogsData} messageData={props.messagesData}/>}/>
+                    <Route path="/profile" render={() => <Profile postData={props.postData}/>}/>
                     <Route path="/news" render={() => <News/>}/>
                     <Route path="/music" render={() => <Music/>}/>
                     <Route path="/settings" render={() => <Settings/>}/>
