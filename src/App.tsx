@@ -8,14 +8,26 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
-import {DataTypeProps, dialogsDataProps, messageDataProps} from "./index";
+import {DataTypeProps, dialogsDataProps, messageDataProps} from "./redux/state";
 
 
 type appPropsType = {
-    postData: DataTypeProps[]
+    state: dataPropsType
+}
+type dataPropsType = {
+    dialogsPage: messagesPagePropsType
+    profilePage:profilePagePropsType
+}
+
+
+type messagesPagePropsType = {
     dialogsData: dialogsDataProps[]
     messagesData: messageDataProps[]
 }
+type profilePagePropsType = {
+    postData: DataTypeProps[]
+}
+
 
 const App: React.FC<appPropsType> = (props) => {
     return (
@@ -27,11 +39,12 @@ const App: React.FC<appPropsType> = (props) => {
                      message={"Message"}
                      news={"News"}
                      music={"Music"}
-                     settings={"Settings"}/>
+                     settings={"Settings"}
+                     friends={props.state.dialogsPage.dialogsData}/>
                 <div className={"app-wrapper-content"}>
                     <Route path="/dialogs"
-                           render={() => <Dialogs dialogsData={props.dialogsData} messageData={props.messagesData}/>}/>
-                    <Route path="/profile" render={() => <Profile postData={props.postData}/>}/>
+                           render={() => <Dialogs dialogsData={props.state.dialogsPage.dialogsData} messageData={props.state.dialogsPage.messagesData}/>}/>
+                    <Route path="/profile" render={() => <Profile postData={props.state.profilePage.postData}/>}/>
                     <Route path="/news" render={() => <News/>}/>
                     <Route path="/music" render={() => <Music/>}/>
                     <Route path="/settings" render={() => <Settings/>}/>

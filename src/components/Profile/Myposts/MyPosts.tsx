@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import {Post} from "./Posts/Post";
-import {DataTypeProps} from "../../../index";
+import {DataTypeProps} from "../../../redux/state";
 
 
 type MyPostPropType = {
@@ -17,7 +17,7 @@ export const MyPosts: React.FC<MyPostPropType> = (props) => {
     </div>)
 
     return <div>
-        <input style={{marginLeft: "40px", width: "300px", height: "50px"}} type="text"/>
+        <input style={{marginLeft: "44px", marginTop: "20px", width: "300px", height: "50px"}} type="text"/>
         <div className={s.item}>
             {postsElements}
         </div>
