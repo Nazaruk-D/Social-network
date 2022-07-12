@@ -2,14 +2,16 @@ import React from "react";
 import s from "./Post.module.css";
 
 
-type PostPropType = {
+type DataTypeProps = {
     post: string,
     img: string,
     buttonName: string
     likesCount: number
 }
 
-export const Post: React.FC<PostPropType> = (props) => {
+export const Post: React.FC<DataTypeProps> = (props) => {
+
+
     return (
         <span>
         <div className={s.item}>
