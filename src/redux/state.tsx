@@ -1,6 +1,5 @@
-// import React from 'react';
-
 import {v1} from "uuid";
+import {renderTree} from "../Render";
 
 export type stateAllPropsType = {
     profilePage: profilePagePropsType
@@ -23,7 +22,7 @@ export type dialogsPagePropsType = {
     dialogsData: dialogsDataPropsType []
 }
 
-export type messagesDataPropsType= {
+export type messagesDataPropsType = {
     id: string
     name: string
     message: string
@@ -38,7 +37,7 @@ export type dialogsDataPropsType = {
 }
 
 
-export let state:stateAllPropsType = { //типизировать?? пересмотреть всю типизацию. Еще один уровень с profilepage будет?
+export let state: stateAllPropsType = { //типизировать?? пересмотреть всю типизацию. Еще один уровень с profilepage будет?
     profilePage: {
         postData: [
             {
@@ -132,6 +131,7 @@ export const addPost = (postText: string) => {
         avatar: "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
     }
     state.profilePage.postData.push(newPost)
+    renderTree(state)
 }
 
 

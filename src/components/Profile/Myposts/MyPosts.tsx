@@ -23,6 +23,7 @@ export const MyPosts: React.FC<MyPostPropType> = (props) => {
         // alert(newPostElementProfile.current?.value);
         if (newPostElementProfile.current) {
             props.addPost(newPostElementProfile.current.value)
+            newPostElementProfile.current.value = "";
         }
     }
 
