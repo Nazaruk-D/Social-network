@@ -16,8 +16,15 @@ export const MyPosts: React.FC<MyPostPropType> = (props) => {
                                                                       buttonName={"Like"}/>
     </div>)
 
+    let newPostElementProfile = React.createRef<HTMLTextAreaElement>();
+    const onClickHandler = () => {
+        alert(newPostElementProfile.current?.value);
+    }
+
     return <div>
-        <input style={{marginLeft: "44px", marginTop: "20px", width: "300px", height: "50px"}} type="text"/>
+        {/*<input style={{marginLeft: "44px", marginTop: "20px", width: "300px", height: "50px"}} type="text"/>*/}
+        <textarea ref={newPostElementProfile} style={{marginLeft: "44px", marginTop: "20px", width: "300px", height: "50px"}}/>
+        <button onClick={onClickHandler}>AddPost</button>
         <div className={s.item}>
             {postsElements}
         </div>
