@@ -2,35 +2,43 @@
 
 import {v1} from "uuid";
 
-export type statePropsType = {
-    DataTypeProps: DataTypeProps[]
-    messageDataProps: messageDataProps[]
-    dialogsDataProps: dialogsDataProps[]
+export type stateAllPropsType = {
+    profilePage: profilePagePropsType
+    dialogsPage: dialogsPagePropsType
 }
 
-export type DataTypeProps = {
-    id: string,
+export type profilePagePropsType = {
+    postData: postDataPropsType []
+}
+
+export type postDataPropsType = {
+    id: string
     message: string,
-    likesCount: number,
+    likesCount: number
     avatar: string
 }
 
-export type dialogsDataProps = {
-    id: string,
+export type dialogsPagePropsType = {
+    messagesData: messagesDataPropsType []
+    dialogsData: dialogsDataPropsType []
+}
+
+export type messagesDataPropsType= {
+    id: string
     name: string
     message: string
     ava: string
 }
 
-export type messageDataProps = {
-    id: string,
+export type dialogsDataPropsType = {
+    id: string
     name: string
     message: string
     ava: string
 }
 
 
-export let state = { //типизировать?? пересмотреть всю типизацию. Еще один уровень с profilepage будет?
+export let state:stateAllPropsType = { //типизировать?? пересмотреть всю типизацию. Еще один уровень с profilepage будет?
     profilePage: {
         postData: [
             {
@@ -117,8 +125,7 @@ export let state = { //типизировать?? пересмотреть вс�
 
 
 export const addPost = (postText: string) => {
-    debugger
-    const newPost: DataTypeProps = {
+    const newPost: postDataPropsType = {
         id: v1(),
         message: postText,
         likesCount: 0,

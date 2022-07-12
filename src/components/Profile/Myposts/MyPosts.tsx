@@ -1,11 +1,11 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import {Post} from "./Posts/Post";
-import {DataTypeProps} from "../../../redux/state";
+import {postDataPropsType} from "../../../redux/state";
 
 
 type MyPostPropType = {
-    postData: DataTypeProps[]
+    postData: postDataPropsType[]
     addPost: (message: string) => void
 }
 
@@ -19,13 +19,11 @@ export const MyPosts: React.FC<MyPostPropType> = (props) => {
 
     let newPostElementProfile = React.createRef<HTMLTextAreaElement>();
 
-
     const onClickHandler = () => {
         // alert(newPostElementProfile.current?.value);
         if (newPostElementProfile.current) {
             props.addPost(newPostElementProfile.current.value)
         }
-
     }
 
 

@@ -8,7 +8,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
-import {addPost, DataTypeProps, dialogsDataProps, messageDataProps} from "./redux/state";
+import {addPost, postDataPropsType, dialogsDataPropsType, messagesDataPropsType} from "./redux/state";
 
 
 type appPropsType = {
@@ -20,11 +20,11 @@ type dataPropsType = {
 }
 
 type messagesPagePropsType = {
-    dialogsData: dialogsDataProps[]
-    messagesData: messageDataProps[]
+    dialogsData: dialogsDataPropsType[]
+    messagesData: messagesDataPropsType[]
 }
 type profilePagePropsType = {
-    postData: DataTypeProps[]
+    postData: postDataPropsType[]
 }
 
 
