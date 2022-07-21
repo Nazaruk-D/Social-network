@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {renderTree} from "../Render";
+
 
 export type stateAllPropsType = {
     profilePage: profilePagePropsType
@@ -66,7 +66,7 @@ export let state: stateAllPropsType = {
                 avatar: "https://pbs.twimg.com/media/D9wcZfeX4AAUZi0.jpg"
             }
         ],
-        newPostText: ""
+        newPostText: "123"
     },
     dialogsPage: {
         messagesData: [
@@ -125,6 +125,10 @@ export let state: stateAllPropsType = {
 }
 
 
+let renderTree = () => {
+    console.log("state changed")
+}
+
 export const addPost = () => {
     const newPost: postDataPropsType = {
         id: v1(),
@@ -134,13 +138,17 @@ export const addPost = () => {
     }
     state.profilePage.postData.push(newPost)
     state.profilePage.newPostText = "";
-    renderTree(state)
+    renderTree()
 }
 
 export const updateNewPostText = (postText: string) => {
     state.profilePage.newPostText = postText;
-
-    renderTree(state)
+    renderTree()
 }
+
+export const subscribe = (observer: any) => {
+    renderTree = observer;
+}
+
 
 
