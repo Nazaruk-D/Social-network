@@ -1,8 +1,14 @@
 .item {
     padding-left: 25px;
-
 }
 
 .block {
     width: 300px;
+}
+
+.textArea {
+    margin-left: 44px;
+    margin-top: 20px;
+    width: 300px;
+    height: 50px;
 }

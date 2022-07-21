@@ -1,11 +1,21 @@
-import {stateAllPropsType} from "./redux/state";
+import {addPost, state, stateAllPropsType, updateNewPostText} from "./redux/state";
 import ReactDOM from "react-dom";
 import App from "./App";
 import React from "react";
 
-export const renderTree = (state: stateAllPropsType) => {
+
+export type AppPropsType = {
+    state: stateAllPropsType
+    addPost: (message: string) => void
+    updateNewPostText: (message: string) => void
+}
+
+export const renderTree = (props: any) => {
     ReactDOM.render(
-        <App state={state}/>,
+        <App state={state}
+             addPost={addPost}
+             updateNewPostText={updateNewPostText}
+        />,
         document.getElementById('root')
     );
 

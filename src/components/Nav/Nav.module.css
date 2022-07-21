@@ -8,12 +8,13 @@
         display: inline-block;
         box-sizing: border-box;
         padding: 0 20px;
-        margin: 0px 15px 15px 20px;
+        margin: 0 0 5px 0;
         outline: none;
         line-height: 36px;
         font-size: 12px;
         text-align: center;
-        width: 90px;
+        width: 95%;
+        /*width: 90px;*/
         font-weight: 600;
         text-decoration: none;
         color: #444;

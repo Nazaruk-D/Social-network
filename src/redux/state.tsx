@@ -8,6 +8,7 @@ export type stateAllPropsType = {
 
 export type profilePagePropsType = {
     postData: postDataPropsType []
+    newPostText: string
 }
 
 export type postDataPropsType = {
@@ -37,7 +38,7 @@ export type dialogsDataPropsType = {
 }
 
 
-export let state: stateAllPropsType = { //типизировать?? пересмотреть всю типизацию. Еще один уровень с profilepage будет?
+export let state: stateAllPropsType = {
     profilePage: {
         postData: [
             {
@@ -65,6 +66,7 @@ export let state: stateAllPropsType = { //типизировать?? перес�
                 avatar: "https://pbs.twimg.com/media/D9wcZfeX4AAUZi0.jpg"
             }
         ],
+        newPostText: ""
     },
     dialogsPage: {
         messagesData: [
@@ -123,14 +125,21 @@ export let state: stateAllPropsType = { //типизировать?? перес�
 }
 
 
-export const addPost = (postText: string) => {
+export const addPost = () => {
     const newPost: postDataPropsType = {
         id: v1(),
-        message: postText,
+        message: state.profilePage.newPostText,
         likesCount: 0,
         avatar: "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
     }
     state.profilePage.postData.push(newPost)
+    state.profilePage.newPostText = "";
+    renderTree(state)
+}
+
+export const updateNewPostText = (postText: string) => {
+    state.profilePage.newPostText = postText;
+
     renderTree(state)
 }
 
