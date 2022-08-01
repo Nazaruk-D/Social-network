@@ -172,6 +172,14 @@ export const store: StoreType = {
 }
 
 
+export const addPostActionCreator = ():AddPostActionType => ({type: "ADD-POST"})
+export const updateNewPostActionCreator = (postText: string):UpdateNewPostTextType => {
+    return {
+        type: "UPDATE-NEW-POST-TEXT",
+        postText: postText
+    }
+}
+
 // window.store = store;
 
 
