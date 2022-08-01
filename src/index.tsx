@@ -20,4 +20,4 @@ export const renderTree = (props: stateAllPropsType) => {
 
 
 renderTree(store.getState());
-store.subscribe(renderTree);
+store.subscribe(()=>renderTree(store.getState()));

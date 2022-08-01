@@ -20,6 +20,7 @@ export type postDataPropsType = {
 
 export type dialogsPagePropsType = {
     messagesData: messagesDataPropsType []
+    newMessageBody: string
     dialogsData: dialogsDataPropsType []
 }
 
@@ -54,7 +55,16 @@ export type UpdateNewPostTextType = {
     postText: string
 }
 
-export type ActionsTypes = AddPostActionType | UpdateNewPostTextType
+export type UpdateNewMessageBodyType = {
+    type: "UPDATE-NEW-MESSAGE-BODY"
+    body: string
+}
+
+export type SendMessageType = {
+    type: "SEND-MESSAGE"
+}
+
+export type ActionsTypes = AddPostActionType | UpdateNewPostTextType | UpdateNewMessageBodyType | SendMessageType
 
 
 export const store: StoreType = {
@@ -115,6 +125,7 @@ export const store: StoreType = {
                     ava: "https://sun9-87.userapi.com/impf/Eogwstp_bkOHIExnjagUp11ldCVcDEk-F4-1tQ/r4g7vO7wZPA.jpg?size=1620x2160&quality=96&sign=97beace1cb4a87950bdd50a012c5a128&type=album"
                 },
             ],
+            newMessageBody: "",
             dialogsData: [
                 {
                     id: v1(),
@@ -166,11 +177,24 @@ export const store: StoreType = {
         } else if (action.type === "UPDATE-NEW-POST-TEXT") {
             this._state.profilePage.newPostText = action.postText;
             this._callSubscriber()
+        } else if (action.type === "UPDATE-NEW-MESSAGE-BODY") {
+            this._state.dialogsPage.newMessageBody = action.body;
+            this._callSubscriber()
+        }else if (action.type === "SEND-MESSAGE") {
+            let body = this._state.dialogsPage.newMessageBody;
+            this._state.dialogsPage.newMessageBody = "";
+            this._state.dialogsPage.messagesData.push({
+                id: v1(),
+                name: "Nik",
+                message: body,
+                ava: "https://sun9-87.userapi.com/impf/Eogwstp_bkOHIExnjagUp11ldCVcDEk-F4-1tQ/r4g7vO7wZPA.jpg?size=1620x2160&quality=96&sign=97beace1cb4a87950bdd50a012c5a128&type=album"
+            })
+            this._callSubscriber()
         }
+
     }
 
 }
-
 
 export const addPostActionCreator = ():AddPostActionType => ({type: "ADD-POST"})
 export const updateNewPostActionCreator = (postText: string):UpdateNewPostTextType => {
@@ -180,6 +204,13 @@ export const updateNewPostActionCreator = (postText: string):UpdateNewPostTextTy
     }
 }
 
+export const SendMessageCreator = ():SendMessageType => ({type: "SEND-MESSAGE"})
+export const updateNewMessageBodyCreator = (body: string):UpdateNewMessageBodyType => {
+    return {
+        type: "UPDATE-NEW-MESSAGE-BODY",
+        body: body
+    }
+}
 // window.store = store;
 
 

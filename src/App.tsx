@@ -34,7 +34,9 @@ const App: React.FC<PropsType> = (props) => {
                 <div className={"app-wrapper-content"}>
                     <Route path="/dialogs"
                            render={() => <Dialogs dialogsData={state.dialogsPage.dialogsData}
-                                                  messageData={state.dialogsPage.messagesData}/>}/>
+                                                  messageData={state.dialogsPage.messagesData}
+                                                  newMessageBody={state.dialogsPage.newMessageBody}
+                                                  dispatch={props.dispatch}/>}/>
                     <Route path="/profile" render={() => <Profile postData={state.profilePage.postData}
                                                                   newPostText={state.profilePage.newPostText}
                                                                   dispatch={props.dispatch}
