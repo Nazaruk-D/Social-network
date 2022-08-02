@@ -1,9 +1,13 @@
 import {v1} from "uuid";
+import {profileReducer} from "./profile-reducer";
+import {dialogsReducer} from "./dialogs-reducer";
+import {sidebarReducer} from "./sidebar-reducer";
 
 
 export type stateAllPropsType = {
     profilePage: profilePagePropsType
     dialogsPage: dialogsPagePropsType
+    sidebar: {}
 }
 
 export type profilePagePropsType = {
@@ -43,27 +47,23 @@ export type StoreType = {
     _callSubscriber: () => void
     subscribe: (observer: () => void) => void
     getState: () => stateAllPropsType
-    dispatch: (action: ActionsTypes ) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 export type AddPostActionType = {
     type: "ADD-POST"
 }
-
 export type UpdateNewPostTextType = {
     type: "UPDATE-NEW-POST-TEXT"
     postText: string
 }
-
 export type UpdateNewMessageBodyType = {
     type: "UPDATE-NEW-MESSAGE-BODY"
     body: string
 }
-
 export type SendMessageType = {
     type: "SEND-MESSAGE"
 }
-
 export type ActionsTypes = AddPostActionType | UpdateNewPostTextType | UpdateNewMessageBodyType | SendMessageType
 
 
@@ -152,7 +152,8 @@ export const store: StoreType = {
                     ava: "https://sun9-87.userapi.com/impf/Eogwstp_bkOHIExnjagUp11ldCVcDEk-F4-1tQ/r4g7vO7wZPA.jpg?size=1620x2160&quality=96&sign=97beace1cb4a87950bdd50a012c5a128&type=album"
                 },
             ]
-        }
+        },
+        sidebar: {}
     },
     _callSubscriber() {
         console.log("state changed")
@@ -164,48 +165,53 @@ export const store: StoreType = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        if (action.type === "ADD-POST") {
-            const newPost: postDataPropsType = {
-                id: v1(),
-                message: this._state.profilePage.newPostText,
-                likesCount: 0,
-                avatar: "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
-            }
-            this._state.profilePage.postData.push(newPost)
-            this._state.profilePage.newPostText = "";
-            this._callSubscriber()
-        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-            this._state.profilePage.newPostText = action.postText;
-            this._callSubscriber()
-        } else if (action.type === "UPDATE-NEW-MESSAGE-BODY") {
-            this._state.dialogsPage.newMessageBody = action.body;
-            this._callSubscriber()
-        }else if (action.type === "SEND-MESSAGE") {
-            let body = this._state.dialogsPage.newMessageBody;
-            this._state.dialogsPage.newMessageBody = "";
-            this._state.dialogsPage.messagesData.push({
-                id: v1(),
-                name: "Nik",
-                message: body,
-                ava: "https://sun9-87.userapi.com/impf/Eogwstp_bkOHIExnjagUp11ldCVcDEk-F4-1tQ/r4g7vO7wZPA.jpg?size=1620x2160&quality=96&sign=97beace1cb4a87950bdd50a012c5a128&type=album"
-            })
-            this._callSubscriber()
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+        this._callSubscriber()
+
+        // if (action.type === "ADD-POST") {
+        //     const newPost: postDataPropsType = {
+        //         id: v1(),
+        //         message: this._state.profilePage.newPostText,
+        //         likesCount: 0,
+        //         avatar: "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
+        //     }
+        //     this._state.profilePage.postData.push(newPost)
+        //     this._state.profilePage.newPostText = "";
+        //     this._callSubscriber()
+        // } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+        //     this._state.profilePage.newPostText = action.postText;
+        //     this._callSubscriber()
+        // } else if (action.type === "UPDATE-NEW-MESSAGE-BODY") {
+        //     this._state.dialogsPage.newMessageBody = action.body;
+        //     this._callSubscriber()
+        // }else if (action.type === "SEND-MESSAGE") {
+        //     let body = this._state.dialogsPage.newMessageBody;
+        //     this._state.dialogsPage.newMessageBody = "";
+        //     this._state.dialogsPage.messagesData.push({
+        //         id: v1(),
+        //         name: "Nik",
+        //         message: body,
+        //         ava: "https://sun9-87.userapi.com/impf/Eogwstp_bkOHIExnjagUp11ldCVcDEk-F4-1tQ/r4g7vO7wZPA.jpg?size=1620x2160&quality=96&sign=97beace1cb4a87950bdd50a012c5a128&type=album"
+        //     })
+        //     this._callSubscriber()
+        // }
 
     }
 
 }
 
-export const addPostActionCreator = ():AddPostActionType => ({type: "ADD-POST"})
-export const updateNewPostActionCreator = (postText: string):UpdateNewPostTextType => {
+export const addPostActionCreator = (): AddPostActionType => ({type: "ADD-POST"})
+export const updateNewPostActionCreator = (postText: string): UpdateNewPostTextType => {
     return {
         type: "UPDATE-NEW-POST-TEXT",
         postText: postText
     }
 }
 
-export const SendMessageCreator = ():SendMessageType => ({type: "SEND-MESSAGE"})
-export const updateNewMessageBodyCreator = (body: string):UpdateNewMessageBodyType => {
+export const SendMessageCreator = (): SendMessageType => ({type: "SEND-MESSAGE"})
+export const updateNewMessageBodyCreator = (body: string): UpdateNewMessageBodyType => {
     return {
         type: "UPDATE-NEW-MESSAGE-BODY",
         body: body
