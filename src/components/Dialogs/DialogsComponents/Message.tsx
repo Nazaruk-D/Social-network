@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Message.module.css"
-import {ActionsTypes} from "../../../redux/state";
+import {ActionsTypes} from "../../../redux/store";
 
 
 type MessageProps = {

@@ -5,7 +5,7 @@ import {
     ActionsTypes,
     addPostActionCreator,
     postDataPropsType, updateNewPostActionCreator,
-} from "../../../redux/state";
+} from "../../../redux/store";
 
 
 type MyPostPropType = {
