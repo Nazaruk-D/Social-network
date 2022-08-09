@@ -18,6 +18,7 @@ export type DialogTypeProps = {
 
 
 export const Dialogs: React.FC<DialogTypeProps> = (props) => {
+    // debugger
     let dialogElements = props.dialogsData.map(dialog => <div key={dialog.id}><DialogItem name={dialog.name}
                                                                                           id={dialog.id}
                                                                                           ava={dialog.ava}/>

@@ -32,7 +32,7 @@ let initialState = {
 }
 
 export const profileReducer = (state = initialState, action: any) => { // типизировать!!
-
+    // debugger
     if (action.type === "ADD-POST") {
         const newPost: postDataPropsType = {
             id: v1(),

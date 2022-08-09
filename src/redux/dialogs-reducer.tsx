@@ -57,6 +57,7 @@ let initialState = {
 }
 
 export const dialogsReducer = (state = initialState, action: any) => {
+    // debugger
     if (action.type === "UPDATE-NEW-MESSAGE-BODY") {
         state.newMessageBody = action.body;
     }else if (action.type === "SEND-MESSAGE") {
