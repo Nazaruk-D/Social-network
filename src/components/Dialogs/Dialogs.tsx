@@ -3,12 +3,12 @@ import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogsComponents/DialogItem";
 import {Message} from "./DialogsComponents/Message";
 
-import {DialogsDataType, MessagesDataType} from "../../redux/dialogs-reducer";
+import {DialogsDataType, InitialStateType, MessagesDataType} from "../../redux/dialogs-reducer";
 
 export type DialogTypeProps = {
     SendMessage: () => void
     updateNewMessageBody: (body: any) => void
-    state:any
+    state: InitialStateType
     newMessageBody: string
 }
 

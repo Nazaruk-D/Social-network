@@ -1,26 +1,22 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import {Post} from "./Posts/Post";
-import {
-    ActionsTypes,
-    addPostActionCreator,
-    postDataPropsType, updateNewPostActionCreator,
-} from "../../../redux/store";
+import {profilePagePropsType} from "../../../redux/profile-reducer";
 
 
 type MyPostPropType = {
-    postData: postDataPropsType[]
-    addPost: () => void
-    updateNewPostText: (message: string) => void
+    state: profilePagePropsType
     newPostText: string
+    addPost: () => void
+    updateNewPostText: (text: string) => void
 }
 
 export const MyPosts: React.FC<MyPostPropType> = (props) => {
 
-    let postsElements = props.postData.map(p => <div key={p.id}><Post img={p.avatar}
-                                                                      post={p.message}
-                                                                      likesCount={p.likesCount}
-                                                                      buttonName={"Like"}/>
+    let postsElements = props.state.postData.map(p => <div key={p.id}><Post img={p.avatar}
+                                                                            post={p.message}
+                                                                            likesCount={p.likesCount}
+                                                                            buttonName={"Like"}/>
     </div>)
 
     let newPostElementProfile = React.createRef<HTMLTextAreaElement>();

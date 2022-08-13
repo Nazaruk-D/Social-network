@@ -24,7 +24,6 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 }
 
 let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropType => {
-    debugger
     return {
         updateNewMessageBody: (body: string) => {
             dispatch(updateNewMessageBodyCreator(body))

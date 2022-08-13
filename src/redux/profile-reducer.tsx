@@ -1,5 +1,15 @@
 import {v1} from "uuid";
-import {postDataPropsType} from "./store";
+
+export type profilePagePropsType = {
+    postData: postDataPropsType []
+    newPostText: string
+}
+export type postDataPropsType = {
+    id: string
+    message: string,
+    likesCount: number
+    avatar: string
+}
 
 let initialState = {
     postData: [
@@ -28,10 +38,10 @@ let initialState = {
             avatar: "https://pbs.twimg.com/media/D9wcZfeX4AAUZi0.jpg"
         }
     ],
-        newPostText: "Введите текст"
+    newPostText: "Введите текст"
 }
 
-export const profileReducer = (state = initialState, action: any) => { // типизировать!!
+export const profileReducer = (state: profilePagePropsType = initialState, action: any): profilePagePropsType => { // типизировать!!
     // debugger
     if (action.type === "ADD-POST") {
         const newPost: postDataPropsType = {
