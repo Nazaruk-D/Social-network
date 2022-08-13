@@ -9,6 +9,7 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import {ActionsTypes, StoreType} from "./redux/store";
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 
 type PropsType = {
@@ -35,10 +36,12 @@ const App: React.FC<PropsType> = (props) => {
                 />
                 <div className={"app-wrapper-content"}>
                     <Route path="/dialogs"
-                           render={() => <Dialogs dialogsData={state.dialogs.dialogsData}
-                                                  messageData={state.dialogs.messagesData}
-                                                  newMessageBody={state.dialogs.newMessageBody}
-                                                  dispatch={props.dispatch}/>}
+                           render={() => <DialogsContainer store={props.store}
+                                                  // dialogsData={state.dialogs.dialogsData}
+                                                  // messageData={state.dialogs.messagesData}
+                                                  // newMessageBody={state.dialogs.newMessageBody}
+                                                  // dispatch={props.dispatch}
+                           />}
                     />
                     <Route path="/profile" render={() => <Profile store={props.store}
                     />}/>

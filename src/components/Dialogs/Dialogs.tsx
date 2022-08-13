@@ -8,39 +8,56 @@ import {
     messagesDataPropsType, SendMessageCreator, updateNewMessageBodyCreator
 } from "../../redux/store";
 
+export type DialogType = {
+    id: string
+    name: string
+    message: string
+    ava: string
+}
+
+export type MessagesDataPropsType = {
+    id: string
+    name: string
+    message: string
+    ava: string
+}
 
 export type DialogTypeProps = {
-    dialogsData: dialogsDataPropsType[]
-    messageData: messagesDataPropsType[]
-    newMessageBody: string
-    dispatch: (action: ActionsTypes) => void
+    // dialogsData: dialogsDataPropsType[]
+    // messageData: messagesDataPropsType[]
+    // newMessageBody: string
+    // dispatch: (action: ActionsTypes) => void
+    SendMessage: () => void
+    updateNewMessageBody: (body: any) => void
+    // dialogsPage: DialogType[] | MessagesDataPropsType[]
+    dialogsPage: any
 }
 
 
 export const Dialogs: React.FC<DialogTypeProps> = (props) => {
     // debugger
-    let dialogElements = props.dialogsData.map(dialog => <div key={dialog.id}><DialogItem name={dialog.name}
+    let dialogElements = props.dialogsPage.dialogsData.map((dialog: DialogType) => <div key={dialog.id}><DialogItem name={dialog.name}
                                                                                           id={dialog.id}
                                                                                           ava={dialog.ava}/>
     </div>)
-    let messageElements = props.messageData.map(message => <div key={message.id}><Message name={message.name}
+    let messageElements = props.dialogsPage.messagesData.map((message:MessagesDataPropsType) => <div key={message.id}><Message name={message.name}
                                                                                           id={message.id}
                                                                                           ava={message.ava}
                                                                                           message={message.message}
-                                                                                          // dispatch={props.dispatch}
-                                                                                          newMessageBody={props.newMessageBody}/>
+                                                                                          newMessageBody={props.dialogsPage.newMessageBody}/>
     </div>)
-    let newMessageBody = props.newMessageBody;
+    let newMessageBody = props.dialogsPage.newMessageBody;
 
-    const onclickHandlerAddMessage = () => {
-        props.dispatch(SendMessageCreator())
+    const SendMessageCreator = () => {
+        props.SendMessage()
 
     }
 
-    const onNewMessageChange= (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const onNewMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        // props.dispatch(updateNewMessageBodyCreator(body))
+        // console.log(body)
         let body = e.currentTarget.value
-        props.dispatch(updateNewMessageBodyCreator(body))
-        console.log(body)
+        props.updateNewMessageBody(body)
     }
 
 
@@ -51,16 +68,16 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
             </div>
 
             <div className={s.messages}>
-                <div >
+                <div>
                     {messageElements}
                 </div>
                 <div>
                     <textarea value={newMessageBody}
-                               onChange={onNewMessageChange}
-                               placeholder={"Enter your message"}></textarea>
+                              onChange={onNewMessageChange}
+                              placeholder={"Enter your message"}></textarea>
                 </div>
                 <div>
-                    <button onClick={onclickHandlerAddMessage}>Send message</button>
+                    <button onClick={SendMessageCreator}>Send message</button>
                 </div>
             </div>
 
