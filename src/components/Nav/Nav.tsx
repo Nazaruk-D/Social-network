@@ -10,7 +10,7 @@ type NavPropsType = {
     news: string
     music: string
     settings: string
-    friends?: friendsTypeProps[]
+    friends: friendsTypeProps[]
 }
 
 type friendsTypeProps = {
@@ -20,7 +20,7 @@ type friendsTypeProps = {
 }
 
 export const Nav: React.FC<NavPropsType> = (props) => {
-    // let friendsElements = props.friends.map(f =>  <span key={f.id}><Friends name={f.name} ava={f.ava}/></span>)
+    let friendsElements = props.friends.map(f =>  <span key={f.id}><Friends name={f.name} ava={f.ava}/></span>)
     return (
         <nav className={s.nav}>
             <div className={s.block}>
@@ -41,7 +41,7 @@ export const Nav: React.FC<NavPropsType> = (props) => {
                 </div>
                 <div className={s.friends}>
                     <h3>Friends</h3>
-                    {/*{friendsElements}*/}
+                    {friendsElements}
                     <img src="" alt=""/>
                 </div>
             </div>

@@ -8,7 +8,7 @@ type MessageProps = {
     id: string
     message: string
     ava: string
-    dispatch: (action: ActionsTypes) => void
+    // dispatch: (action: ActionsTypes) => void
     newMessageBody: string
 }
 

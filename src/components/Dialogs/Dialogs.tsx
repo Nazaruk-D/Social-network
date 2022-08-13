@@ -27,7 +27,7 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
                                                                                           id={message.id}
                                                                                           ava={message.ava}
                                                                                           message={message.message}
-                                                                                          dispatch={props.dispatch}
+                                                                                          // dispatch={props.dispatch}
                                                                                           newMessageBody={props.newMessageBody}/>
     </div>)
     let newMessageBody = props.newMessageBody;

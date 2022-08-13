@@ -31,17 +31,16 @@ const App: React.FC<PropsType> = (props) => {
                      news={"News"}
                      music={"Music"}
                      settings={"Settings"}
-                    // friends={state.dialogsPage.dialogsData}
+                     friends={state.dialogs.dialogsData}
                 />
                 <div className={"app-wrapper-content"}>
                     <Route path="/dialogs"
                            render={() => <Dialogs dialogsData={state.dialogs.dialogsData}
                                                   messageData={state.dialogs.messagesData}
                                                   newMessageBody={state.dialogs.newMessageBody}
-                                                  dispatch={props.dispatch}/>}/>
-                    <Route path="/profile" render={() => <Profile postData={state.profile.postData}
-                                                                  newPostText={state.profile.newPostText}
-                                                                  dispatch={props.dispatch}
+                                                  dispatch={props.dispatch}/>}
+                    />
+                    <Route path="/profile" render={() => <Profile store={props.store}
                     />}/>
                     <Route path="/news" render={() => <News/>}/>
                     <Route path="/music" render={() => <Music/>}/>

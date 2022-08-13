@@ -10,11 +10,9 @@ import {
 
 type MyPostPropType = {
     postData: postDataPropsType[]
-    // addPost: () => void
-    // updateNewPostText: (message: string) => void
+    addPost: () => void
+    updateNewPostText: (message: string) => void
     newPostText: string
-    dispatch: (action: ActionsTypes) => void
-
 }
 
 export const MyPosts: React.FC<MyPostPropType> = (props) => {
@@ -28,19 +26,18 @@ export const MyPosts: React.FC<MyPostPropType> = (props) => {
     let newPostElementProfile = React.createRef<HTMLTextAreaElement>();
 
     const onClickHandler = () => {
-        // props.addPost()
-        props.dispatch(addPostActionCreator())
+        props.addPost()
+        // props.dispatch(addPostActionCreator())
     }
 
     const updateNewPostText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value
-        // props.updateNewPostText(text)
-        props.dispatch(updateNewPostActionCreator(text))
-
-        console.log(text)
+        props.updateNewPostText(text)
+        // props.dispatch(updateNewPostActionCreator(text))
+        // console.log(text)
     }
 
-    const cleanTextArea= (e: React.FocusEvent<HTMLTextAreaElement>) => {
+    const cleanTextArea = (e: React.FocusEvent<HTMLTextAreaElement>) => {
         if (e.currentTarget.value === "Введите текст") {
             e.currentTarget.value = ""
         }
@@ -51,7 +48,7 @@ export const MyPosts: React.FC<MyPostPropType> = (props) => {
                   className={s.textArea}
                   onChange={updateNewPostText}
                   value={props.newPostText}
-                    onFocus={cleanTextArea}/>
+                  onFocus={cleanTextArea}/>
         <button onClick={onClickHandler}>AddPost</button>
         <div className={s.item}>
             {postsElements}
