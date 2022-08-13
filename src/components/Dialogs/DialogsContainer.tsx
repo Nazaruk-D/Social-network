@@ -1,37 +1,38 @@
 import React from 'react';
-import s from './Dialogs.module.css'
-import {DialogItem} from "./DialogsComponents/DialogItem";
-import {Message} from "./DialogsComponents/Message";
-import {
-    ActionsTypes,
-    dialogsDataPropsType,
-    messagesDataPropsType, SendMessageCreator, updateNewMessageBodyCreator
-} from "../../redux/store";
+import {SendMessageCreator, updateNewMessageBodyCreator} from "../../redux/store";
 import {Dialogs} from "./Dialogs";
+import {connect} from "react-redux";
+import {AppStateType} from "../../redux/redux-store";
+import {InitialStateType} from "../../redux/dialogs-reducer";
+import {Dispatch} from "redux";
 
 
-export type DialogTypeProps = {
-    // dialogsData: dialogsDataPropsType[]
-    // messageData: messagesDataPropsType[]
-    // newMessageBody: string
-    // dispatch: (action: ActionsTypes) => void
-    store: any
+type MapStatePropsType = {
+    state: InitialStateType
+    newMessageBody: string
+}
+type MapDispatchPropType = {
+    updateNewMessageBody: (body: string) => void
+    SendMessage: () => void
 }
 
-
-export const DialogsContainer: React.FC<DialogTypeProps> = (props) => {
-    let state = props.store.getState().dialogs;
-
-    const onclickHandlerAddMessage = () => {
-        props.store.dispatch(SendMessageCreator())
+let mapStateToProps = (state: AppStateType): MapStatePropsType => {
+    return {
+        state: state.dialogs,
+        newMessageBody: state.dialogs.newMessageBody
     }
-
-    const onNewMessageChange = (body: string) => {
-        props.store.dispatch(updateNewMessageBodyCreator(body))
-    }
-
-
-    return (
-        <Dialogs SendMessage={onclickHandlerAddMessage} updateNewMessageBody={onNewMessageChange} dialogsPage={state}/>
-    )
 }
+
+let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropType => {
+    debugger
+    return {
+        updateNewMessageBody: (body: string) => {
+            dispatch(updateNewMessageBodyCreator(body))
+        },
+        SendMessage: () => {
+            dispatch(SendMessageCreator())
+        }
+    }
+}
+
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);

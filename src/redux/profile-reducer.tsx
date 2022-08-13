@@ -46,7 +46,7 @@ export const profileReducer = (state = initialState, action: any) => { // тип
     } else if (action.type === "UPDATE-NEW-POST-TEXT") {
         state.newPostText = action.postText;
     }
-    return state;
+    return {...state}; //внёс изменение со спред оператором....сделал копию объекта
 }
 
 

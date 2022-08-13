@@ -4,6 +4,8 @@ import {store} from "./redux/redux-store";
 import ReactDOM from "react-dom";
 import App from "./App";
 import {stateAllPropsType} from "./redux/store";
+import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
 
 
 export type AppPropsType = {
@@ -15,7 +17,11 @@ export type AppPropsType = {
 // export const renderTree = (props: stateAllPropsType) => {
 export const renderTree = (props: any) => {
     ReactDOM.render(
-        <App store={store} dispatch={store.dispatch.bind(store)}/>,
+        <BrowserRouter>
+            <Provider store={store}>
+        <App store={store} /> {/*dispatch={store.dispatch.bind(store)}*/}
+            </Provider>
+        </BrowserRouter>,
         document.getElementById('root')
     );
 }

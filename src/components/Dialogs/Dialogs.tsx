@@ -2,51 +2,30 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogsComponents/DialogItem";
 import {Message} from "./DialogsComponents/Message";
-import {
-    ActionsTypes,
-    dialogsDataPropsType,
-    messagesDataPropsType, SendMessageCreator, updateNewMessageBodyCreator
-} from "../../redux/store";
 
-export type DialogType = {
-    id: string
-    name: string
-    message: string
-    ava: string
-}
-
-export type MessagesDataPropsType = {
-    id: string
-    name: string
-    message: string
-    ava: string
-}
+import {DialogsDataType, MessagesDataType} from "../../redux/dialogs-reducer";
 
 export type DialogTypeProps = {
-    // dialogsData: dialogsDataPropsType[]
-    // messageData: messagesDataPropsType[]
-    // newMessageBody: string
-    // dispatch: (action: ActionsTypes) => void
     SendMessage: () => void
     updateNewMessageBody: (body: any) => void
-    // dialogsPage: DialogType[] | MessagesDataPropsType[]
-    dialogsPage: any
+    state:any
+    newMessageBody: string
 }
 
 
 export const Dialogs: React.FC<DialogTypeProps> = (props) => {
     // debugger
-    let dialogElements = props.dialogsPage.dialogsData.map((dialog: DialogType) => <div key={dialog.id}><DialogItem name={dialog.name}
+    let dialogElements = props.state.dialogsData.map((dialog: DialogsDataType) => <div key={dialog.id}><DialogItem name={dialog.name}
                                                                                           id={dialog.id}
                                                                                           ava={dialog.ava}/>
     </div>)
-    let messageElements = props.dialogsPage.messagesData.map((message:MessagesDataPropsType) => <div key={message.id}><Message name={message.name}
+    let messageElements = props.state.messagesData.map((message:MessagesDataType) => <div key={message.id}><Message name={message.name}
                                                                                           id={message.id}
                                                                                           ava={message.ava}
                                                                                           message={message.message}
-                                                                                          newMessageBody={props.dialogsPage.newMessageBody}/>
+                                                                                          newMessageBody={props.state.newMessageBody}/>
     </div>)
-    let newMessageBody = props.dialogsPage.newMessageBody;
+    let newMessageBody = props.newMessageBody;
 
     const SendMessageCreator = () => {
         props.SendMessage()
@@ -55,9 +34,10 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
 
     const onNewMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         // props.dispatch(updateNewMessageBodyCreator(body))
-        // console.log(body)
+        debugger
         let body = e.currentTarget.value
         props.updateNewMessageBody(body)
+        console.log(body)
     }
 
 
