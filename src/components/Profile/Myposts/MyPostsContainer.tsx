@@ -23,7 +23,7 @@ type MapDispatchPropType = {
     addPost: () => void
 }
 
-let mapStateToProps = (state: AppStateType): MapStatePropsType => {
+let mapStateToProps = (state: AppStateType): MapStatePropsType=> {
     return {
         state: state.profile,
         newPostText: state.profile.newPostText
