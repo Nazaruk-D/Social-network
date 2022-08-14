@@ -78,18 +78,23 @@ export let initialState = {
 export const dialogsReducer = (state: InitialStateType = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case "SEND-MESSAGE":
-            let stateCopy = {...state}
-            let body = stateCopy.newMessageBody;
+            // let stateCopy = {...state}
+            let body = state.newMessageBody;
             let newMessage = {
                 id: v1(),
                 name: "Nik",
                 message: body,
                 ava: "https://sun9-87.userapi.com/impf/Eogwstp_bkOHIExnjagUp11ldCVcDEk-F4-1tQ/r4g7vO7wZPA.jpg?size=1620x2160&quality=96&sign=97beace1cb4a87950bdd50a012c5a128&type=album"
             }
-            stateCopy.messagesData = [...state.messagesData]
-            stateCopy.messagesData.push(newMessage)
-            stateCopy.newMessageBody = "";
-            return stateCopy
+            // stateCopy.messagesData = [...state.messagesData]
+            // stateCopy.messagesData.push(newMessage)
+            // stateCopy.newMessageBody = "";
+            // return stateCopy
+            return {
+                ...state,
+                messagesData: [...state.messagesData, newMessage],
+                newMessageBody: ""
+            }
         case "UPDATE-NEW-MESSAGE-BODY":
             return {...state, newMessageBody: action.body}
         default:

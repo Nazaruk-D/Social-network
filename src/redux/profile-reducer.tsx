@@ -50,11 +50,16 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
                 likesCount: 0,
                 avatar: "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
             }
-            let stateCopy = {...state}
-            stateCopy.postData = [...state.postData]
-            stateCopy.postData.push(newPost)
-            stateCopy.newPostText = "";
-            return stateCopy
+            // let stateCopy = {...state}
+            // stateCopy.postData = [...state.postData]
+            // stateCopy.postData.push(newPost)
+            // stateCopy.newPostText = "";
+            // return stateCopy
+            return {
+                ...state,
+                postData: [...state.postData, newPost],
+                newPostText: ""
+            }
         case "UPDATE-NEW-POST-TEXT":
             return {...state, newPostText: action.postText}
             // let stateCopy2 = {...state}
