@@ -8,6 +8,7 @@ type NavPropsType = {
     profile: string
     message: string
     news: string
+    users: string
     music: string
     settings: string
     friends: friendsTypeProps[]
@@ -32,6 +33,9 @@ export const Nav: React.FC<NavPropsType> = (props) => {
                 </div>
                 <div className={s.item}>
                     <NavLink to="/news" activeClassName={s.activeLink}>{props.news}</NavLink>
+                </div>
+                <div className={s.item}>
+                    <NavLink to="/users" activeClassName={s.activeLink}>{props.users}</NavLink>
                 </div>
                 <div className={s.item}>
                     <NavLink to="/music" activeClassName={s.activeLink}>{props.music}</NavLink>
