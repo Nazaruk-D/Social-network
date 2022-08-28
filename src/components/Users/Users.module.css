@@ -16,3 +16,7 @@
     outline: none;
 
 }
+
+.selectedPage {
+    font-weight: bold;
+}
