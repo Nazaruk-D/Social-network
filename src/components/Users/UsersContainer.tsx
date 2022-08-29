@@ -49,7 +49,6 @@ export type UsersContainerPropsType = MapStatePropsType & MapDispatchPropType
 
 /// Классовая компонента Users
 class UsersContainer extends React.Component<UsersContainerPropsType> {
-
     componentDidMount() {
         this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
@@ -58,7 +57,6 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                 this.props.setTotalUsersCount(response.data.totalCount)
             });
         this.props.toggleIsFetching(false)
-
     }
 
     onPageChanged = (page: number) => {

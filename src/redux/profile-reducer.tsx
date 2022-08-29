@@ -3,13 +3,55 @@ import {v1} from "uuid";
 export type profilePagePropsType = {
     postData: postDataPropsType []
     newPostText: string
+    profile: ProfileType
 }
+
+export type AddPostType = {
+    type: "ADD-POST"
+}
+
+export type UpdateNewPostTextType  = {
+    type: "UPDATE-NEW-POST-TEXT"
+    postText: string
+}
+
+export type setUserProfileType = {
+    type: "SET-USER-PROFILE"
+    profile: ProfileType
+}
+
+export type ActionType = AddPostType | UpdateNewPostTextType | setUserProfileType
+
+
 export type postDataPropsType = {
     id: string
     message: string,
     likesCount: number
     avatar: string
 }
+
+export type ProfileType = {
+    "aboutMe": string,
+    "contacts": {
+        "facebook": string,
+        "website": string,
+        "vk": string,
+        "twitter": string,
+        "instagram": string,
+        "youtube": string ,
+        "github": string,
+        "mainLink": string
+    },
+    "lookingForAJob": boolean,
+    "lookingForAJobDescription": string,
+    "fullName": string,
+    "userId": number,
+    "photos": {
+        "small": string,
+        "large": string
+    }
+} | null
+
 
 let initialState = {
     postData: [
@@ -38,10 +80,11 @@ let initialState = {
             avatar: "https://pbs.twimg.com/media/D9wcZfeX4AAUZi0.jpg"
         }
     ],
-    newPostText: "Введите текст"
+    newPostText: "Введите текст",
+    profile: null
 }
 
-export const profileReducer = (state: profilePagePropsType = initialState, action: any): profilePagePropsType => { // типизировать!!  : profilePagePropsType
+export const profileReducer = (state: profilePagePropsType = initialState, action: ActionType): profilePagePropsType => { // типизировать!!  : profilePagePropsType
     switch (action.type) {
         case "ADD-POST":
             let newPost: postDataPropsType = {
@@ -50,11 +93,6 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
                 likesCount: 0,
                 avatar: "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
             }
-            // let stateCopy = {...state}
-            // stateCopy.postData = [...state.postData]
-            // stateCopy.postData.push(newPost)
-            // stateCopy.newPostText = "";
-            // return stateCopy
             return {
                 ...state,
                 postData: [...state.postData, newPost],
@@ -62,12 +100,16 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
             }
         case "UPDATE-NEW-POST-TEXT":
             return {...state, newPostText: action.postText}
-            // let stateCopy2 = {...state}
-            // stateCopy2.newPostText = action.postText;
-            // return stateCopy2;
+        case "SET-USER-PROFILE":
+            return {...state, profile: action.profile}
+
         default:
             return state;
     }
 
 }
+
+export const addPostAC = (): AddPostType => ({type: "ADD-POST"})
+export const setUserProfile = (profile: ProfileType): setUserProfileType => ({type: "SET-USER-PROFILE", profile})
+export const updateNewPostTextAC = (postText: string): UpdateNewPostTextType => ({type: "UPDATE-NEW-POST-TEXT", postText})
 

@@ -165,7 +165,7 @@ export const store: StoreType = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        // this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
         this._state.sidebar = sidebarReducer(this._state.sidebar, action)
         this._callSubscriber()
@@ -202,13 +202,13 @@ export const store: StoreType = {
 
 }
 
-export const addPostActionCreator = (): AddPostActionType => ({type: "ADD-POST"})
-export const updateNewPostActionCreator = (postText: string): UpdateNewPostTextType => {
-    return {
-        type: "UPDATE-NEW-POST-TEXT",
-        postText: postText
-    }
-}
+// export const addPostActionCreator = (): AddPostActionType => ({type: "ADD-POST"})
+// export const updateNewPostActionCreator = (postText: string): UpdateNewPostTextType => {
+//     return {
+//         type: "UPDATE-NEW-POST-TEXT",
+//         postText: postText
+//     }
+// }
 
 export const SendMessageCreator = (): SendMessageType => ({type: "SEND-MESSAGE"})
 export const updateNewMessageBodyCreator = (body: string): UpdateNewMessageBodyType => {

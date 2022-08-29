@@ -1,18 +1,9 @@
 import React from "react";
-import s from "./MyPosts.module.css";
-import {Post} from "./Posts/Post";
-import {
-    ActionsTypes,
-    addPostActionCreator,
-    postDataPropsType, SendMessageCreator, updateNewMessageBodyCreator, updateNewPostActionCreator,
-} from "../../../redux/store";
 import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
-import {Dialogs} from "../../Dialogs/Dialogs";
 import {AppStateType} from "../../../redux/redux-store";
 import {Dispatch} from "redux";
-import {InitialStateType} from "../../../redux/dialogs-reducer";
-import {profilePagePropsType} from "../../../redux/profile-reducer";
+import {addPostAC, profilePagePropsType, updateNewPostTextAC} from "../../../redux/profile-reducer";
 
 type MapStatePropsType = {
     state: profilePagePropsType
@@ -34,10 +25,10 @@ let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropType => {
 
     return {
         updateNewPostText: (text: string) => {
-            dispatch(updateNewPostActionCreator(text))
+            dispatch(updateNewPostTextAC(text))
         },
         addPost: () => {
-            dispatch(addPostActionCreator())
+            dispatch(addPostAC())
         }
     }
 }
