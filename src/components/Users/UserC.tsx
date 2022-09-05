@@ -15,6 +15,8 @@ export type UsersPropsType = {
     currentPage: number
     pageSize: number
     onPageChanged: (page: number) => void
+    toggleIsFollowingProgress: (followingInProgress:  boolean, userId: string) => void
+    followingInProgress: []
 }
 
 const UserC: React.FC<UsersPropsType> = (props) => {
@@ -43,33 +45,37 @@ const UserC: React.FC<UsersPropsType> = (props) => {
                     <div>
                         {
                             u.followed
-                                ? <button onClick={() => {
+                                ? <button disabled={props.followingInProgress.some(id=> id===u.id)} onClick={() => {
                                     // axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{
                                     //     withCredentials: true,
                                     //     headers: {
                                     //         "API-KEY": "0eaf2c78-b360-4d05-800a-fd9132ed05f7"
                                     //     }
                                     // })
+                                    props.toggleIsFollowingProgress(true, u.id)
                                     usersAPI.unFollow(u.id)
                                         .then(data => {
                                             if (data.resultCode === 0) {
                                                 props.unfollow(u.id)
                                             }
+                                            props.toggleIsFollowingProgress(false, u.id)
                                         });
 
                                 }}>Unfollow</button>
-                                : <button onClick={() => {
+                                : <button disabled={props.followingInProgress.some(id=> id===u.id)} onClick={() => {
                                     // axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},{
                                     //     withCredentials: true,
                                     //     headers: {
                                     //         "API-KEY": "0eaf2c78-b360-4d05-800a-fd9132ed05f7"
                                     //     }
                                     // })
+                                    props.toggleIsFollowingProgress(true, u.id)
                                     usersAPI.follow(u.id)
                                         .then(data => {
                                             if (data.resultCode === 0) {
                                                 props.follow(u.id)
                                             }
+                                            props.toggleIsFollowingProgress(false, u.id)
                                         });
 
 
