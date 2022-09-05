@@ -9,3 +9,11 @@
     width: 125px;
     box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
 }
+.loginBlock {
+    float: right;
+    /*margin-left: 800px;*/
+}
+
+.loginBlock a {
+    color: white
+}

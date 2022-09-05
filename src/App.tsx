@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Header} from "./components/Header/Header";
 import {Nav} from "./components/Nav/Nav";
-import {Profile} from "./components/Profile/Profile";
 import {Route} from "react-router-dom";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
@@ -10,6 +8,7 @@ import {Settings} from "./components/Settings/Settings";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 type PropsType = {
@@ -24,8 +23,7 @@ const App: React.FC<PropsType> = (props) => {
     return (
 
             <div className="app-wrapper">
-                <Header
-                    img={"https://www.eurohandball.com/media/f45ofcxo/ehf_og_image2.jpg?anchor=center&mode=crop&width=1200&height=630&rnd=132375557452270000"}/>
+                <HeaderContainer/>
                 <Nav profile={"Profile"}
                      message={"Message"}
                      news={"News"}

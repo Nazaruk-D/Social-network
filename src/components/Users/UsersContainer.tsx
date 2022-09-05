@@ -10,10 +10,10 @@ import {
     unfollow,
     UsersType
 } from "../../redux/users-reducer";
-import axios from "axios";
 import UserC from "./UserC";
 import {MoonLoader} from "react-spinners";
 import s from "./UsersContainer.module.css"
+import {usersAPI} from "../../api/api";
 
 type MapStatePropsType = {
     users: UsersType[]
@@ -51,21 +51,20 @@ export type UsersContainerPropsType = MapStatePropsType & MapDispatchPropType
 class UsersContainer extends React.Component<UsersContainerPropsType> {
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setUsers(response.data.items)
-                this.props.setTotalUsersCount(response.data.totalCount)
-            });
-        this.props.toggleIsFetching(false)
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+            this.props.toggleIsFetching(false)
+            this.props.setUsers(data.items)
+            this.props.setTotalUsersCount(data.totalCount)
+        });
+
     }
 
     onPageChanged = (page: number) => {
         this.props.setCurrentPage(page)
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
-            .then(response => {
+        usersAPI.getUsers(page, this.props.pageSize).then(data => {
                 this.props.toggleIsFetching(false)
-                this.props.setUsers(response.data.items)
+                this.props.setUsers(data.items)
             });
     }
 
