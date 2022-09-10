@@ -25,10 +25,9 @@ export const usersAPI = {
 
 }
 
-
-// axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{
-//     withCredentials: true,
-//     headers: {
-//         "API-KEY": "0eaf2c78-b360-4d05-800a-fd9132ed05f7"
-//     }
+// {
+//     // withCredentials: true,
+//     // headers: {
+//     //     "API-KEY": "0eaf2c78-b360-4d05-800a-fd9132ed05f7"
+//     // }
 // }
