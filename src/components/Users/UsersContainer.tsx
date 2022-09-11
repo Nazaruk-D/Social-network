@@ -1,13 +1,10 @@
 import React from 'react';
-import {connect, useDispatch} from "react-redux";
+import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
 import {
     follow,
     getUsersThunk,
     setCurrentPage,
-    setTotalUsersCount,
-    setUsers,
-    toggleIsFetching,
     toggleIsFollowingProgress,
     unfollow,
     UsersType
@@ -15,7 +12,6 @@ import {
 import UserC from "./UserC";
 import {MoonLoader} from "react-spinners";
 import s from "./UsersContainer.module.css"
-import {usersAPI} from "../../api/api";
 
 type MapStatePropsType = {
     users: UsersType[]

@@ -166,9 +166,9 @@ export const store: StoreType = {
     },
     dispatch(action) {
         // this._state.profilePage = profileReducer(this._state.profilePage, action)
-        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
-        this._callSubscriber()
+        // this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        // this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+        // this._callSubscriber()
 
         // if (action.type === "ADD-POST") {
         //     const newPost: postDataPropsType = {
@@ -210,13 +210,13 @@ export const store: StoreType = {
 //     }
 // }
 
-export const SendMessageCreator = (): SendMessageType => ({type: "SEND-MESSAGE"})
-export const updateNewMessageBodyCreator = (body: string): UpdateNewMessageBodyType => {
-    return {
-        type: "UPDATE-NEW-MESSAGE-BODY",
-        body: body
-    }
-}
+// export const SendMessageCreator = (): SendMessageType => ({type: "SEND-MESSAGE"})
+// export const updateNewMessageBodyCreator = (body: string): UpdateNewMessageBodyType => {
+//     return {
+//         type: "UPDATE-NEW-MESSAGE-BODY",
+//         body: body
+//     }
+// }
 // window.store = store;
 
 

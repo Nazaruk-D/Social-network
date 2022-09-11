@@ -1,4 +1,6 @@
 import {v1} from "uuid";
+import {Dispatch} from "redux";
+import {usersAPI} from "../api/api";
 
 export type profilePagePropsType = {
     postData: postDataPropsType []
@@ -112,4 +114,9 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
 export const addPostAC = (): AddPostType => ({type: "ADD-POST"})
 export const setUserProfile = (profile: ProfileType): setUserProfileType => ({type: "SET-USER-PROFILE", profile})
 export const updateNewPostTextAC = (postText: string): UpdateNewPostTextType => ({type: "UPDATE-NEW-POST-TEXT", postText})
-
+export const setUserProfileThunk = (userId: string) => (dispatch: Dispatch) => {
+    usersAPI.getProfile(userId)
+        .then(data => {
+            dispatch(setUserProfile(data))
+        })
+}

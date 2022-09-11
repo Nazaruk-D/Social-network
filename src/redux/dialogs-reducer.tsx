@@ -1,5 +1,6 @@
 import {v1} from "uuid";
 import {postDataPropsType} from "./profile-reducer";
+import {SendMessageType, UpdateNewMessageBodyType} from "./store";
 
 export type MessagesDataType = {
     id: string
@@ -99,5 +100,14 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: a
             return {...state, newMessageBody: action.body}
         default:
             return state;
+    }
+}
+
+
+export const SendMessageCreator = (): SendMessageType => ({type: "SEND-MESSAGE"})
+export const updateNewMessageBodyCreator = (body: string): UpdateNewMessageBodyType => {
+    return {
+        type: "UPDATE-NEW-MESSAGE-BODY",
+        body: body
     }
 }

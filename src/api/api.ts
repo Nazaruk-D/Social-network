@@ -21,13 +21,12 @@ export const usersAPI = {
     follow(id: string) {
         return instance.post(`follow/${id}`)
             .then(response => response.data)
+    },
+    getProfile(userId: string) {
+        return instance.get(`profile/${userId}`)
+            .then(response => response.data)
     }
 
-}
 
-// {
-//     // withCredentials: true,
-//     // headers: {
-//     //     "API-KEY": "0eaf2c78-b360-4d05-800a-fd9132ed05f7"
-//     // }
-// }
+
+}
