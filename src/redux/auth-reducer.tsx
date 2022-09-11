@@ -1,4 +1,4 @@
-import {usersAPI} from "../api/api";
+import {authAPI} from "../api/api";
 import {Dispatch} from "redux";
 
 export type setUserDataType = {
@@ -42,7 +42,7 @@ export const setAuthUserData = (userId: number, email: string, login: string): s
 
 export const authThunk = () => (dispatch: Dispatch) => {
 // this.props.toggleIsFetching(true)
-    usersAPI.auth()
+    authAPI.auth()
         .then(response => {
             if (response.data.resultCode === 0) {
                 let {id, email, login} = response.data.data;
