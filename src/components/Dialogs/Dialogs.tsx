@@ -33,8 +33,6 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
     }
 
     const onNewMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        // props.dispatch(updateNewMessageBodyCreator(body))
-        debugger
         let body = e.currentTarget.value
         props.updateNewMessageBody(body)
         console.log(body)
