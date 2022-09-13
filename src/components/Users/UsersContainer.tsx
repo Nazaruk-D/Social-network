@@ -12,7 +12,8 @@ import {
 import UserC from "./UserC";
 import {MoonLoader} from "react-spinners";
 import s from "./UsersContainer.module.css"
-import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 type MapStatePropsType = {
     users: UsersType[]
@@ -77,10 +78,18 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 }
 
 
-let withRedirect = WithAuthRedirect(UsersContainer)
+// let withRedirect = withAuthRedirect(UsersContainer)
 
-export default connect(mapStateToProps,
-    {follow, unfollow, setCurrentPage, toggleIsFollowingProgress, getUsersThunk})(withRedirect);
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleIsFollowingProgress, getUsersThunk}),
+    withAuthRedirect
+)(UsersContainer)
+
+
+
+//
+// connect(mapStateToProps,
+//     {follow, unfollow, setCurrentPage, toggleIsFollowingProgress, getUsersThunk})(withRedirect);
 
 
 
