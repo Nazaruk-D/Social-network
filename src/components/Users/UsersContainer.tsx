@@ -12,6 +12,7 @@ import {
 import UserC from "./UserC";
 import {MoonLoader} from "react-spinners";
 import s from "./UsersContainer.module.css"
+import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type MapStatePropsType = {
     users: UsersType[]
@@ -76,7 +77,11 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 }
 
 
+let withRedirect = WithAuthRedirect(UsersContainer)
+
 export default connect(mapStateToProps,
-    {follow, unfollow, setCurrentPage, toggleIsFollowingProgress, getUsersThunk})(UsersContainer);
+    {follow, unfollow, setCurrentPage, toggleIsFollowingProgress, getUsersThunk})(withRedirect);
+
+
 
 
