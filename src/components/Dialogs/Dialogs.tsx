@@ -6,6 +6,8 @@ import {Message} from "./DialogsComponents/Message";
 import {DialogsDataType, InitialStateType, MessagesDataType} from "../../redux/dialogs-reducer";
 import {Redirect} from "react-router-dom";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {TextArea} from "../common/FormsControl/FormsControl";
+import {maxLengthCreator, required} from "../../utils/validators/validators";
 
 export type DialogTypeProps = {
     SendMessage: (values: string) => void
@@ -62,12 +64,13 @@ export type AddMessageFormType = {
     newMessageBody: string
 }
 
+const maxLength50 = maxLengthCreator(50)
 
 export const AddMessageForm: React.FC<InjectedFormProps<AddMessageFormType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={"textarea"} name={"newMessageBody"} placeholder={"Enter your message"}/>
+                <Field component={TextArea} validate={[required, maxLength50]} name={"newMessageBody"} placeholder={"Enter your message"}/>
             </div>
             <div>
                 <button>Send message</button>

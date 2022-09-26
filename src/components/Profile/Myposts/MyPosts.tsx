@@ -4,6 +4,9 @@ import {Post} from "./Posts/Post";
 import {profilePagePropsType} from "../../../redux/profile-reducer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {AddMessageFormType} from "../../Dialogs/Dialogs";
+import {maxLengthCreator, required} from "../../../utils/validators/validators";
+import {TextArea} from "../../common/FormsControl/FormsControl";
+
 
 
 type MyPostPropType = {
@@ -42,7 +45,7 @@ export const MyPosts: React.FC<MyPostPropType> = (props) => {
     }
 
     return <div>
-       <AddNewPostFormRedux onSubmit={addPost}/>
+        <AddNewPostFormRedux onSubmit={addPost}/>
         <div className={s.item}>
             {postsElements}
         </div>
@@ -54,15 +57,17 @@ type AddNewPostFormType = {
     newMessageBody: string
 }
 
+const maxLength10 = maxLengthCreator(10)
+
 const AddNewPostForm: React.FC<InjectedFormProps<AddNewPostFormType>> = (props) => {
-    return(
+    return (
         <form onSubmit={props.handleSubmit}>
-            <Field component={"textarea"} name={"newMessageBody"} placeholder={"Enter your message"} className={s.textArea}/>
+            <Field component={TextArea} name={"newMessageBody"} placeholder={"Enter your message"}
+                   className={s.textArea} validate={[required, maxLength10]}/>
             <button>AddPost</button>
         </form>
     )
 }
-
 
 
 const AddNewPostFormRedux = reduxForm<AddNewPostFormType>({form: "profileAddMessageForm"})(AddNewPostForm)
