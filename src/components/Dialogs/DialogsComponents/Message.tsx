@@ -7,7 +7,7 @@ type MessageProps = {
     id: string
     message: string
     ava: string
-    newMessageBody: string
+    // newMessageBody: string
 }
 
 export const Message: React.FC<MessageProps> = (props) => {

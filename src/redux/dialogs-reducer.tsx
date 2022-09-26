@@ -1,6 +1,4 @@
 import {v1} from "uuid";
-import {postDataPropsType} from "./profile-reducer";
-import {SendMessageType, UpdateNewMessageBodyType} from "./store";
 
 export type MessagesDataType = {
     id: string
@@ -16,9 +14,10 @@ export type DialogsDataType = {
 }
 export type InitialStateType = {
     messagesData: Array<MessagesDataType>,
-    newMessageBody: string,
     dialogsData: Array<DialogsDataType>,
 }
+
+type ActionTypes = ReturnType<typeof SendMessageCreator>
 
 export let initialState = {
     messagesData: [
@@ -47,7 +46,6 @@ export let initialState = {
             ava: "https://sun9-87.userapi.com/impf/Eogwstp_bkOHIExnjagUp11ldCVcDEk-F4-1tQ/r4g7vO7wZPA.jpg?size=1620x2160&quality=96&sign=97beace1cb4a87950bdd50a012c5a128&type=album"
         },
     ],
-    newMessageBody: "",
     dialogsData: [
         {
             id: v1(),
@@ -76,38 +74,24 @@ export let initialState = {
     ]
 }
 
-export const dialogsReducer = (state: InitialStateType = initialState, action: any): InitialStateType => {
+export const dialogsReducer = (state: InitialStateType = initialState, action: ActionTypes): InitialStateType => {
     switch (action.type) {
         case "SEND-MESSAGE":
-            // let stateCopy = {...state}
-            let body = state.newMessageBody;
+            let body = action.newMessageBody;
             let newMessage = {
                 id: v1(),
                 name: "Nik",
                 message: body,
                 ava: "https://sun9-87.userapi.com/impf/Eogwstp_bkOHIExnjagUp11ldCVcDEk-F4-1tQ/r4g7vO7wZPA.jpg?size=1620x2160&quality=96&sign=97beace1cb4a87950bdd50a012c5a128&type=album"
             }
-            // stateCopy.messagesData = [...state.messagesData]
-            // stateCopy.messagesData.push(newMessage)
-            // stateCopy.newMessageBody = "";
-            // return stateCopy
             return {
                 ...state,
-                messagesData: [...state.messagesData, newMessage],
-                newMessageBody: ""
+                messagesData: [...state.messagesData, newMessage]
             }
-        case "UPDATE-NEW-MESSAGE-BODY":
-            return {...state, newMessageBody: action.body}
         default:
             return state;
     }
 }
 
 
-export const SendMessageCreator = (): SendMessageType => ({type: "SEND-MESSAGE"})
-export const updateNewMessageBodyCreator = (body: string): UpdateNewMessageBodyType => {
-    return {
-        type: "UPDATE-NEW-MESSAGE-BODY",
-        body: body
-    }
-}
+export const SendMessageCreator = (newMessageBody: string) => ({type: "SEND-MESSAGE", newMessageBody} as const)

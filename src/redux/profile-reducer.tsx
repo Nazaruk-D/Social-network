@@ -4,31 +4,14 @@ import {profileAPI} from "../api/api";
 
 export type profilePagePropsType = {
     postData: postDataPropsType []
-    newPostText: string
     profile: ProfileType
     status: string
 }
 
-export type AddPostType = {
-    type: "ADD-POST"
-}
-
-export type UpdateNewPostTextType  = {
-    type: "UPDATE-NEW-POST-TEXT"
-    postText: string
-}
-
-export type setUserProfileType = {
-    type: "SET-USER-PROFILE"
-    profile: ProfileType
-}
-
-export type setStatus = {
-    type: "SET-STATUS"
-    status: string
-}
-
-export type ActionType = AddPostType | UpdateNewPostTextType | setUserProfileType | setStatus
+export type ActionType =
+    ReturnType<typeof addPostAC>
+    | ReturnType<typeof setUserProfile>
+    | ReturnType<typeof setStatusProfile>
 
 
 export type postDataPropsType = {
@@ -88,27 +71,23 @@ let initialState = {
             avatar: "https://pbs.twimg.com/media/D9wcZfeX4AAUZi0.jpg"
         }
     ],
-    newPostText: "Введите текст",
     profile: null,
     status: ""
 }
 
-export const profileReducer = (state: profilePagePropsType = initialState, action: ActionType): profilePagePropsType => { // типизировать!!  : profilePagePropsType
+export const profileReducer = (state: profilePagePropsType = initialState, action: ActionType): profilePagePropsType => {
     switch (action.type) {
         case "ADD-POST":
             let newPost: postDataPropsType = {
                 id: v1(),
-                message: state.newPostText,
+                message: action.newPostText,
                 likesCount: 0,
                 avatar: "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
             }
             return {
                 ...state,
-                postData: [...state.postData, newPost],
-                newPostText: ""
+                postData: [...state.postData, newPost]
             }
-        case "UPDATE-NEW-POST-TEXT":
-            return {...state, newPostText: action.postText}
         case "SET-USER-PROFILE":
             return {...state, profile: action.profile}
         case "SET-STATUS":
@@ -119,11 +98,9 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
 
 }
 
-export const addPostAC = (): AddPostType => ({type: "ADD-POST"})
-export const setUserProfile = (profile: ProfileType): setUserProfileType => ({type: "SET-USER-PROFILE", profile})
-export const updateNewPostTextAC = (postText: string): UpdateNewPostTextType => ({type: "UPDATE-NEW-POST-TEXT", postText})
-export const setStatus = (status: string): setStatus => ({type: "SET-STATUS", status})
-
+export const addPostAC = (newPostText: string) => ({type: "ADD-POST", newPostText} as const)
+export const setUserProfile = (profile: ProfileType) => ({type: "SET-USER-PROFILE", profile} as const)
+export const setStatusProfile = (status: string) => ({type: "SET-STATUS", status} as const)
 export const setUserProfileThunk = (userId: string) => (dispatch: Dispatch) => {
     profileAPI.getProfile(userId)
         .then(data => {
@@ -134,7 +111,7 @@ export const setUserProfileThunk = (userId: string) => (dispatch: Dispatch) => {
 export const getStatus = (userId: string) => (dispatch: Dispatch) => {
     profileAPI.getStatus(userId)
         .then(response => {
-            dispatch(setStatus(response.data))
+            dispatch(setStatusProfile(response.data))
         })
 }
 
@@ -142,7 +119,7 @@ export const updateStatus = (status: string) => (dispatch: Dispatch) => {
     profileAPI.updateStatus(status)
         .then(response => {
             if (response.data.resultCode === 0) {
-                dispatch(setStatus(status))
+                dispatch(setStatusProfile(status))
             }
         })
 }

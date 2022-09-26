@@ -1,7 +1,4 @@
 import {v1} from "uuid";
-import {profileReducer} from "./profile-reducer";
-import {dialogsReducer} from "./dialogs-reducer";
-import {sidebarReducer} from "./sidebar-reducer";
 
 
 export type stateAllPropsType = {
@@ -57,14 +54,9 @@ export type UpdateNewPostTextType = {
     type: "UPDATE-NEW-POST-TEXT"
     postText: string
 }
-export type UpdateNewMessageBodyType = {
-    type: "UPDATE-NEW-MESSAGE-BODY"
-    body: string
-}
-export type SendMessageType = {
-    type: "SEND-MESSAGE"
-}
-export type ActionsTypes = AddPostActionType | UpdateNewPostTextType | UpdateNewMessageBodyType | SendMessageType
+
+
+export type ActionsTypes = AddPostActionType | UpdateNewPostTextType
 
 
 export const store: StoreType = {
