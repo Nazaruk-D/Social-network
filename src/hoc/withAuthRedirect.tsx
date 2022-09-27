@@ -2,6 +2,7 @@ import React, {ComponentType} from 'react';
 import {Redirect} from "react-router-dom";
 import {AppStateType} from "../redux/redux-store";
 import {connect} from "react-redux";
+import {getAuthUserData, logout} from "../redux/auth-reducer";
 
 
 type MapStatePropsType = {
@@ -23,7 +24,6 @@ export function withAuthRedirect<T>(Component: ComponentType<T>) {
     };
 
 
-    let ConnectAuthRedirectComponent = connect(mapStateToPropsForRedirect)(RedirectComponent)
-    return ConnectAuthRedirectComponent;
+    return connect(mapStateToPropsForRedirect, {getAuthUserData, logout})(RedirectComponent);
 }
 
