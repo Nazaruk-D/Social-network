@@ -1,6 +1,7 @@
 import {authAPI} from "../api/api";
-import {Dispatch} from "redux";
 import {AppThunk} from "./redux-store";
+import {stopSubmit} from "redux-form";
+import {Dispatch} from "redux";
 
 export type setUserDataType = {
     type: "SET-USER-DATA",
@@ -12,15 +13,15 @@ export type setUserDataType = {
 }
 
 export type InitialStateType = {
-    id: null | number,
+    id: string,
     email: null | string,
     login: null | string,
     isAuth: boolean,
     isFetching: boolean
 }
 
-export let initialState =  {
-    id: 25415,
+export let initialState = {
+    id: "25415",
     email: 'nazaruk-dima@mail.ru',
     login: 'Nazaruk-D',
     isAuth: false,
@@ -33,13 +34,16 @@ export type actionType = ReturnType<typeof setAuthUserData>
 export const authReducer = (state: InitialStateType = initialState, action: actionType): InitialStateType => {
     switch (action.type) {
         case "SET-USER-DATA":
-           return {...state, ...action.payload}
+            return {...state, ...action.payload}
         default:
             return state;
     }
 }
 
-export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean)  => ({type: "SET-USER-DATA", payload: {userId, email, login, isAuth}} as const)
+export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean) => ({
+    type: "SET-USER-DATA",
+    payload: {userId, email, login, isAuth}
+} as const)
 
 export const getAuthUserData = () => (dispatch: Dispatch) => {
 // this.props.toggleIsFetching(true)
@@ -53,12 +57,16 @@ export const getAuthUserData = () => (dispatch: Dispatch) => {
 // this.props.toggleIsFetching(false)
 }
 
-export const login = (mail: string, password: string, rememberMe: boolean = false): AppThunk => (dispatch) => {
+export const login = (mail: string, password: string, rememberMe: boolean = false) => (dispatch: any) => {
 // this.props.toggleIsFetching(true)
+
     authAPI.login(mail, password, rememberMe)
         .then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(getAuthUserData())
+            } else {
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
+                    dispatch = (stopSubmit("login", {_error: message}))
             }
         });
 // this.props.toggleIsFetching(false)

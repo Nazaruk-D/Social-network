@@ -15,6 +15,9 @@ type PathParamType = {
 type MapStatePropsType = {
     profile: ProfileType
     status: string
+    authorizedUserId: string
+    isAuth: boolean
+
 }
 type MapDispatchPropType = {
     setUserProfileThunk: (userId: string) => void
@@ -27,7 +30,10 @@ type ProfileContainerPropsType = RouteComponentProps<PathParamType> &  MapStateP
 class ProfileContainer extends React.Component<ProfileContainerPropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId
-        if(!userId) {userId = "25415"} // 25415
+        if(!userId) {
+            // userId = "25415"
+            userId = this.props.authorizedUserId
+        } // 25415
         this.props.setUserProfileThunk(userId)
         this.props.getStatus(userId)
     }
@@ -46,7 +52,9 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType> {
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         profile: state.profile.profile,
-        status: state.profile.status
+        status: state.profile.status,
+        authorizedUserId: state.auth.id,
+        isAuth: state.auth.isAuth
     }
 }
 
