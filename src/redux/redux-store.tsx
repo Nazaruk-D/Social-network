@@ -7,6 +7,7 @@ import {authReducer} from "./auth-reducer";
 import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {reducer as formReducer} from 'redux-form'
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
+import {appReducer} from "./app-reducer";
 
 
 let rootReducer = combineReducers({
@@ -15,7 +16,8 @@ let rootReducer = combineReducers({
     sidebar: sidebarReducer,
     usersPage: usersReducer,
     auth: authReducer,
-    form: formReducer
+    form: formReducer,
+    app: appReducer
 })
 
 export type AppStateType = ReturnType<typeof rootReducer>;
