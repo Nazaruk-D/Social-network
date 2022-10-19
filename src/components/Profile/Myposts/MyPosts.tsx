@@ -14,31 +14,12 @@ type MyPostPropType = {
     addPost: (values: string) => void
 }
 
-export const MyPosts: React.FC<MyPostPropType> = (props) => {
-
+export const MyPosts: React.FC<MyPostPropType> = React.memo ((props) => {
     let postsElements = props.state.postData.map(p => <div key={p.id}><Post img={p.avatar}
                                                                             post={p.message}
                                                                             likesCount={p.likesCount}
                                                                             buttonName={"Like"}/>
     </div>)
-
-    // let newPostElementProfile = React.createRef<HTMLTextAreaElement>();
-    //
-    // const onClickHandler = () => {
-    //     // props.addPost()
-    // }
-    //
-    // const updateNewPostText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    //     let text = e.currentTarget.value
-    //     props.updateNewPostText(text)
-    //
-    // }
-    //
-    // const cleanTextArea = (e: React.FocusEvent<HTMLTextAreaElement>) => {
-    //     if (e.currentTarget.value === "Введите текст") {
-    //         e.currentTarget.value = ""
-    //     }
-    // }
 
     const addPost = (values: AddMessageFormType) => {
         props.addPost(values.newMessageBody)
@@ -51,7 +32,7 @@ export const MyPosts: React.FC<MyPostPropType> = (props) => {
         </div>
     </div>
 
-}
+})
 
 type AddNewPostFormType = {
     newMessageBody: string
