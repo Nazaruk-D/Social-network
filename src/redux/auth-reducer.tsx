@@ -45,42 +45,37 @@ export const setAuthUserData = (userId: number | null, email: string | null, log
     payload: {userId, email, login, isAuth}
 } as const)
 
-export const getAuthUserData = () => (dispatch: Dispatch) => {
+export const getAuthUserData = () => async (dispatch: Dispatch) => {
 // this.props.toggleIsFetching(true)
-    authAPI.auth()
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                let {id, email, login} = response.data.data;
-                dispatch(setAuthUserData(id, email, login, true))
-            }
-        });
+    let response = await authAPI.auth()
+    if (response.data.resultCode === 0) {
+        let {id, email, login} = response.data.data;
+        dispatch(setAuthUserData(id, email, login, true))
+    }
 // this.props.toggleIsFetching(false)
 }
 
-export const login = (mail: string, password: string, rememberMe: boolean = false) => (dispatch: any) => {
+export const login = (mail: string, password: string, rememberMe: boolean = false) => async (dispatch: any) => {
 // this.props.toggleIsFetching(true)
 
-    authAPI.login(mail, password, rememberMe)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(getAuthUserData())
-            } else {
-                let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
-                    dispatch = (stopSubmit("login", {_error: message}))
-            }
-        });
+    let response = await authAPI.login(mail, password, rememberMe)
+    if (response.data.resultCode === 0) {
+        dispatch(getAuthUserData())
+    } else {
+        let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
+        dispatch = (stopSubmit("login", {_error: message}))
+    }
 // this.props.toggleIsFetching(false)
 }
 
-export const logout = (): AppThunk => (dispatch) => {
+
+export const logout = (): AppThunk => async (dispatch) => {
 // this.props.toggleIsFetching(true)
-    authAPI.logout()
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setAuthUserData(null, null, null, false))
-                dispatch(getAuthUserData())
-            }
-        });
+    let response = await authAPI.logout()
+    if (response.data.resultCode === 0) {
+        dispatch(setAuthUserData(null, null, null, false))
+        dispatch(getAuthUserData())
+    }
 // this.props.toggleIsFetching(false)
 }
 

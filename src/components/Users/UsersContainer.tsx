@@ -12,7 +12,6 @@ import {
 import UserC from "./UserC";
 import {MoonLoader} from "react-spinners";
 import s from "./UsersContainer.module.css"
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {
     getCurrentPage, getFollowingInProgress,
@@ -57,7 +56,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
         return <div className={s.loading}>
             {this.props.isFetching
                 ? <MoonLoader color={"#b70000"} size={50}/>
-                : <UserC totalUsersCount={this.props.totalUsersCount}
+                : <UserC totalItemsCount={this.props.totalUsersCount}
                          pageSize={this.props.pageSize}
                          currentPage={this.props.currentPage}
                          users={this.props.users}

@@ -5,24 +5,6 @@ import axios from "axios";
 import userPhoto from "../../assets/images/user.png"
 
 
-// {*/
-// }
-// {/*            id: v1(),*/
-// }
-// {/*            followed: false,*/
-// }
-// {/*            photoURL: "https://sun9-25.userapi.com/impf/buEzh8PYEnECuHx5lpnyeUNZQti1GQ57ZiBe0g/aV3GO_nKKZw.jpg?size=1437x2160&quality=96&sign=2fb1d9e7e4c3ebbcffc2253d4038045a&type=album",*/
-// }
-// {/*            fullname: "Dima",*/
-// }
-// //             status: "Hello",
-// //             location: {
-// //                 city: "Minsk",
-// {/*                country: "Belarus"*/
-// }
-// //             }
-// //         },
-
 export type UsersPropsType = {
     users: UsersType[]
     follow: (userId: string) => void
