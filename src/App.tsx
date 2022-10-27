@@ -1,28 +1,22 @@
 import React from 'react';
 import './App.css';
 import {Nav} from "./components/Nav/Nav";
-import {Route, withRouter} from "react-router-dom";
+import {Route} from "react-router-dom";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
-import {getAuthUserData} from "./redux/auth-reducer";
 import {compose} from "redux";
 import {AppStateType} from "./redux/redux-store";
 import {DialogsDataType} from "./redux/dialogs-reducer";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 
-
-// type PropsType = {
-//     // store: any
-//     authThunk: () => void
-// }
+const DialogsContainer = React.lazy(() => import ("./components/Dialogs/DialogsContainer"))
+const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"))
 
 type MapStatePropsType = {
     dialogsData: DialogsDataType[]
@@ -45,7 +39,7 @@ class App extends React.Component<UsersContainerPropsType> {
         // console.log("state:", state);
         // console.log("props:", props);
 
-        if (!this.props.initialized){
+        if (!this.props.initialized) {
             return <Preloader/>
         }
 
@@ -61,8 +55,16 @@ class App extends React.Component<UsersContainerPropsType> {
                      friends={this.props.dialogsData}
                 />
                 <div className={"app-wrapper-content"}>
-                    <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-                    <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+                    <Route path="/dialogs" render={() => {
+                        return <React.Suspense fallback={<Preloader/>}>
+                            <DialogsContainer/>
+                        </React.Suspense>
+                    }}/>
+                    <Route path="/profile/:userId?" render={() => {
+                        return <React.Suspense fallback={<Preloader/>}>
+                            <ProfileContainer/>
+                        </React.Suspense>
+                    }}/>
                     <Route path="/users" render={() => <UsersContainer/>}/>
                     <Route path="/news" render={() => <News/>}/>
                     <Route path="/music" render={() => <Music/>}/>
