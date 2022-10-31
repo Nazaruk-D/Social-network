@@ -12,6 +12,7 @@ export type ActionType =
     ReturnType<typeof addPostAC>
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setStatusProfile>
+    | ReturnType<typeof savePhotoSuccess>
 
 
 export type postDataPropsType = {
@@ -92,6 +93,11 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
             return {...state, profile: action.profile}
         case "SET-STATUS":
             return {...state, status: action.status}
+        case "SAVE-PHOTO":
+            const copyState = {...state}
+            copyState.profile!.photos.small = action.photo
+            return copyState
+            // return {...state, profile: {...state.profile, photos: action.photo}}
         default:
             return state;
     }
@@ -101,6 +107,7 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
 export const addPostAC = (newPostText: string) => ({type: "ADD-POST", newPostText} as const)
 export const setUserProfile = (profile: ProfileType) => ({type: "SET-USER-PROFILE", profile} as const)
 export const setStatusProfile = (status: string) => ({type: "SET-STATUS", status} as const)
+export const savePhotoSuccess = (photo: string) => ({type: "SAVE-PHOTO", photo} as const)
 export const setUserProfileThunk = (userId: string) => (dispatch: Dispatch) => {
     profileAPI.getProfile(userId)
         .then(data => {
@@ -120,6 +127,15 @@ export const updateStatus = (status: string) => (dispatch: Dispatch) => {
         .then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(setStatusProfile(status))
+            }
+        })
+}
+
+export const savePhoto = (file: any) => (dispatch: Dispatch) => {
+    profileAPI.savePhoto(file)
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(savePhotoSuccess(response.data.data.photos))
             }
         })
 }
