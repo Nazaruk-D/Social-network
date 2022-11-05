@@ -19,11 +19,13 @@ export type ActionType =
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setStatusProfile>
     | ReturnType<typeof savePhotoSuccess>
+    | ReturnType<typeof addLike>
 
 
 export type postDataPropsType = {
     id: string
-    message: string,
+    name: string
+    message: string
     likesCount: number
     avatar: string
 }
@@ -55,32 +57,37 @@ let initialState = {
     postData: [
         {
             id: v1(),
-            message: "Hello",
-            likesCount: 12,
+            name: "Beth",
+            message: "Hey! Has anyone seen Jerry?",
+            likesCount: 3,
             avatar: BethAva
         },
         {
             id: v1(),
-            message: "Guys!",
-            likesCount: 11,
+            name: "Jerry",
+            message: "Shh... don't tell her I'm under her",
+            likesCount: 0,
             avatar: JerryAva
         },
         {
             id: v1(),
-            message: "This is my new post",
-            likesCount: 3,
+            name: "Summer",
+            message: "O My God... let's change the father from another dimension...",
+            likesCount: 2,
             avatar: SummerAva
         },
         {
             id: v1(),
-            message: "This is my new post Guys",
-            likesCount: 44,
+            name: "Morty",
+            message: "Hey Samer! Do not say that!",
+            likesCount: 1,
             avatar: MortyAva
         },
         {
             id: v1(),
-            message: "This is my new post Guys",
-            likesCount: 44,
+            name: "Rick",
+            message: "Good thing they don't know...😈",
+            likesCount: 666,
             avatar: RickAva
         },
     ],
@@ -93,18 +100,23 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
         case "ADD-POST":
             let newPost: postDataPropsType = {
                 id: v1(),
+                name: "",
                 message: action.newPostText,
                 likesCount: 0,
                 avatar: "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
             }
             return {
                 ...state,
-                postData: [...state.postData, newPost]
+                postData: [newPost, ...state.postData]
             }
         case "SET-USER-PROFILE":
             return {...state, profile: action.profile}
         case "SET-STATUS":
             return {...state, status: action.status}
+        case "ADD-LIKE":
+            debugger
+            // return {...state, postData: {...state.postData.filter( p => p.id === action.userId ? {...p, likesCount: p.likesCount + 1} : p)} }
+            return {...state, postData: state.postData.map( p => p.id === action.userId ? {...p, likesCount: p.likesCount + 1} : p)}
         case "SAVE-PHOTO":
             const copyState = {...state}
             copyState.profile!.photos.small = action.photo
@@ -117,6 +129,10 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
 }
 
 export const addPostAC = (newPostText: string) => ({type: "ADD-POST", newPostText} as const)
+export const addLike = (userId: string) => {
+    debugger
+    return ({type: "ADD-LIKE", userId} as const)
+}
 export const setUserProfile = (profile: ProfileType) => ({type: "SET-USER-PROFILE", profile} as const)
 export const setStatusProfile = (status: string) => ({type: "SET-STATUS", status} as const)
 export const savePhotoSuccess = (photo: string) => ({type: "SAVE-PHOTO", photo} as const)

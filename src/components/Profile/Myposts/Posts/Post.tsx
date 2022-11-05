@@ -1,12 +1,16 @@
 import React from "react";
 import s from "./Post.module.scss";
 import likePNG from '../../../../assets/png/like.png'
+import {postDataPropsType} from "../../../../redux/profile-reducer";
 
 type DataTypeProps = {
-    post: string,
-    img: string,
+    post: string
+    name: string
+    img: string
     buttonName: string
     likesCount: number
+    p: postDataPropsType
+    addLike: (idUser: string) => void
 }
 
 export const Post: React.FC<DataTypeProps> = (props) => {
@@ -15,10 +19,13 @@ export const Post: React.FC<DataTypeProps> = (props) => {
     return (
         <div className={s.postContainer}>
             <div className={s.avaBlock}><img src={props.img} alt="avatar" className={s.ava}/></div>
-            <div className={s.textBlock}>{props.post}</div>
-            <img src={likePNG} alt="likePNG" className={s.like}/> {props.likesCount}
+            <div className={s.textBlock}>
+                <div className={s.name}>{props.name}</div>
+                <div className={s.message}>{props.post}</div>
+            </div>
+            <img src={likePNG} alt="likePNG" className={s.like} onClick={()=>props.addLike(props.p.id)}/> {props.likesCount}
         </div>
- );
+    );
 }
 
 

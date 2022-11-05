@@ -1,31 +1,13 @@
+@import '../../../common/styles/scss/variables';
+@import '../../../common/styles/scss/mixins';
 
 .postContainer {
-    //box-sizing: border-box;
-    //padding: 0 20px 10px;
-    //margin: 15px 15px 15px 20px;
-    //outline: none;
-    //line-height: 50px;
-    //font-size: 12px;
-    //text-align: center;
-    //width: 150px;
-    //font-weight: 600;
-    //text-decoration: none;
-    //color: #444;
-    //background-color: #fff;
-    //box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
-    //cursor: pointer;
-    //user-select: none;
-    //appearance: none;
-    //touch-action: manipulation;
-    //vertical-align: top;
-    //transition: box-shadow 0.2s;
-    //border-radius: 5px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     width: 500px;
-    background-color: #bcbcca;
+    background-color: rgb(211, 181, 91);
     margin: 5px;
 
     .avaBlock {
@@ -34,6 +16,7 @@
         justify-content: center;
         align-items: center;
         margin-left: 15px;
+        margin-right: 5px;
 
         .ava {
             width: 50px;
@@ -46,11 +29,21 @@
 
     .textBlock {
         width: 300px;
-        height: 60px;
+        height: 65px;
         margin: 10px;
-        padding: 10px;
-        box-sizing: border-box;
+
+        @include flex(column, center, flex-start, wrap);
         //background-color: red;
+
+        .name{
+            @include text(14px,14px,600);
+            margin-right: 10px;
+        }
+
+        .message {
+            //background-color: green;
+            width: 280px;
+        }
     }
 
     .like {

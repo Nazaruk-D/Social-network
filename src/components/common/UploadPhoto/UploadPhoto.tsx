@@ -63,7 +63,7 @@ export const UploadPhoto = () => {
     }
     return (
         <ImgCrop>
-            <Upload onChange={mainPhotoSelectedHandler}>+ Add image</Upload>
+            <Upload onChange={mainPhotoSelectedHandler}><div style={{color:"white", cursor: "pointer"}}>+ Add image</div></Upload>
         </ImgCrop>
         // <ImgCrop grid rotate>
         //     <Upload

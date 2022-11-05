@@ -1,4 +1,8 @@
+@import '../../common/styles/scss/variables';
+@import '../../common/styles/scss/mixins';
+
 .myPostContainer {
+    //background-color: green;
     width: 60%;
 
     //background-color: black;
@@ -15,36 +19,60 @@
         .formContainer{
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             //background-color: blue;
+            margin-left: 160px;
             width: 100%;
+
             .textArea {
-                margin-left: 44px;
                 margin-top: 20px;
                 height: 75px;
-                width: 300px;
+                width: 350px;
+                background-color: rgba(26, 26, 26, 0.9);
+                color: $textColor;
+                resize: none
             }
 
             .addPostButton{
+                background-color: black;
+                color: white;
                 margin-left: 30px;
+                margin-top: 56px;
+
+                &:hover {
+                    color: #1d39c4;
+                }
             }
         }
     }
 
-    .item {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        //padding-left: 25px;
-        //background-color: #c96a6a;
+    .messageBlock {
+        height: 75%;
+        //background-color: black;
+        .item {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: -5px;
+            //padding-left: 25px;
+            //background-color: #c96a6a;
+        }
     }
 
+    .paginationBlock {
+        @include text(16px, 16px, 400);
+        color: $textColor;
+        margin-left: 80px;
+        margin-top: 10px;
+        .pagination {
+            padding-right: 5px;
+            cursor: pointer;
+        }
+    }
 
 }
-
-
 
 
 .block {

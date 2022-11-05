@@ -29,31 +29,36 @@ export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePh
     return (
         <div className={s.profileInfoContainer}>
             <div className={s.profileInfoBlock}>
-                <UploadPhoto/>
-                <img src={profile?.photos.large || userPhoto} className={s.mainAva}/>
-                {isOwner &&
-                    <label htmlFor={"inputTag"}>
-                        <div className={s.uploadPhotoBlock}>
-                            <div className={s.supportText}>Click to upload photo</div>
-                            <img src={uploadPhotoPNG} alt="uploadPhoto" className={s.uploadPhoto}/>
-                        </div>
-                        <input id={"inputTag"} type="file" onChange={mainPhotoSelectedHandler}
-                               className={s.inputUploadPhoto}/>
-                    </label>}
 
-                <div className={s.profileStatus}>
-                    <div>Status:</div>
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                <div className={s.avatarBlock}>
+                    <UploadPhoto/>
+                    <img src={profile?.photos.large || userPhoto} className={s.mainAva}/>
+                    {/*{isOwner &&*/}
+                    {/*    <label htmlFor={"inputTag"}>*/}
+                    {/*        <div className={s.uploadPhotoBlock}>*/}
+                    {/*            <div className={s.supportText}>Click to upload photo</div>*/}
+                    {/*            <img src={uploadPhotoPNG} alt="uploadPhoto" className={s.uploadPhoto}/>*/}
+                    {/*        </div>*/}
+                    {/*        <input id={"inputTag"} type="file" onChange={mainPhotoSelectedHandler}*/}
+                    {/*               className={s.inputUploadPhoto}/>*/}
+                    {/*    </label>}*/}
                 </div>
 
-                {editMode
-                    ? <div className={s.profileDataForm}>
-                        <ProfileDataForm profile={profile}/>
+                <div className={s.profileBlock}>
+                    <div className={s.profileStatus}>
+                        <div>Status:</div>
+                        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                     </div>
-                    : <div className={s.profileDataForm}>
-                        <ProfileData goToEditMode={() => setEditMode(true)} profile={profile} isOwner={isOwner}/>
-                    </div>
-                }
+
+                    {editMode
+                        ? <div className={s.profileDataForm}>
+                            <ProfileDataForm profile={profile}/>
+                        </div>
+                        : <div className={s.profileDataForm}>
+                            <ProfileData goToEditMode={() => setEditMode(true)} profile={profile} isOwner={isOwner}/>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
     )
