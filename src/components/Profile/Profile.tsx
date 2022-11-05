@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Profile.module.css";
+import s from "./Profile.module.scss";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./Myposts/MyPostsContainer";
 import {ProfileType} from "../../redux/profile-reducer";
@@ -14,19 +14,19 @@ type ProfileTypeProps = {
 }
 
 export const Profile: React.FC<ProfileTypeProps> = (props) => {
-    if(!props.profile){
+    if (!props.profile) {
         return <MoonLoader color={"#b70000"} size={50}/>
     }
-    return (<div className={s.profile}>
-        <ProfileInfo
-            img={"https://www.eurohandball.com/media/f0rhclep/microsoftteams-image-267.png?center=0.40662327708788731,0.27796471311115661&mode=crop&width=1980&height=768&rnd=132863759739570000"}
-            profile={props.profile}
-            status={props.status}
-            updateStatus={props.updateStatus}
-            isOwner={props.isOwner}
-            savePhoto={props.savePhoto}
-        />
-        <MyPostsContainer/>
-    </div>);
+    return (
+        <div className={s.profileContainer}>
+                <ProfileInfo
+                    profile={props.profile}
+                    status={props.status}
+                    updateStatus={props.updateStatus}
+                    isOwner={props.isOwner}
+                    savePhoto={props.savePhoto}
+                />
+                <MyPostsContainer/>
+        </div>);
 }
 

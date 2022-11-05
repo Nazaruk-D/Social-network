@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    justify-content: center;
+
+    .img {
+        position: absolute;
+        bottom: 0;
+        width: 325px;
+
+    }
+    .loginBlock {
+        /*float: right;*/
+        /*margin-left: 800px;*/
+        position: absolute;
+        right: 0;
+        bottom: 0;
+
+        .logPNG {
+            width: 150px;
+            cursor: pointer;
+            transition: 2s;
+            transform: translateX(-176%);
+            position: relative;
+
+        }
+        .xxx{
+            width: 150px;
+            transform: translateX(0);
+            transition: 2s;
+            position: relative;
+        }
+    }
+
+    .loginBlock a {
+        color: white
+    }
+}
+
+

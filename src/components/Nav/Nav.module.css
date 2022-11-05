@@ -2,6 +2,7 @@
         grid-area: nav;
         margin-top: 10px;
         cursor: pointer;
+        /*background-color: blue;*/
 }
 
 .item a {
@@ -27,6 +28,8 @@
         vertical-align: top;
         transition: box-shadow 0.2s;
         border-radius: 5px;
+        margin-top: 10px;
+
 }
 
 .item a.activeLink {

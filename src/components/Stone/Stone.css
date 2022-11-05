@@ -1,0 +1,53 @@
+.stoneBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    opacity: 100%;
+
+}
+
+.stone {
+    width: 130px;
+}
+
+.outs1 {
+    position: absolute;
+    left: 48px;
+    top: 53px;
+    width: 15px;
+    height: 15px;
+    /*border: 1px solid blueviolet;*/
+    border-radius: 50%;
+}
+
+.eye1 {
+    position: relative;
+}
+.eye1:after {
+     position: absolute;
+     content: "\2022";
+     right: 0;
+     top: -5px;
+ }
+
+
+.outs2 {
+    position: absolute;
+    left: 93px;
+    top: 53px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.eye2 {
+    position: relative;
+}
+.eye2:after {
+     position: absolute;
+     content: "\2022";
+     right: 0;
+     top: -5px;
+ }
+

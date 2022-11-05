@@ -1,11 +1,14 @@
 import React from 'react';
+import s from "./Preloader.module.scss"
+import gif from "../../../assets/gif/gif5.gif";
 
-const Preloader = () => {
+export const Preloader = () => {
     return (
-        <div>
-            
+        <div className={s.loading}>
+            <div className={s.backgroundPreloader}>
+                <img src={gif} alt="loading..." className={s.crazySun}/>
+            </div>
         </div>
     );
 };
 
-export default Preloader;

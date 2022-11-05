@@ -1,4 +1,6 @@
 import {v1} from "uuid";
+import BethPNG from '../assets/png/BethAva.webp'
+import i5 from '../assets/png/i5.jpg'
 
 
 export type stateAllPropsType = {

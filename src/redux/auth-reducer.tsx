@@ -59,12 +59,14 @@ export const login = (mail: string, password: string, rememberMe: boolean = fals
 // this.props.toggleIsFetching(true)
 
     let response = await authAPI.login(mail, password, rememberMe)
-    if (response.data.resultCode === 0) {
-        dispatch(getAuthUserData())
-    } else {
-        let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
-        dispatch = (stopSubmit("login", {_error: message}))
-    }
+    setTimeout(() => {
+        if (response.data.resultCode === 0) {
+            dispatch(getAuthUserData())
+        } else {
+            let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
+            dispatch = (stopSubmit("login", {_error: message}))
+        }
+    }, 2000)
 // this.props.toggleIsFetching(false)
 }
 
@@ -72,10 +74,13 @@ export const login = (mail: string, password: string, rememberMe: boolean = fals
 export const logout = (): AppThunk => async (dispatch) => {
 // this.props.toggleIsFetching(true)
     let response = await authAPI.logout()
-    if (response.data.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false))
-        dispatch(getAuthUserData())
-    }
+    setTimeout(() => {
+        if (response.data.resultCode === 0) {
+            dispatch(setAuthUserData(null, null, null, false))
+            dispatch(getAuthUserData())
+        }
+    }, 2000)
+
 // this.props.toggleIsFetching(false)
 }
 

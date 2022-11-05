@@ -1,59 +1,13 @@
-/*.App {*/
-/*  text-align: center;*/
-/*}*/
-
-/*.App-logo {*/
-/*  height: 40vmin;*/
-/*  pointer-events: none;*/
-/*}*/
-
-/*@media (prefers-reduced-motion: no-preference) {*/
-/*  .App-logo {*/
-/*    animation: App-logo-spin infinite 20s linear;*/
-/*  }*/
-/*}*/
-
-/*.App-header {*/
-/*  background-color: #282c34;*/
-/*  min-height: 100vh;*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  font-size: calc(10px + 2vmin);*/
-/*  color: white;*/
-/*}*/
-
-/*.App-link {*/
-/*  color: #61dafb;*/
-/*}*/
-
-/*@keyframes App-logo-spin {*/
-/*  from {*/
-/*    transform: rotate(0deg);*/
-/*  }*/
-/*  to {*/
-/*    transform: rotate(360deg);*/
-/*  }*/
-/*}*/
-
-/*ul li {*/
-/*  list-style-type: georgian;*/
-/*  text-align: left;*/
-
-/*}*/
-
 .app-wrapper {
     display: grid;
     width: 1200px;
     margin-left: 200px;
     grid-template-rows: 65px 1fr;
     grid-template-columns: 125px 1100px;
-    /*grid-gap: 10px;*/
-
     grid-template-areas:
           "header header"
-  "nav profile"
+  "nav profile";
+    /*background-image: url('./assets/png/backGroundImg.png');*/
 }
 
 

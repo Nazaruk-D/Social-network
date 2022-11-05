@@ -1,17 +1,12 @@
 import React from "react";
 import s from "./Nav.module.css";
 import {NavLink} from "react-router-dom";
-import {Friends} from "./Friends/Friends";
+import {CucumberButton} from "../common/CucumberButton/CucumberButton";
 
 
 type NavPropsType = {
-    profile: string
-    message: string
-    news: string
-    users: string
-    music: string
-    settings: string
-    friends: friendsTypeProps[]
+
+    // friends: friendsTypeProps[]
 }
 
 type friendsTypeProps = {
@@ -21,34 +16,33 @@ type friendsTypeProps = {
 }
 
 export const Nav: React.FC<NavPropsType> = (props) => {
-    let friendsElements = props.friends.map(f =>  <span key={f.id}><Friends name={f.name} ava={f.ava}/></span>)
+    // let friendsElements = props.friends.map(f =>  <span key={f.id}><Friends name={f.name} ava={f.ava}/></span>)
     return (
         <nav className={s.nav}>
-            <div className={s.block}>
-                <div className={s.item}>
-                    <NavLink to="/profile" activeClassName={s.activeLink}>{props.profile}</NavLink>
-                </div>
-                <div className={s.item}>
-                    <NavLink to="/dialogs" activeClassName={s.activeLink}>{props.message}</NavLink>
-                </div>
-                <div className={s.item}>
-                    <NavLink to="/news" activeClassName={s.activeLink}>{props.news}</NavLink>
-                </div>
-                <div className={s.item}>
-                    <NavLink to="/users" activeClassName={s.activeLink}>{props.users}</NavLink>
-                </div>
-                <div className={s.item}>
-                    <NavLink to="/music" activeClassName={s.activeLink}>{props.music}</NavLink>
-                </div>
-                <div className={s.item}>
-                    <NavLink to="/settings" activeClassName={s.activeLink}>{props.settings}</NavLink>
-                </div>
-                <div className={s.friends}>
-                    <h3>Friends</h3>
-                    {friendsElements}
-                    <img src="" alt=""/>
-                </div>
-            </div>
+                {/*<div className={s.item}>*/}
+                <NavLink to="/profile" activeClassName={s.activeLink}>
+                    <CucumberButton buttonName={"Profile"}/>
+                </NavLink>
+                <NavLink to="/dialogs" activeClassName={s.activeLink}>
+                    <CucumberButton buttonName={"Message"}/>
+                </NavLink>
+                <NavLink to="/news" activeClassName={s.activeLink}>
+                    <CucumberButton buttonName={"News"}/>
+                </NavLink>
+                <NavLink to="/users" activeClassName={s.activeLink}>
+                    <CucumberButton buttonName={"Users"}/>
+                </NavLink>
+                <NavLink to="/music" activeClassName={s.activeLink}>
+                    <CucumberButton buttonName={"Music"}/>
+                </NavLink>
+                <NavLink to="/settings" activeClassName={s.activeLink}>
+                    <CucumberButton buttonName={"Settings"}/>
+                </NavLink>
+                {/*<div className={s.friends}>*/}
+                {/*    <h3>Friends</h3>*/}
+                {/*    /!*{friendsElements}*!/*/}
+                {/*    <img src="" alt=""/>*/}
+                {/*</div>*/}
         </nav>
     )
 }

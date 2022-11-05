@@ -1,26 +1,32 @@
-import React from "react";
-import s from "./Header.module.css";
+import React, {useState} from "react";
+import s from "./Header.module.scss";
 import {NavLink} from "react-router-dom";
+import headerImg from '../../assets/png/header.png'
+import loginPNG from '../../assets/png/Login.png'
+import logoutPNG from '../../assets/png/Logout.png'
 
 type HeaderPropsType = {
-    img: string
     isAuth: boolean
     login: null | string
     logout: () => void
 }
 
-export const Header: React.FC<HeaderPropsType> = ({img, login, isAuth,logout}) => {
-    return (<div className={s.header}>
-        <header>
-            <img src={img} className={s.img}/>
+export const Header: React.FC<HeaderPropsType> = ({login, isAuth,logout}) => {
+
+    const [collapsed, setCollapsed] = useState<boolean>(true)
+    const inputClass = !collapsed ? s.logPNG : s.xxx
+    const onClickHandler = () => setCollapsed(!collapsed)
+
+    return (
+        <header className={s.header}>
+            <img src={headerImg} className={s.img}/>
             <div className={s.loginBlock}>
                 {isAuth
-                    ? <div>{login} - <button onClick={logout}>Logout</button></div>
-                    : <NavLink to={'/login'}>Login</NavLink>
+                    ? <div onClick={logout}><img onClick={onClickHandler} src={logoutPNG} alt="logoutPNG" className={inputClass}/></div>
+                    : <NavLink to={'/login'} ><img onClick={onClickHandler} src={loginPNG} alt="loginPNG" className={inputClass}/></NavLink>
                 }
             </div>
-        </header>
-    </div>);
+        </header>);
 }
 
 

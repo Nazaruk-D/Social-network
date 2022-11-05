@@ -1,0 +1,26 @@
+@import '../common/styles/scss/variables';
+@import '../common/styles/scss/mixins';
+
+
+.loginContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 100px;
+
+
+  .loginBlock {
+    width: 300px;
+    height: 350px;
+    //background-color: white;
+    @include flex(column, center, center, wrap);
+    //background-color: red;
+
+    .login {
+      @include text(55px, 55px, 600);
+      color: $textColor
+    }
+  }
+}

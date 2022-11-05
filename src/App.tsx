@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Nav} from "./components/Nav/Nav";
 import {Route} from "react-router-dom";
@@ -13,7 +13,9 @@ import {compose} from "redux";
 import {AppStateType} from "./redux/redux-store";
 import {DialogsDataType} from "./redux/dialogs-reducer";
 import {initializeApp} from "./redux/app-reducer";
-import Preloader from "./components/common/Preloader/Preloader";
+import s from './App.module.scss'
+import Stone from "./components/Stone/Stone";
+import {Preloader} from "./components/common/Preloader/Preloader";
 
 const DialogsContainer = React.lazy(() => import ("./components/Dialogs/DialogsContainer"))
 const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"))
@@ -35,44 +37,44 @@ class App extends React.Component<UsersContainerPropsType> {
     }
 
     render() {
-        // const state = this.props.store.getState();
-        // console.log("state:", state);
-        // console.log("props:", props);
-
         if (!this.props.initialized) {
             return <Preloader/>
         }
 
         return (
-            <div className="app-wrapper">
-                <HeaderContainer/>
-                <Nav profile={"Profile"}
-                     message={"Message"}
-                     news={"News"}
-                     users={"Users"}
-                     music={"Music"}
-                     settings={"Settings"}
-                     friends={this.props.dialogsData}
-                />
-                <div className={"app-wrapper-content"}>
-                    <Route path="/dialogs" render={() => {
-                        return <React.Suspense fallback={<Preloader/>}>
-                            <DialogsContainer/>
-                        </React.Suspense>
-                    }}/>
-                    <Route path="/profile/:userId?" render={() => {
-                        return <React.Suspense fallback={<Preloader/>}>
-                            <ProfileContainer/>
-                        </React.Suspense>
-                    }}/>
-                    <Route path="/users" render={() => <UsersContainer/>}/>
-                    <Route path="/news" render={() => <News/>}/>
-                    <Route path="/music" render={() => <Music/>}/>
-                    <Route path="/settings" render={() => <Settings/>}/>
-                    <Route path="/login" render={() => <Login/>}/>
+            // <div className={s.app} onMouseMove={(e) => onMouseMoveHandler(e)}>
+            <div className={s.app}>
+                <div className={s.background}></div>
+                <div className={s.appContainer}>
+                    <div className={s.headerContainer}>
+                        <HeaderContainer/>
+                    </div>
+                    <div className={s.bodyContainer}>
+                        <div className={s.nav}>
+                            <Nav/>
+                            <Stone/>
+                        </div>
+                        <div className={s.main}>
+                            <Route path="/dialogs" render={() => {
+                                return <React.Suspense fallback={<Preloader/>}>
+                                    <DialogsContainer/>
+                                </React.Suspense>
+                            }}/>
+                            <Route path="/profile/:userId?" render={() => {
+                                return <React.Suspense fallback={<Preloader/>}>
+                                    <ProfileContainer/>
+                                </React.Suspense>
+                            }}/>
+                            <Route path="/users" render={() => <UsersContainer/>}/>
+                            <Route path="/news" render={() => <News/>}/>
+                            <Route path="/music" render={() => <Music/>}/>
+                            <Route path="/settings" render={() => <Settings/>}/>
+                            <Route path="/login" render={() => <Login/>}/>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-
         );
     }
 }

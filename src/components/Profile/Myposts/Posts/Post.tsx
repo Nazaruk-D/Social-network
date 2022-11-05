@@ -1,6 +1,6 @@
 import React from "react";
-import s from "./Post.module.css";
-
+import s from "./Post.module.scss";
+import likePNG from '../../../../assets/png/like.png'
 
 type DataTypeProps = {
     post: string,
@@ -13,13 +13,12 @@ export const Post: React.FC<DataTypeProps> = (props) => {
 
 
     return (
-        <span>
-        <div className={s.item}>
-            <span><img src={props.img} alt=""/></span>
-            <div>{props.post}</div>
-            <button>{props.buttonName} {props.likesCount}</button>
+        <div className={s.postContainer}>
+            <div className={s.avaBlock}><img src={props.img} alt="avatar" className={s.ava}/></div>
+            <div className={s.textBlock}>{props.post}</div>
+            <img src={likePNG} alt="likePNG" className={s.like}/> {props.likesCount}
         </div>
-    </span>);
+ );
 }
 
 

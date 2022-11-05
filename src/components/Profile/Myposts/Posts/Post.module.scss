@@ -1,0 +1,62 @@
+
+.postContainer {
+    //box-sizing: border-box;
+    //padding: 0 20px 10px;
+    //margin: 15px 15px 15px 20px;
+    //outline: none;
+    //line-height: 50px;
+    //font-size: 12px;
+    //text-align: center;
+    //width: 150px;
+    //font-weight: 600;
+    //text-decoration: none;
+    //color: #444;
+    //background-color: #fff;
+    //box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+    //cursor: pointer;
+    //user-select: none;
+    //appearance: none;
+    //touch-action: manipulation;
+    //vertical-align: top;
+    //transition: box-shadow 0.2s;
+    //border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 500px;
+    background-color: #bcbcca;
+    margin: 5px;
+
+    .avaBlock {
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 15px;
+
+        .ava {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid black;
+        }
+    }
+
+    .textBlock {
+        width: 300px;
+        height: 60px;
+        margin: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+        //background-color: red;
+    }
+
+    .like {
+        width: 50px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+}
+

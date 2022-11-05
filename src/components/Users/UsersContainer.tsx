@@ -10,7 +10,6 @@ import {
     UsersType
 } from "../../redux/users-reducer";
 import UserC from "./UserC";
-import {MoonLoader} from "react-spinners";
 import s from "./UsersContainer.module.css"
 import {compose} from "redux";
 import {
@@ -20,6 +19,8 @@ import {
     getTotalUsersCount,
     getUsers
 } from "../../redux/selectors/user-selectors";
+import {Preloader} from "../common/Preloader/Preloader";
+
 
 type MapStatePropsType = {
     users: UsersType[]
@@ -53,9 +54,10 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
 
     render() {
 
-        return <div className={s.loading}>
+        return <div className={s.usersBlock}>
             {this.props.isFetching
-                ? <MoonLoader color={"#b70000"} size={50}/>
+                // ? <MoonLoader color={"#b70000"} size={50}/>
+                ? <Preloader/>
                 : <UserC totalItemsCount={this.props.totalUsersCount}
                          pageSize={this.props.pageSize}
                          currentPage={this.props.currentPage}

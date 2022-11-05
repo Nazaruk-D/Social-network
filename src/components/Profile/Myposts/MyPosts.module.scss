@@ -1,0 +1,54 @@
+.myPostContainer {
+    width: 60%;
+
+    //background-color: black;
+
+    .addForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 120px;
+        width: 100%;
+        //background-color: red;
+
+        .formContainer{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            //background-color: blue;
+            width: 100%;
+            .textArea {
+                margin-left: 44px;
+                margin-top: 20px;
+                height: 75px;
+                width: 300px;
+            }
+
+            .addPostButton{
+                margin-left: 30px;
+            }
+        }
+    }
+
+    .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        //padding-left: 25px;
+        //background-color: #c96a6a;
+    }
+
+
+}
+
+
+
+
+.block {
+    //width: 300px;
+
+}
+
