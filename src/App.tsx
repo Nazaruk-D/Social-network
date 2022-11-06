@@ -38,7 +38,7 @@ class App extends React.Component<UsersContainerPropsType> {
 
     render() {
         if (!this.props.initialized) {
-            return <Preloader/>
+            return <div style={{height:'100vh'}}><Preloader/></div>
         }
 
         return (
@@ -70,6 +70,7 @@ class App extends React.Component<UsersContainerPropsType> {
                             <Route path="/music" render={() => <Music/>}/>
                             <Route path="/settings" render={() => <Settings/>}/>
                             <Route path="/login" render={() => <Login/>}/>
+                            {/*<Route path="/" render={() => <Login/>}/>*/}
                         </div>
 
                     </div>

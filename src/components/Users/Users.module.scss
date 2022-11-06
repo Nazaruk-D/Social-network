@@ -1,0 +1,65 @@
+@import '../common/styles/scss/variables';
+@import '../common/styles/scss/mixins';
+
+.usersContainer {
+
+  //background-color: red;
+
+  .paginatorBlock {
+    //background-color: #7cb305;
+  }
+
+  .usersBlock {
+    width: 100%;
+    margin-top: 5px;
+    @include flex(row, flex-start, center, wrap);
+    //background-color: yellow;
+
+    .user {
+      width: 48%;
+      margin-top: 10px;
+      margin-right: 5px;
+      //background-color: black;
+      padding: 10px 0;
+      @include flex(row, flex-start, center, wrap);
+
+      .avatar {
+        @include flex(row, center, center, wrap);
+
+        .avatarImg {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          //margin-top: 20px;
+          object-fit: cover;
+          margin-right: 15px;
+        }
+      }
+
+
+      .informBlock {
+        width: 200px;
+        background-color: #7cb305;
+      }
+
+      .followButton{
+        @include flex(row, flex-start, flex-end, wrap);
+        margin-left: 10px;
+        height: 65px;
+      }
+    }
+  }
+}
+
+
+.nameTd {
+  padding-left: 15px;
+  padding-top: 25px;
+  text-decoration: none;
+  color: #444;
+  cursor: pointer;
+  touch-action: manipulation;
+  outline: none;
+
+}
+

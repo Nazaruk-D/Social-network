@@ -9,7 +9,6 @@ import {
     unfollow,
     UsersType
 } from "../../redux/users-reducer";
-import UserC from "./UserC";
 import s from "./UsersContainer.module.css"
 import {compose} from "redux";
 import {
@@ -20,6 +19,7 @@ import {
     getUsers
 } from "../../redux/selectors/user-selectors";
 import {Preloader} from "../common/Preloader/Preloader";
+import Users from "./Users";
 
 
 type MapStatePropsType = {
@@ -58,14 +58,14 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
             {this.props.isFetching
                 // ? <MoonLoader color={"#b70000"} size={50}/>
                 ? <Preloader/>
-                : <UserC totalItemsCount={this.props.totalUsersCount}
-                         pageSize={this.props.pageSize}
-                         currentPage={this.props.currentPage}
-                         users={this.props.users}
-                         follow={this.props.follow}
-                         unfollow={this.props.unfollow}
-                         onPageChanged={this.onPageChanged}
-                         followingInProgress={this.props.followingInProgress}
+                : <Users totalItemsCount={this.props.totalUsersCount}
+                        pageSize={this.props.pageSize}
+                        currentPage={this.props.currentPage}
+                        users={this.props.users}
+                        follow={this.props.follow}
+                        unfollow={this.props.unfollow}
+                        onPageChanged={this.onPageChanged}
+                        followingInProgress={this.props.followingInProgress}
                 />
             }
 
@@ -93,6 +93,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state),
+
     }
 }
 

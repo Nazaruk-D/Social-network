@@ -1,0 +1,25 @@
+@import '../../common/styles/scss/variables';
+@import '../../common/styles/scss/mixins';
+
+
+.paginatorBlock{
+  @include flex(row, flex-start, center, wrap);
+
+  .pages{
+    cursor: pointer;
+    color: $textColorYellow;
+    padding: 0 10px;
+
+    .page {
+      padding: 0 5px;
+      font-size: 16px;
+    }
+
+    .selectedPage {
+      font-weight: bold;
+      padding: 0 5px;
+      font-size: 18px;
+    }
+  }
+
+}

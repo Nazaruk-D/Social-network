@@ -1,0 +1,17 @@
+@import '../common/styles/scss/variables';
+@import '../common/styles/scss/mixins';
+
+.musicContainer {
+  @include flex(column, center, center, wrap);
+  width: 95%;
+  height: 95%;
+  background-color: red;
+  margin-top: 10px;
+
+  .audioBlock {
+    @include flex(column, center, center, wrap);
+    width: 55%;
+    height: 55%;
+    background-color: blue;
+  }
+}
