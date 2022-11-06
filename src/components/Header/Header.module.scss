@@ -13,7 +13,7 @@
         /*margin-left: 800px;*/
         position: absolute;
         right: 0;
-        bottom: 0;
+        top: -70px;
 
         .logPNG {
             width: 150px;
@@ -23,7 +23,7 @@
             position: relative;
 
         }
-        .xxx{
+        .logPNG2{
             width: 150px;
             transform: translateX(0);
             transition: 2s;

@@ -37,9 +37,9 @@ class App extends React.Component<UsersContainerPropsType> {
     }
 
     render() {
-        if (!this.props.initialized) {
-            return <div style={{height:'100vh'}}><Preloader/></div>
-        }
+        // if (!this.props.initialized) {
+        //     return <div style={{height:'100vh'}}><Preloader/></div>
+        // }
 
         return (
             // <div className={s.app} onMouseMove={(e) => onMouseMoveHandler(e)}>

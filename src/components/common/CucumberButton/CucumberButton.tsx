@@ -10,7 +10,7 @@ type CucumberPropsType = {
 export const CucumberButton: FC<CucumberPropsType> = ({buttonName}) => {
     return (
         <div>
-            <span className={s.button}><p className={s.textButton}>{buttonName}</p></span>
+            <span className={s.button}><div className={s.textButton}>{buttonName}</div></span>
         </div>
     );
 };

@@ -14,7 +14,7 @@ type HeaderPropsType = {
 export const Header: React.FC<HeaderPropsType> = ({login, isAuth,logout}) => {
 
     const [collapsed, setCollapsed] = useState<boolean>(true)
-    const inputClass = !collapsed ? s.logPNG : s.xxx
+    const inputClass = !collapsed ? s.logPNG : s.logPNG2
     const onClickHandler = () => setCollapsed(!collapsed)
 
     return (

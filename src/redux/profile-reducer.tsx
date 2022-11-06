@@ -84,7 +84,7 @@ let initialState = {
             avatar: MortyAva
         },
         {
-            id: v1(),
+            id: "RickCheater",
             name: "Rick",
             message: "Good thing they don't know...😈",
             likesCount: 666,
@@ -115,8 +115,11 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
             return {...state, status: action.status}
         case "ADD-LIKE":
             debugger
-            // return {...state, postData: {...state.postData.filter( p => p.id === action.userId ? {...p, likesCount: p.likesCount + 1} : p)} }
-            return {...state, postData: state.postData.map( p => p.id === action.userId ? {...p, likesCount: p.likesCount + 1} : p)}
+            if(action.userId === "RickCheater") {
+                return {...state, postData: state.postData.map( p => p.id === action.userId ? {...p, likesCount: p.likesCount + Math.ceil(Math.random() * 100) } : p)}
+            } else {
+                return {...state, postData: state.postData.map( p => p.id === action.userId ? {...p, likesCount: p.likesCount + 1} : p)}
+            }
         case "SAVE-PHOTO":
             const copyState = {...state}
             copyState.profile!.photos.small = action.photo

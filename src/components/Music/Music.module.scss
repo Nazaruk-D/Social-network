@@ -5,13 +5,21 @@
   @include flex(column, center, center, wrap);
   width: 95%;
   height: 95%;
-  background-color: red;
-  margin-top: 10px;
+  //background-color: red;
+  margin-top: 50px;
 
   .audioBlock {
     @include flex(column, center, center, wrap);
     width: 55%;
     height: 55%;
     background-color: blue;
+
+    .player{
+      width: 500px;
+      .playerStyle{
+        width: 500px;
+        border-radius: 0;
+      }
+    }
   }
 }
