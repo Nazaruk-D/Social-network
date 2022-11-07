@@ -16,19 +16,18 @@ export const UploadPhoto = () => {
         urlToObject(files[0].fileUrl)
     }
 
-
-    const urlToObject= async(image: string)=> {
-        const response = await fetch(image);
+    const urlToObject= async(imageURL: string)=> {
+        debugger
+        const response = await fetch(imageURL);
         // here image is url/location of image
         const blob = await response.blob();
         const file = new File([blob], 'image.jpg', {type: blob.type});
-        console.log(file)
         dispatch(savePhoto(file))
     }
     return (
         <div>
             <UploadButton uploader={uploader}
-                          options={{multi: false}}
+                          options={{multi: false, editor: { images: { crop: true}}}}
                           onComplete={files => handler(files)}>
                 {({onClick}) =>
                     <button onClick={onClick} style={{marginTop: "75px"}}>

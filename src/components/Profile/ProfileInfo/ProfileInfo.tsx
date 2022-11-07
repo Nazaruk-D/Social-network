@@ -42,15 +42,15 @@ export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePh
                         </div>
                     </div>
 
-                    {isOwner &&
-                        <label htmlFor={"inputTag"}>
-                            <div className={s.uploadPhotoBlock}>
-                                <div className={s.supportText}>Click to upload photo</div>
-                                <img src={uploadPhotoPNG} alt="uploadPhoto" className={s.uploadPhoto}/>
-                            </div>
-                            <input id={"inputTag"} type="file" onChange={mainPhotoSelectedHandler}
-                                   className={s.inputUploadPhoto}/>
-                        </label>}
+                    {/*{isOwner &&*/}
+                    {/*    <label htmlFor={"inputTag"}>*/}
+                    {/*        <div className={s.uploadPhotoBlock}>*/}
+                    {/*            <div className={s.supportText}>Click to upload photo</div>*/}
+                    {/*            <img src={uploadPhotoPNG} alt="uploadPhoto" className={s.uploadPhoto}/>*/}
+                    {/*        </div>*/}
+                    {/*        <input id={"inputTag"} type="file" onChange={mainPhotoSelectedHandler}*/}
+                    {/*               className={s.inputUploadPhoto}/>*/}
+                    {/*    </label>}*/}
                 </div>
 
                 <div className={s.profileBlock}>

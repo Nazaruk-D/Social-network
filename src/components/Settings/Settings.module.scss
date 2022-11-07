@@ -1,0 +1,31 @@
+@import '../common/styles/scss/variables';
+@import '../common/styles/scss/mixins';
+
+.settingsContainer {
+  height: 99%;
+  @include flex(row, flex-start, center, wrap);
+
+  .portalGun {
+    position: fixed;
+    width: 200px;
+    left: 450px;
+    cursor: pointer;
+  }
+
+  .portalBlock {
+    width: 100%;
+    @include flex(row, center, center, wrap);
+
+    .portalGif {
+      width: 0px;
+      margin-left: 150px;
+      transition: width 7s ease-in-out;
+    }
+    .portalOn {
+      width: 600px;
+      margin-left: 150px;
+      transition: width 7s ease-in-out;
+      cursor: pointer;
+    }
+  }
+}
