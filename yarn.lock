@@ -2113,6 +2113,11 @@
     "@typescript-eslint/types" "5.12.0"
     eslint-visitor-keys "^3.0.0"
 
+"@upload-io/upload-api-client-upload-js@^2.10.0":
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/@upload-io/upload-api-client-upload-js/-/upload-api-client-upload-js-2.10.0.tgz#9cc105be8f02e132a9a7d50406e7d12f2a560c03"
+  integrity sha512-F73xyglCCVX4drTkDt/B2kgB1nubArVx8O2rau6SDqDGM8Uf0iucXjoP4LPbSJXdCM8hP6uM5EEhuqUoqNneXA==
+
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.11.1.tgz#2bfd767eae1a6996f432ff7e8d7fc75679c0b6a7"
@@ -2406,13 +2411,6 @@ ansi-styles@^5.0.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-5.2.0.tgz#07449690ad45777d1924ac2abb2fc8895dba836b"
   integrity sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==
-
-antd-img-crop@^4.2.8:
-  version "4.2.8"
-  resolved "https://registry.yarnpkg.com/antd-img-crop/-/antd-img-crop-4.2.8.tgz#5eb22aa4c80d7f48f715bf1086efcf2deb03cced"
-  integrity sha512-zQSuedKaLC4xAKzwnVYGFSB842ii8LoAwJCX96UDfatZcWddIYXLzirj+icOWFsnHDrWsbNCryUfLbTkeOyJHw==
-  dependencies:
-    react-easy-crop "^4.6.1"
 
 antd@4.18.7:
   version "4.18.7"
@@ -6339,11 +6337,6 @@ normalize-url@^6.0.1:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-6.1.0.tgz#40d0885b535deffe3f3147bec877d05fe4c5668a"
   integrity sha512-DlL+XwOy3NxAQ8xuC0okPgK46iuVNAK01YN7RueYBqqFeGsBjV9XmCAzAdgt+667bCl5kPh9EqKKDwnaPG1I7A==
 
-normalize-wheel@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/normalize-wheel/-/normalize-wheel-1.0.1.tgz#aec886affdb045070d856447df62ecf86146ec45"
-  integrity sha512-1OnlAPZ3zgrk8B91HyRj+eVv+kS5u+Z0SCsak6Xil/kmgEia50ga7zfkumayonZrImffAxPU/5WcyGhzetHNPA==
-
 npm-run-path@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-4.0.1.tgz#b7ecd1e5ed53da8e37a55e1c2269e0b97ed748ea"
@@ -7266,6 +7259,11 @@ postcss@^8.3.5, postcss@^8.4.4, postcss@^8.4.5, postcss@^8.4.6:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
+preact@^10.6.5:
+  version "10.11.2"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.11.2.tgz#e43f2a2f2985dedb426bb4c765b7bb037734f8a8"
+  integrity sha512-skAwGDFmgxhq1DCBHke/9e12ewkhc7WYwjuhHB8HHS8zkdtITXLRmUMTeol2ldxvLwYtwbFeifZ9uDDWuyL4Iw==
+
 prelude-ls@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
@@ -7302,6 +7300,11 @@ process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
+
+progress-smoother@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/progress-smoother/-/progress-smoother-1.3.0.tgz#5dd982c17d9f194c34ce363aeff76fc48ae078f5"
+  integrity sha512-vWtKd8Q1pQXHJ6Fx4pa5fbSCj+p6BPKfWufCVmagOjNKc3JsNsMfgTF55yx8UE0mNnZlnbKHr20+M/imHsnNbQ==
 
 promise@^8.1.0:
   version "8.1.0"
@@ -7814,14 +7817,6 @@ react-dom@17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-react-easy-crop@^4.6.1:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/react-easy-crop/-/react-easy-crop-4.6.1.tgz#1b13e654b91609e62ddd88f426cacdf546dc47a8"
-  integrity sha512-/3Y7fScuNosFyKGVEotI6Jef1s4nSZLeeeMM38ubexWHRhyvZJAsmqoXoEj5WPvmM6/Ugy32SymJQwVa4t3S9w==
-  dependencies:
-    normalize-wheel "^1.0.1"
-    tslib "2.0.1"
-
 react-error-overlay@^6.0.10:
   version "6.0.10"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.10.tgz#0fe26db4fa85d9dbb8624729580e90e7159a59a6"
@@ -7991,6 +7986,13 @@ react-test-renderer@17.0.2:
     react-is "^17.0.2"
     react-shallow-renderer "^16.13.1"
     scheduler "^0.20.2"
+
+react-uploader@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-uploader/-/react-uploader-2.1.0.tgz#196ecba51fa5f90c2d7a5cd7130eda7d470b0194"
+  integrity sha512-3JVeMy3w2DtGiWQMnB5Lce/hO6fzUZcDN8vSEcgDLP43DMawMJjLYgFJ+ZyTCztwgO3yDUmO4V6Hw81KpSpCvA==
+  dependencies:
+    uploader "^2.1.0"
 
 react@17.0.2:
   version "17.0.2"
@@ -9074,11 +9076,6 @@ tsconfig-paths@^3.12.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
-  integrity sha512-SgIkNheinmEBgx1IUNirK0TUD4X9yjjBRTqqjggWCU3pUEqIk3/Uwl3yRixYKT6WjQuGiwDv4NomL3wqRCj+CQ==
-
 tslib@^1.10.0, tslib@^1.8.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
@@ -9214,6 +9211,23 @@ upath@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/upath/-/upath-1.2.0.tgz#8f66dbcd55a883acdae4408af8b035a5044c1894"
   integrity sha512-aZwGpamFO61g3OlfT7OQCHqhGnW43ieH9WZeP7QxN/G/jS4jfqUkZxoryvJgVPEcrl5NL/ggHsSmLMHuH64Lhg==
+
+upload-js@^2.1.0:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/upload-js/-/upload-js-2.2.1.tgz#fabf80808f699a49fe065c0821f13d376c566467"
+  integrity sha512-k6/bDRgsIuguKs+HuXbkCrGNQU27xvCOWCGCHjrUIbS6iSyLeiarMF2TbKR6YLG40Ufaa+ojnpIk9GfHkMnaNw==
+  dependencies:
+    "@upload-io/upload-api-client-upload-js" "^2.10.0"
+    progress-smoother "^1.3.0"
+
+uploader@^2.1.0:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/uploader/-/uploader-2.2.2.tgz#26222c665c4853e25c87d4b839c6fc92a92563bf"
+  integrity sha512-fjHflNvtWIdIachKVyyo6eTUnx0ySrBuT5G8lBg0JmizqB9VxsTnOEdfnZqWUcIvj164ovXqDabq0M5o2+tM5g==
+  dependencies:
+    classnames "^2.2.6"
+    preact "^10.6.5"
+    upload-js "^2.1.0"
 
 uri-js@^4.2.2:
   version "4.4.1"

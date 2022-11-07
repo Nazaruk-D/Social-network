@@ -87,7 +87,7 @@ let initialState = {
             id: "RickCheater",
             name: "Rick",
             message: "Good thing they don't know...😈",
-            likesCount: 666,
+            likesCount: 333,
             avatar: RickAva
         },
     ],
@@ -121,10 +121,7 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
                 return {...state, postData: state.postData.map( p => p.id === action.userId ? {...p, likesCount: p.likesCount + 1} : p)}
             }
         case "SAVE-PHOTO":
-            const copyState = {...state}
-            copyState.profile!.photos.small = action.photo
-            return copyState
-            // return {...state, profile: {...state.profile, photos: action.photo}}
+            return {...state, profile: {...state.profile!, photos: action.photo}}
         default:
             return state;
     }
@@ -138,7 +135,7 @@ export const addLike = (userId: string) => {
 }
 export const setUserProfile = (profile: ProfileType) => ({type: "SET-USER-PROFILE", profile} as const)
 export const setStatusProfile = (status: string) => ({type: "SET-STATUS", status} as const)
-export const savePhotoSuccess = (photo: string) => ({type: "SAVE-PHOTO", photo} as const)
+export const savePhotoSuccess = (photo: {large: string, small: string}) => ({type: "SAVE-PHOTO", photo} as const)
 export const setUserProfileThunk = (userId: string) => (dispatch: Dispatch) => {
     profileAPI.getProfile(userId)
         .then(data => {

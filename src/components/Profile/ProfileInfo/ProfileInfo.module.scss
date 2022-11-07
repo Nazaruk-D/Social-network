@@ -25,12 +25,39 @@
       //background-color: green;
       width: 100%;
 
-      .mainAva {
-        width: 200px;
-        margin-bottom: 20px;
-        background-color: #bcbcca;
+      .mainAvatar {
+        position: relative;
 
+        .avatar{
+          width: 200px;
+          margin-bottom: 20px;
+          background-color: #bcbcca;
+          border-radius: 61% 39% 27% 73% / 31% 30% 70% 69%;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .updatePhoto {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          color: #fff;
+          background: rgba(159, 156, 151, 0.8);
+          text-align: center;
+          transition: opacity .25s ease-in-out;
+          opacity: 0;
+          overflow: hidden;
+          width: 200px;
+          margin-bottom: 20px;
+          border-radius: 61% 39% 27% 73% / 31% 30% 70% 69%;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          &:hover{
+            opacity: 1;
+          }
+        }
       }
+
+
 
       .uploadPhotoBlock {
         position: relative;

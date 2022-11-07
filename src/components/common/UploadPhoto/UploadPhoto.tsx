@@ -1,83 +1,41 @@
-import React, {useEffect, useState} from 'react';
-import ImgCrop from 'antd-img-crop';
-import { Upload } from 'antd';
+import React from 'react';
 import 'antd/dist/antd.css';
-import s from "../../Profile/ProfileInfo/ProfileInfo.module.scss";
-import uploadPhotoPNG from "../../../assets/png/uploadPhoto.png";
+import { Uploader } from "uploader";
+import { UploadButton } from "react-uploader";
+import {useAppDispatch} from "../../../redux/redux-store";
 import {savePhoto} from "../../../redux/profile-reducer";
-import {useDispatch} from "react-redux";
-
-
-// const getSrcFromFile = (file) => {
-//     return new Promise((resolve) => {
-//         const reader = new FileReader();
-//         reader.readAsDataURL(file.originFileObj);
-//         reader.onload = () => resolve(reader.result);
-//     });
-// };
-
 
 export const UploadPhoto = () => {
-    // const dispatch = useDispatch()
-    // const [fileList, setFileList] = useState([
-    //     {
-    //         uid: '-1',
-    //         url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    //     },
-    // ]);
-    //
-    // const onChange = ({ fileList: newFileList }) => {
-    //     setFileList(newFileList);
-    //     console.log(fileList)
-    // };
-    //
-    // const onPreview = async (file) => {
-    //     const src = file.url || (await getSrcFromFile(file));
-    //     const imgWindow = window.open(src);
-    //
-    //     if (imgWindow) {
-    //         const image = new Image();
-    //         image.src = src;
-    //         imgWindow.document.write(image.outerHTML);
-    //         if (image) {
-    //         }
-    //     } else {
-    //         window.location.href = src;
-    //     }
-    // };
+    const dispatch = useAppDispatch()
+    const uploader = Uploader({
+        // Get production API keys from Upload.io
+        apiKey: "free"
+    });
 
-    // useEffect(()=>{
-    //     dispatch(savePhoto(fileList.url))
-    // }, [fileList, setFileList])
+    const handler = (files: any) => {
+        urlToObject(files[0].fileUrl)
+    }
 
 
-    // const dispatch = useDispatch()
-    // useEffect(()=>{
-    //
-    // }, [])
-
-    const mainPhotoSelectedHandler = (e: any) => {
-        if (e.target.files![0]) {
-            savePhoto(e.target.files![0])
-        }
+    const urlToObject= async(image: string)=> {
+        const response = await fetch(image);
+        // here image is url/location of image
+        const blob = await response.blob();
+        const file = new File([blob], 'image.jpg', {type: blob.type});
+        console.log(file)
+        dispatch(savePhoto(file))
     }
     return (
-        <ImgCrop>
-            <Upload onChange={mainPhotoSelectedHandler}><div style={{color:"white", cursor: "pointer"}}>+ Add image</div></Upload>
-        </ImgCrop>
-        // <ImgCrop grid rotate>
-        //     <Upload
-        //         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-        //         listType="picture-card"
-        //         fileList={fileList}
-        //         onChange={onChange}
-        //         onPreview={onPreview}
-        //     >
-        //         <div className={s.uploadPhotoBlock}>
-        //             <div className={s.supportText}>Click to upload photo</div>
-        //             <img src={uploadPhotoPNG} alt="uploadPhoto" className={s.uploadPhoto}/>
-        //         </div>
-        //     </Upload>
-        // </ImgCrop>
+        <div>
+            <UploadButton uploader={uploader}
+                          options={{multi: false}}
+                          onComplete={files => handler(files)}>
+                {({onClick}) =>
+                    <button onClick={onClick} style={{marginTop: "75px"}}>
+                        Upload a file...
+                    </button>
+                }
+            </UploadButton>
+        </div>
     );
 };

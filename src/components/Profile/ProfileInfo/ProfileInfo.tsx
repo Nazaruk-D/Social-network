@@ -6,6 +6,7 @@ import userPhoto from '../../../assets/images/user.png'
 import {ProfileDataForm} from "./ProfileDataForm";
 import uploadPhotoPNG from '../../../assets/png/uploadPhoto.png'
 import {UploadPhoto} from "../../common/UploadPhoto/UploadPhoto";
+import {getRandomArrayElement} from "../../Users/getRandomArrayElement";
 
 
 type ProfileInfoType = {
@@ -14,6 +15,7 @@ type ProfileInfoType = {
     updateStatus: (status: string) => void
     isOwner: boolean
     savePhoto: any
+    // photo: string | null
 }
 
 export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePhoto, ...props}) => {
@@ -23,6 +25,7 @@ export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePh
     const mainPhotoSelectedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files![0]) {
             savePhoto(e.target.files![0])
+            console.log(e.target.files![0])
         }
     }
 
@@ -31,17 +34,23 @@ export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePh
             <div className={s.profileInfoBlock}>
 
                 <div className={s.avatarBlock}>
-                    <UploadPhoto/>
-                    <img src={profile?.photos.large || userPhoto} className={s.mainAva}/>
-                    {/*{isOwner &&*/}
-                    {/*    <label htmlFor={"inputTag"}>*/}
-                    {/*        <div className={s.uploadPhotoBlock}>*/}
-                    {/*            <div className={s.supportText}>Click to upload photo</div>*/}
-                    {/*            <img src={uploadPhotoPNG} alt="uploadPhoto" className={s.uploadPhoto}/>*/}
-                    {/*        </div>*/}
-                    {/*        <input id={"inputTag"} type="file" onChange={mainPhotoSelectedHandler}*/}
-                    {/*               className={s.inputUploadPhoto}/>*/}
-                    {/*    </label>}*/}
+                    {/*<img src={u.photos.small != null ? u.photos.small : getRandomArrayElement()} className={s.avatarImg}/>*/}
+                    <div className={s.mainAvatar}>
+                        <img src={profile?.photos.large !== null ? profile?.photos.large : getRandomArrayElement()} className={s.avatar}/>
+                        <div className={s.updatePhoto}>
+                            <UploadPhoto/>
+                        </div>
+                    </div>
+
+                    {isOwner &&
+                        <label htmlFor={"inputTag"}>
+                            <div className={s.uploadPhotoBlock}>
+                                <div className={s.supportText}>Click to upload photo</div>
+                                <img src={uploadPhotoPNG} alt="uploadPhoto" className={s.uploadPhoto}/>
+                            </div>
+                            <input id={"inputTag"} type="file" onChange={mainPhotoSelectedHandler}
+                                   className={s.inputUploadPhoto}/>
+                        </label>}
                 </div>
 
                 <div className={s.profileBlock}>
