@@ -1,0 +1,36 @@
+@import '../../components/common/styles/scss/variables';
+@import '../../components/common/styles/scss/mixins';
+
+
+.dialogsContainer {
+    height: 90%;
+    background-color: red;
+    margin-top: 30px;
+
+    @include flex(row, flex-start, flex-start, wrap);
+
+    .friendsList {
+        width: 300px;
+        height: 100%;
+        background-color: $textColorYellow;
+        text-decoration: none;
+        padding-left: 20px;
+    }
+
+    .messages {
+        padding-top: 30px;
+        padding-left: 30px;
+        color: black;
+        width: 750px;
+        height: 100%;
+        background-color: #7cb305;
+
+    }
+}
+
+
+
+
+
+
+

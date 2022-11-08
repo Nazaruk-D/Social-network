@@ -55,7 +55,7 @@ class App extends React.Component<UsersContainerPropsType> {
                             <Stone/>
                         </div>
                         <div className={s.main}>
-                            <Route path="/dialogs" render={() => {
+                            <Route path="/dialogs/:userId?" render={() => {
                                 return <React.Suspense fallback={<Preloader/>}>
                                     <DialogsContainer/>
                                 </React.Suspense>

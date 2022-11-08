@@ -1,0 +1,26 @@
+@import '../../../../components/common/styles/scss/variables';
+@import '../../../../components/common/styles/scss/mixins';
+
+.messageContainer {
+    width: 80%;
+    background-color: #1d39c4;
+
+    .messageBlock {
+        width: 100%;
+        background-color: #00aeff;
+        @include flex(row, flex-end, center, wrap);
+        .myMessage {
+            @include flex(row, flex-start, center, wrap);
+            width: 300px;
+            background-color: black;
+        }
+    }
+
+
+
+    .friendsMessage{
+        width: 300px;
+        background-color: #5c5c5c;
+    }
+}
+

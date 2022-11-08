@@ -1,14 +1,14 @@
 import React from "react";
-import s from "./DialogItem.module.css";
+import s from "./FriendsList.module.scss";
 import {NavLink} from "react-router-dom";
 
-type DialogItemProps = {
+type FriendsListProps = {
     name: string
     id: string
     ava: string
 }
 
-export const DialogItem: React.FC<DialogItemProps> = (props) => {
+export const FriendsList: React.FC<FriendsListProps > = (props) => {
     return (
         <div className={s.block}>
             <NavLink to={"/dialogs/" + props.id}>

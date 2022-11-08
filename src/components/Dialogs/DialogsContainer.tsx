@@ -12,7 +12,7 @@ type MapStatePropsType = {
     // isAuth: boolean
 }
 type MapDispatchPropType = {
-    SendMessage: (newMessageBody: string) => void
+    SendMessage: (newMessageBody: string, userId: string) => void
 }
 
 
@@ -25,8 +25,8 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 
 let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropType => {
     return {
-        SendMessage: (newMessageBody: string) => {
-            dispatch(SendMessageCreator(newMessageBody))
+        SendMessage: (newMessageBody: string, userId: string) => {
+            dispatch(SendMessageCreator(newMessageBody, userId))
         }
     }
 }

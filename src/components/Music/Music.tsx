@@ -9,16 +9,26 @@ export const Music = () => {
     const musicList = [
         {
             img: "https://upload.wikimedia.org/wikipedia/ru/2/28/Rick_and_Morty_Season_5.jpg",
-            name: "Rick and Morty",
-            music: "https://instrumentalfx.co/wp-content/upload/11/Rick-and-Morty-Theme-Song.mp3",
+            name: "Rick and Morty intro",
+            music: "https://now.morsmusic.org/load/2049526821/Rick_and_Morty_Ryan_Elder_-_Rick_and_Morty_Theme_(musmore.com).mp3",
             progress: 0,
             length: null
         },
         {
             img: "https://upload.wikimedia.org/wikipedia/ru/2/28/Rick_and_Morty_Season_5.jpg",
-            name: "Rick",
-            music: "https://instrumentalfx.co/wp-content/upload/11/Rick-and-Morty-Theme-Song.mp3"
-        }
+            name: "Goodbye Moonmen",
+            music: "https://now.morsmusic.org/load/2097748058/Rick_and_Morty_Jemaine_Clement_Ryan_Elder_-_Goodbye_Moonmen_(musmore.com).mp3"
+        },
+        {
+            img: "https://upload.wikimedia.org/wikipedia/ru/2/28/Rick_and_Morty_Season_5.jpg",
+            name: "Raised Up (C-131)",
+            music: "https://now.morsmusic.org/load/1758858123/Rick_and_Morty_Justin_Roiland_Ryan_Elder_-_Raised_Up_C-131_(musmore.com).mp3"
+        },
+        {
+            img: "https://upload.wikimedia.org/wikipedia/ru/2/28/Rick_and_Morty_Season_5.jpg",
+            name: "Help Me I'm Gonna Die",
+            music: "https://now.morsmusic.org/load/2046910150/Rick_and_Morty_Justin_Roiland_Ryan_Elder_-_Help_Me_Im_Gonna_Die_(musmore.com).mp3"
+        },
     ]
 
     const [songs, setSongs] = useState(musicList)
