@@ -5,27 +5,34 @@
   height: 99%;
   @include flex(row, flex-start, center, wrap);
 
-  .portalGun {
-    position: fixed;
-    width: 200px;
-    left: 450px;
-    cursor: pointer;
-  }
+
 
   .portalBlock {
     width: 100%;
+    height: 100%;
+    position: relative;
     @include flex(row, center, center, wrap);
 
     .portalGif {
       width: 0px;
       margin-left: 150px;
-      transition: width 7s ease-in-out;
+      transition: width 2s ease-in-out;
     }
     .portalOn {
       width: 600px;
       margin-left: 150px;
-      transition: width 7s ease-in-out;
+      transition: width 2s ease-in-out;
       cursor: pointer;
     }
+
+    .portalGun {
+      position: absolute;
+      left: 50px;
+      top: 120px;
+      width: 200px;
+      cursor: pointer;
+      margin-top: 150px;
+    }
+
   }
 }

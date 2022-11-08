@@ -1,0 +1,48 @@
+@import '../../common/styles/scss/variables';
+@import '../../common/styles/scss/mixins';
+
+.news {
+  @include flex(column, flex-start, flex-start, wrap);
+  width: 250px;
+  height: 500px;
+  box-sizing: border-box;
+  background-color: $textColorYellow;
+  margin-top: 20px;
+  margin-left: 30px;
+  box-shadow: 0px 4px 52px 0px rgba(255, 255, 255, 0.4);
+
+  .newsImg {
+    height: 30%;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  .title {
+    width: 100%;
+    height: 23%;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: #ffa834;
+  }
+
+  .description {
+    height: 35%;
+    //background-color: red;
+    margin: 10px;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: justify;
+  }
+
+  .author {
+    margin-left: 10px;
+
+  }
+
+
+}
+

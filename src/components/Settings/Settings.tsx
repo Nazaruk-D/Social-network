@@ -13,14 +13,14 @@ export const Settings = () => {
 
     return (
         <div className={s.settingsContainer}>
-            {switchGun
-                ? <img src={portalGunOn} alt="portalGun" className={s.portalGun} onClick={() => setSwitchGun(!switchGun)}/>
-                : <img src={portalGun} alt="portalGun" className={s.portalGun} onClick={() => setSwitchGun(!switchGun)}/>
-            }
             <div className={s.portalBlock}>
                 <a href={"https://nazaruk-d.github.io/Portfolio/#"}>
                     <img src={rickGif} alt="Rick" className={turnOnPortal}/>
                 </a>
+                {switchGun
+                    ? <img src={portalGunOn} alt="portalGun" className={s.portalGun} onClick={() => setSwitchGun(!switchGun)}/>
+                    : <img src={portalGun} alt="portalGun" className={s.portalGun} onClick={() => setSwitchGun(!switchGun)}/>
+                }
             </div>
         </div>
     );

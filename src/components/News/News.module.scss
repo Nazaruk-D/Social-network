@@ -1,0 +1,26 @@
+@import '../common/styles/scss/variables';
+@import '../common/styles/scss/mixins';
+
+.newsContainer {
+  @include flex(column, center, flex-start, wrap);
+  //background-color: #fff;
+  height: 100%;
+
+  .newsBlock {
+    @include flex(row, space-evenly, center, wrap);
+    height: 90%;
+    width: 100%;
+    //background-color: #7cb305;
+    //justify-content: space-evenly;
+  }
+
+  .newsButtonBlock{
+    @include flex(column, center, center, wrap);
+    width: 100%;
+    .newsButton {
+      //background-color: red;
+    }
+  }
+
+
+}
