@@ -1,6 +1,8 @@
 import React from 'react';
 import stone from "../../assets/png/stone.png";
 import './Stone.css';
+import {AiFillEye} from "react-icons/ai";
+import {GoPrimitiveDot} from "react-icons/go";
 
 const Stone = () => {
 
@@ -8,7 +10,6 @@ const Stone = () => {
     document.onmousemove =  (event) => {
         let x = event.x - 210;
         let y = event.y - 705;
-        // console.log(x + 'and' + y)
 
         const arcctg = (x: number, y: number) => {
             if (x > 0 && y > 0) return Math.PI / 2 - Math.atan(x / y)
@@ -36,10 +37,10 @@ const Stone = () => {
         <div className="stoneBlock">
             <img src={stone} className="stone"/>
             <div className="outs1">
-                <div className="eye1"></div>
+                <div className="eye1"><GoPrimitiveDot style={{fontSize: "12px"}}/></div>
             </div>
             <div className="outs2">
-                <div className="eye2"></div>
+                <div className="eye2"> <GoPrimitiveDot style={{fontSize: "12px"}}/> </div>
             </div>
         </div>
     );

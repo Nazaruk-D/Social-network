@@ -67,7 +67,7 @@ export const MyPosts: React.FC<MyPostPropType> = React.memo((props) => {
                 </div>
             </div>
             <div className={s.paginationBlock}>
-                {pagination}
+                {pagination.length > 1 && pagination}
             </div>
         </div>
     )

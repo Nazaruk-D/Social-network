@@ -17,18 +17,19 @@
     top: 53px;
     width: 15px;
     height: 15px;
-    /*border: 1px solid blueviolet;*/
     border-radius: 50%;
 }
 
 .eye1 {
-    position: relative;
+    position: absolute;
+    left: 6px;
+    top: -3px;
 }
 .eye1:after {
      position: absolute;
-     content: "\2022";
-     right: 0;
-     top: -5px;
+     /*content: "\2022";*/
+     /*right: 0;*/
+     /*top: -5px;*/
  }
 
 
@@ -42,12 +43,16 @@
 }
 
 .eye2 {
-    position: relative;
+    position: absolute;
+    /*top: -15px;*/
+    left: 6px;
+    top: -3px;
 }
 .eye2:after {
      position: absolute;
-     content: "\2022";
-     right: 0;
-     top: -5px;
+     /*content: "\2022";*/
+     /*right: 0;*/
+     /*top: -15px;*/
+
  }
 

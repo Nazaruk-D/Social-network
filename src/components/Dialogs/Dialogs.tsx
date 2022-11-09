@@ -10,8 +10,9 @@ import {FriendsList} from "./DialogsComponents/FriendsList/FriendsList";
 
 export type DialogTypeProps = {
     SendMessage: (values: string, userId: string) => void
+    DeleteMessage: (friendsId: string, messageId: string) => void
     updateNewMessageBody: (body: any) => void
-    state: InitialStateType
+    dialogs: InitialStateType
     newMessageBody: string
     isAuth: boolean
 }
@@ -21,22 +22,26 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
 
     let {userId} = useParams<{ userId: string }>()
 
-    let dialogElements = props.state.dialogsData.map((dialog: DialogsDataType) => <div key={dialog.id}><FriendsList
+    const addNewMessage = (values: AddMessageFormType) => {
+        props.SendMessage(values.newMessageBody, userId)
+    }
+
+    const deleteMessage = (friendsId: string, messageId: string) => {
+        props.DeleteMessage(friendsId, messageId)
+    }
+
+    let dialogElements = props.dialogs.map((dialog: DialogsDataType) => <div key={dialog.id}><FriendsList
         name={dialog.name}
         id={dialog.id}
         ava={dialog.ava}/>
     </div>)
 
-    let messages = props.state.dialogsData.map((dialog: DialogsDataType, index) => dialog.id === userId
-        ? <div key={index}><Messages messages={dialog.messages}/></div>
+    let messages = props.dialogs.map((dialog: DialogsDataType, index) => dialog.id === userId
+        ? <div key={index}><Messages messages={dialog.messages} deleteMessage={deleteMessage}/></div>
         : null
     )
-    console.log(messages)
     // if (!props.isAuth) return <Redirect to={"/login"}/>
 
-    const addNewMessage = (values: AddMessageFormType) => {
-        props.SendMessage(values.newMessageBody, userId)
-    }
 
     return (
         <div className={s.dialogsContainer}>
@@ -68,8 +73,8 @@ export const AddMessageForm: React.FC<InjectedFormProps<AddMessageFormType>> = (
                 <Field component={TextArea} validate={[required, maxLength50]} name={"newMessageBody"}
                        placeholder={"Enter your message"} className={s.textField}/>
             </div>
-            <div>
-                <button>Send message</button>
+            <div className={s.buttonBlock}>
+                <button className={s.button}>Send message</button>
             </div>
         </form>
     )

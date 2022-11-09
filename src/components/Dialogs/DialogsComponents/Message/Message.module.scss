@@ -3,43 +3,70 @@
 
 .messageContainer {
   @include scrollBar();
-  width: 82%;
-  height: 350px;
   overflow-y: auto;
-
-
+  float:bottom;
+  width: 98%;
+  height: 380px;
 
   .myMessageBlock {
+    @include flex(row, flex-start, center, wrap);
     width: 100%;
     padding: 10px 0;
-    @include flex(row, flex-start, center, wrap);
-    padding-left: 250px;
+    padding-left: 300px;
 
     .myMessage {
-      @include flex(row, flex-start, center, wrap);
-      @include text(15px, 15px, 400);
-      width: 250px;
+      @include flex(column, flex-start, flex-start, wrap);
+      @include text(14px, 20px, 400);
+      width: 300px;
       background-color: rgb(117, 157, 255);
       padding: 15px;
       margin-right: 15px;
       border-radius: 15px;
       color: #ffffff;
+      word-break: break-all;
+
+      .data {
+        @include flex(row, flex-end, center, wrap);
+        @include text(10px, 10px, 300);
+        width: 100%;
+        //margin-top: 5px;
+        padding-top: 15px;
+
+      }
     }
+
+    .delete {
+      color: white;
+      cursor: pointer;
+      margin-left: -3px;
+      &:hover {
+        color: rgb(0, 0, 0);
+      }
+    }
+
+
   }
 
   .friendsMessageBlock {
+    @include flex(row, flex-start, center, wrap);
     width: 100%;
     padding: 10px 0;
-    @include flex(row, flex-start, center, wrap);
 
     .friendsMessage {
-      @include flex(row, flex-start, center, wrap);
-      @include text(15px, 15px, 400);
-      width: 250px;
+      @include flex(column, flex-start, flex-start, wrap);
+      @include text(14px, 18px, 400);
+      width: 300px;
       padding: 15px;
       border-radius: 15px;
       background-color: rgb(255, 255, 255);
+      word-break: break-all;
 
+      .data {
+        @include flex(row, flex-end, center, wrap);
+        @include text(10px, 10px, 300);
+        width: 100%;
+        margin-top: 5px;
+      }
     }
   }
 }

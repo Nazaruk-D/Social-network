@@ -1,24 +1,25 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
-import {InitialStateType, SendMessageCreator} from "../../redux/dialogs-reducer";
+import {deleteMessage, InitialStateType, sendMessageCreator} from "../../redux/dialogs-reducer";
 import {compose, Dispatch} from "redux";
 import {Dialogs} from "./Dialogs";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 type MapStatePropsType = {
-    state: InitialStateType
+    dialogs: InitialStateType
     // isAuth: boolean
 }
 type MapDispatchPropType = {
     SendMessage: (newMessageBody: string, userId: string) => void
+    DeleteMessage: (friendsId: string, messageId: string) => void
 }
 
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        state: state.dialogs,
+        dialogs: state.dialogs,
         // isAuth: state.auth.isAuth
     }
 }
@@ -26,7 +27,10 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropType => {
     return {
         SendMessage: (newMessageBody: string, userId: string) => {
-            dispatch(SendMessageCreator(newMessageBody, userId))
+            dispatch(sendMessageCreator(newMessageBody, userId))
+        },
+        DeleteMessage: (friendsId: string, messageId: string) => {
+            dispatch(deleteMessage(friendsId, messageId))
         }
     }
 }

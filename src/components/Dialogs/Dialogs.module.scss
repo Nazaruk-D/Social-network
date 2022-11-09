@@ -38,12 +38,21 @@
             @include scrollBar();
             margin-top: 20px;
             height: 55px;
-            width: 80%;
+            width: 91%;
             background-color: rgba(26, 26, 26, 0.9);
             color: $textColor;
             resize: none;
             padding: 10px;
         }
+
+        .buttonBlock {
+            @include flex(row, flex-end, center, wrap);
+            width: 91%;
+
+            .button {
+            }
+        }
+
 
     }
 }

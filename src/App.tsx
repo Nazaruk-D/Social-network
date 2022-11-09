@@ -81,8 +81,10 @@ class App extends React.Component<UsersContainerPropsType> {
 }
 
 
+
+
 const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
-    dialogsData: state.dialogs.dialogsData,
+    dialogsData: state.dialogs,
     initialized: state.app.initialized
 })
 
