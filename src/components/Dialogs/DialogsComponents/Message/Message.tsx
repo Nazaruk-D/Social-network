@@ -12,8 +12,8 @@ export const Messages: React.FC<MessageProps> = (props) => {
     return (
         <div className={s.messageContainer}>
             {props.messages.map((m, index) => m.idMessage === "myId"
-                ? <div className={s.messageBlock}><div key={index} className={s.myMessage} style={{color:"red"}}>{m.message}</div></div>
-                : <div key={index} className={s.friendsMessage}>{m.message}</div>
+                ? <div className={s.myMessageBlock}><div key={index} className={s.myMessage}>{m.message}</div></div>
+                : <div className={s.friendsMessageBlock}><div key={index} className={s.friendsMessage}>{m.message}</div></div>
             )}
         </div>
 

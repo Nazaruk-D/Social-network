@@ -6,7 +6,6 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {AddMessageFormType} from "../../Dialogs/Dialogs";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {TextArea} from "../../common/FormsControl/FormsControl";
-import {useDispatch} from "react-redux";
 import {useAppDispatch} from "../../../redux/redux-store";
 
 

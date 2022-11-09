@@ -34,7 +34,7 @@ export let initialState = {
             id: v1(),
             name: "Dima",
             messages: [
-                {idMessage: "myId", message: "Dima This is my first Message", dataMessage: "new Date"},
+                {idMessage: "myId", message: "Dima This is my first Message Dima This is my first Message ", dataMessage: "new Date"},
                 {idMessage: "friendsId", message: "Ok", dataMessage: "new Date"},
                 {idMessage: "myId", message: "And what?", dataMessage: "new Date"},
                 {idMessage: "friendsId", message: "No problem man", dataMessage: "new Date"},

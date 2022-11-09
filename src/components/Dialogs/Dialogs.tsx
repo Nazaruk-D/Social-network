@@ -27,9 +27,11 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
         ava={dialog.ava}/>
     </div>)
 
-    let messages = props.state.dialogsData.map((dialog: DialogsDataType, index) => dialog.id === userId ?
-        <div key={index}><Messages messages={dialog.messages}/></div> : null)
-
+    let messages = props.state.dialogsData.map((dialog: DialogsDataType, index) => dialog.id === userId
+        ? <div key={index}><Messages messages={dialog.messages}/></div>
+        : null
+    )
+    console.log(messages)
     // if (!props.isAuth) return <Redirect to={"/login"}/>
 
     const addNewMessage = (values: AddMessageFormType) => {
@@ -39,13 +41,14 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
     return (
         <div className={s.dialogsContainer}>
             <div className={s.friendsList}>
+                <div className={s.title}>Friends list</div>
                 {dialogElements}
             </div>
             <div className={s.messages}>
                 <div>
                     {messages}
                 </div>
-                <AddMessageFormRedux onSubmit={addNewMessage}/>
+                {userId && <AddMessageFormRedux onSubmit={addNewMessage}/>}
             </div>
         </div>
     )
@@ -63,7 +66,7 @@ export const AddMessageForm: React.FC<InjectedFormProps<AddMessageFormType>> = (
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field component={TextArea} validate={[required, maxLength50]} name={"newMessageBody"}
-                       placeholder={"Enter your message"}/>
+                       placeholder={"Enter your message"} className={s.textField}/>
             </div>
             <div>
                 <button>Send message</button>

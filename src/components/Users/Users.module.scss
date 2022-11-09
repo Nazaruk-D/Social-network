@@ -2,18 +2,17 @@
 @import '../common/styles/scss/mixins';
 
 .usersContainer {
-
-  //background-color: red;
+  margin-top: 15px;
 
   .paginatorBlock {
-    //background-color: #7cb305;
   }
 
   .usersBlock {
-    width: 100%;
-    margin-top: 5px;
     @include flex(row, flex-start, center, wrap);
-    //background-color: yellow;
+    width: 100%;
+    margin-top: 10px;
+    background-color: $bgColorGray;
+    border-radius: 15px;
 
     .user {
       width: 48%;
@@ -33,6 +32,7 @@
           //margin-top: 20px;
           object-fit: cover;
           margin-right: 15px;
+
         }
       }
 
@@ -40,6 +40,8 @@
       .informBlock {
         width: 200px;
         background-color: $textColorYellow;
+        border-radius: 15px;
+        padding: 5px 10px;
       }
 
       .followButton{

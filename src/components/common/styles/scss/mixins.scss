@@ -12,3 +12,18 @@
   justify-content: $justifyContent;
   flex-wrap: $wrap;
 }
+
+
+@mixin scrollBar () {
+  &::-webkit-scrollbar {
+    width: 10px;
+    background: #6e6e6e;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $textColorYellow;
+    border-radius: 8px;
+  }
+}
+
+

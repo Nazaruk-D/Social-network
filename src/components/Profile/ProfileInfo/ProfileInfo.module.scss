@@ -2,28 +2,26 @@
 @import '../../common/styles/scss/mixins';
 
 .profileInfoContainer {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  @include flex(column, flex-start, center, wrap);
+  margin-top: 5px;
   color: $textColor;
-  //background-color: blue;
   width: 40%;
   padding: 20px 0;
   box-sizing: border-box;
 
   .profileInfoBlock {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    @include flex(column, flex-start, flex-start, wrap);
+    background-color: $bgColorGray;
+    border-radius: 15px;
     width: 90%;
+    height: 92%;
     margin-top: 10px;
-    //background-color: red;
+    margin-left: 30px;
 
     .avatarBlock{
       @include flex(column, center, center, wrap);
-      //background-color: green;
       width: 100%;
+      margin-top: 10px;
 
       .mainAvatar {
         position: relative;
@@ -58,8 +56,6 @@
         }
       }
 
-
-
       .uploadPhotoBlock {
         position: relative;
         display: flex;
@@ -86,7 +82,7 @@
     }
 
     .profileBlock{
-      margin-left: 30px;
+      margin-left: 50px;
 
       .profileStatus{
         margin-top: 10px;
