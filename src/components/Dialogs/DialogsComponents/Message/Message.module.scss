@@ -6,7 +6,7 @@
   overflow-y: auto;
   float:bottom;
   width: 98%;
-  height: 380px;
+  height: 390px;
 
   .myMessageBlock {
     @include flex(row, flex-start, center, wrap);
@@ -23,7 +23,7 @@
       margin-right: 15px;
       border-radius: 15px;
       color: #ffffff;
-      word-break: break-all;
+      word-break: keep-all;
 
       .data {
         @include flex(row, flex-end, center, wrap);
@@ -59,7 +59,7 @@
       padding: 15px;
       border-radius: 15px;
       background-color: rgb(255, 255, 255);
-      word-break: break-all;
+      word-break: keep-all;
 
       .data {
         @include flex(row, flex-end, center, wrap);

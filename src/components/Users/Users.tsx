@@ -45,10 +45,6 @@ const Users: React.FC<UsersPropsType> = ({
                                 <div>Status: {!u.status ? '' : u.status}</div>
                                 <div>id: {u.id}</div>
                             </div>
-                            {/*<div>*/}
-                            {/*    <div>{"u.location.country"}</div>*/}
-                            {/*    <div>{"u.location.city"}</div>*/}
-                            {/*</div>*/}
                         </div>
                         <div className={s.followButton}>
                             {u.followed

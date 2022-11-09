@@ -32,7 +32,6 @@ export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePh
     return (
         <div className={s.profileInfoContainer}>
             <div className={s.profileInfoBlock}>
-
                 <div className={s.avatarBlock}>
                     {/*<img src={u.photos.small != null ? u.photos.small : getRandomArrayElement()} className={s.avatarImg}/>*/}
                     <div className={s.mainAvatar}>
@@ -41,7 +40,6 @@ export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePh
                             <UploadPhoto/>
                         </div>
                     </div>
-
                     {/*{isOwner &&*/}
                     {/*    <label htmlFor={"inputTag"}>*/}
                     {/*        <div className={s.uploadPhotoBlock}>*/}
@@ -52,7 +50,6 @@ export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePh
                     {/*               className={s.inputUploadPhoto}/>*/}
                     {/*    </label>}*/}
                 </div>
-
                 <div className={s.profileBlock}>
                     <div className={s.profileStatus}>
                         <div>Status:</div>
