@@ -2,11 +2,12 @@ import React, {FC, useState} from "react";
 import s from "./ProfileInfo.module.scss";
 import {ProfileType} from "../../../redux/profile-reducer";
 import ProfileStatus from './ProfileStatus'
-import userPhoto from '../../../assets/images/user.png'
 import {ProfileDataForm} from "./ProfileDataForm";
 import uploadPhotoPNG from '../../../assets/png/uploadPhoto.png'
-import {UploadPhoto} from "../../common/UploadPhoto/UploadPhoto";
 import {getRandomArrayElement} from "../../Users/getRandomArrayElement";
+import 'react-image-crop/src/ReactCrop.scss'
+import UploadPhoto from "../../common/UploadPhoto/UploadPhoto";
+
 
 
 type ProfileInfoType = {
@@ -21,25 +22,36 @@ type ProfileInfoType = {
 export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePhoto, ...props}) => {
 
     const [editMode, setEditMode] = useState(false)
+    const [uploadPhoto, setUploadPhoto] = useState(false)
 
-    const mainPhotoSelectedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files![0]) {
-            savePhoto(e.target.files![0])
-            console.log(e.target.files![0])
-        }
-    }
+    // const [src, setSrc] = useState<any>()
+    //
+    // const mainPhotoSelectedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     e.preventDefault()
+    //     if (e.target.files![0]) {
+    //         // savePhoto(e.target.files![0])
+    //         console.log(e.target.files![0])
+    //         setSrc(URL.createObjectURL(e.target.files![0]));
+    //     }
+    // }
 
     return (
         <div className={s.profileInfoContainer}>
             <div className={s.profileInfoBlock}>
                 <div className={s.avatarBlock}>
-                    {/*<img src={u.photos.small != null ? u.photos.small : getRandomArrayElement()} className={s.avatarImg}/>*/}
+                    {/*<img src={u.photos.small != null     ? u.photos.small : getRandomArrayElement()} className={s.avatarImg}/>*/}
                     <div className={s.mainAvatar}>
-                        <img src={profile?.photos.large !== null ? profile?.photos.large : getRandomArrayElement()} className={s.avatar}/>
+                        <img src={profile?.photos.large !== null ? profile?.photos.large : getRandomArrayElement()}
+                             className={s.avatar}/>
                         <div className={s.updatePhoto}>
-                            <UploadPhoto/>
+                            <button className={s.updatePhotoButton} onClick={() => setUploadPhoto(true)}> Upload photo</button>
                         </div>
+                        {uploadPhoto && <UploadPhoto savePhoto={savePhoto} setUploadPhoto={setUploadPhoto}/>}
+
                     </div>
+
+
+
                     {/*{isOwner &&*/}
                     {/*    <label htmlFor={"inputTag"}>*/}
                     {/*        <div className={s.uploadPhotoBlock}>*/}

@@ -1,0 +1,79 @@
+@import '../../common/styles/scss/variables';
+@import '../../common/styles/scss/mixins';
+
+.uploadPhotoContainer {
+  position: absolute;
+  top: 100%;
+  left: 180%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 660px;
+  background: #111;
+  box-shadow: 0 30px 20px -20px #000;
+  box-sizing: border-box;
+  @include flex(column, center, center, warp);
+
+  .closeTag {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    color: white;
+    cursor: pointer;
+  }
+
+  button {
+    padding: 10px;
+    border: 1px solid rgba(170, 170, 202, 0.87);
+    border-radius: 10px;
+    cursor: pointer;
+    color: $textColorYellow;
+
+  }
+
+
+  .cropperContainer {
+    @include flex(column, flex-start, flex-start, wrap);
+    position: relative;
+
+    .cropper {
+      width: 500px;
+      height: 500px;
+      //opacity: 22%;
+    }
+
+    .settings {
+      @include flex(column, flex-start, flex-start, wrap);
+      //background-color: red;
+      width: 500px;
+      height: 80px;
+
+      .radioButton{
+        @include flex(row, space-evenly, flex-start, wrap);
+        //background-color: blue;
+        width: 100%;
+      }
+
+      .buttons {
+        @include flex(row, space-evenly, flex-start, wrap);
+        width: 100%;
+        //background-color: green;
+        margin-top: 15px;
+        .button {
+          width: 90px;
+        }
+      }
+    }
+  }
+
+
+  .bottomBlock {
+    //height: 300px;
+    //width: 300px;
+    //background-color: red;
+
+    .croppedIMG {
+      //width: 300px;
+      //background-color: red;
+    }
+  }
+}

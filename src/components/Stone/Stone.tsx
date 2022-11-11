@@ -1,15 +1,16 @@
 import React from 'react';
 import stone from "../../assets/png/stone.png";
 import './Stone.css';
-import {AiFillEye} from "react-icons/ai";
 import {GoPrimitiveDot} from "react-icons/go";
 
 const Stone = () => {
 
 
     document.onmousemove =  (event) => {
-        let x = event.x - 210;
-        let y = event.y - 705;
+        let x = event.x - 290;
+        let y = event.y - 745;
+        // console.log("x " + x)
+        // console.log("y " + y)
 
         const arcctg = (x: number, y: number) => {
             if (x > 0 && y > 0) return Math.PI / 2 - Math.atan(x / y)

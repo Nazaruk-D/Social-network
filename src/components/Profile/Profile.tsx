@@ -3,7 +3,6 @@ import s from "./Profile.module.scss";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./Myposts/MyPostsContainer";
 import {ProfileType} from "../../redux/profile-reducer";
-import {MoonLoader} from "react-spinners";
 import {Preloader} from "../common/Preloader/Preloader";
 
 type ProfileTypeProps = {
@@ -17,7 +16,6 @@ type ProfileTypeProps = {
 
 export const Profile: React.FC<ProfileTypeProps> = (props) => {
     if (!props.profile) {
-        // return <MoonLoader color={"#b70000"} size={50}/>
         return <Preloader/>
     }
     return (
@@ -28,7 +26,6 @@ export const Profile: React.FC<ProfileTypeProps> = (props) => {
                 updateStatus={props.updateStatus}
                 isOwner={props.isOwner}
                 savePhoto={props.savePhoto}
-                // photo={props.photo}
             />
             <MyPostsContainer/>
         </div>);

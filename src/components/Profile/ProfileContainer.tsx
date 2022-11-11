@@ -61,7 +61,6 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType> {
                 updateStatus={this.props.updateStatus}
                 isOwner={!this.props.match.params.userId}
                 savePhoto={this.props.savePhoto}
-                // photo={this.props.photo}
             />
         )
     }
@@ -76,7 +75,6 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
         status: state.profile.status,
         authorizedUserId: state.auth.id,
         isAuth: state.auth.isAuth,
-        // photo: state.profile.profile!.photos.large
     }
 }
 
@@ -85,5 +83,5 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 export default compose<React.ComponentType>(
     connect(mapStateToProps, {setUserProfileThunk, getStatus, updateStatus, savePhoto}),
     withRouter,
-    // withAuthRedirect
+    withAuthRedirect
 )(ProfileContainer)
