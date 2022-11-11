@@ -1,22 +1,26 @@
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import FileInput from "./FileInput";
 import ImageCropper from "./ImageCropper";
-// import './Style.css'
 import s from './UploadPhoto.module.scss'
 
-function UploadPhoto({savePhoto, setUploadPhoto}) {
+type UploadPhotoPropsType = {
+    setUploadPhoto: (uploadPhoto: boolean) => void
+    savePhoto: (file: any) => void
+}
+
+const UploadPhoto: FC<UploadPhotoPropsType> = ({savePhoto, setUploadPhoto}) => {
     const [image, setImage] = useState("");
     const [currentPage, setCurrentPage] = useState("choose-img");
     const [imgAfterCrop, setImgAfterCrop] = useState("");
 
     // Invoked when new image file is selected
-    const onImageSelected = (selectedImg) => {
+    const onImageSelected = (selectedImg: string) => {
         setImage(selectedImg);
         setCurrentPage("crop-img");
     };
 
     // Generating Cropped Image When Done Button Clicked
-    const onCropDone = (imgCroppedArea) => {
+    const onCropDone = (imgCroppedArea: any) => {
 
         const canvasEle = document.createElement("canvas");
         canvasEle.width = imgCroppedArea.width;
@@ -27,7 +31,7 @@ function UploadPhoto({savePhoto, setUploadPhoto}) {
         let imageObj1 = new Image();
         imageObj1.src = image;
         imageObj1.onload = function () {
-            context.drawImage(
+            context!.drawImage(
                 imageObj1,
                 imgCroppedArea.x,
                 imgCroppedArea.y,
@@ -50,7 +54,7 @@ function UploadPhoto({savePhoto, setUploadPhoto}) {
         };
     };
 
-    const urlToObject = async (imageURL) => {
+    const urlToObject = async (imageURL: string) => {
         debugger
         const response = await fetch(imageURL);
         // here image is url/location of image
@@ -76,7 +80,7 @@ function UploadPhoto({savePhoto, setUploadPhoto}) {
         <div className={s.uploadPhotoContainer}>
             <div className={s.closeTag} onClick={() => setUploadPhoto(false)}>X</div>
             {currentPage === "choose-img" ? (
-                <FileInput setImage={setImage} onImageSelected={onImageSelected}/>
+                <FileInput onImageSelected={onImageSelected}/>
             ) : currentPage === "crop-img" ? (
                 <ImageCropper
                     image={image}

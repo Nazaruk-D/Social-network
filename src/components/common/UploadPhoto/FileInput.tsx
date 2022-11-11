@@ -3,9 +3,8 @@ import s from './UploadPhoto.module.scss'
 import './Style.css'
 
 type FileInputPropsType = {
-  onImageSelected: (selectedImg: string | ArrayBuffer | null) => void
+  onImageSelected: (selectedImg: any) => void
 }
-
 
 const FileInput: FC<FileInputPropsType> = ({ onImageSelected }) => {
   const inputRef = useRef<any>();

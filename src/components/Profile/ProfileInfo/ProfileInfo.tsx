@@ -15,7 +15,7 @@ type ProfileInfoType = {
     status: string
     updateStatus: (status: string) => void
     isOwner: boolean
-    savePhoto: any
+    savePhoto: (file: any) => void
     // photo: string | null
 }
 

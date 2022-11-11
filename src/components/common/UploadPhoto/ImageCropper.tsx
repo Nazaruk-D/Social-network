@@ -26,9 +26,9 @@ const ImageCropper: FC<ImageCropperPropsType> = ({ image, onCropDone, onCropCanc
     const zoomHandler = () => {
         window.onwheel = (e) => {
             if (e.deltaY < 0) {
-                setZoom(zoom + 0.25)
+                setZoom(zoom + 0.2)
             } else {
-                setZoom(zoom - 0.25)
+                setZoom(zoom - 0.2)
             }
         }
     }
