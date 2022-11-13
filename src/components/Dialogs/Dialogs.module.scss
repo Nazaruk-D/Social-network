@@ -20,7 +20,6 @@
             @include flex(row, center,center, wrap);
             height: 60px;
         }
-
     }
 
     .messages {
@@ -32,27 +31,6 @@
         height: 100%;
         background-color: $bgColorGray;
         border-radius: 15px;
-
-        .textField {
-            @include text(15px, 15px, 400);
-            @include scrollBar();
-            margin-top: 20px;
-            height: 55px;
-            width: 91%;
-            background-color: rgba(26, 26, 26, 0.9);
-            color: $textColor;
-            resize: none;
-            padding: 10px;
-        }
-
-        .buttonBlock {
-            @include flex(row, flex-end, center, wrap);
-            width: 91%;
-
-            .button {
-            }
-        }
-
 
     }
 }

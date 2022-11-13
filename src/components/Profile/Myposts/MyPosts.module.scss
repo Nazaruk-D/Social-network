@@ -8,39 +8,11 @@
   //background-color: black;
 
   .addForm {
-    @include flex(column, center, flex-start, wrap);
-    margin-top: 17px;
-    height: 120px;
-    width: 92%;
-    //background-color: red;
+    margin-top: 32px;
+    height: 90px;
+    width: 500px;
+    margin-left: 84px;
 
-    .formContainer {
-      @include flex(row, center, flex-start, wrap);
-      width: 100%;
-      //background-color: blue;
-
-      .textArea {
-        @include scrollBar();
-        margin-top: 20px;
-        height: 65px;
-        width: 350px;
-        background-color: rgba(26, 26, 26, 0.9);
-        color: $textColor;
-        resize: none
-      }
-
-      .addPostButton {
-        background-color: black;
-        color: white;
-        height: 50px;
-        margin-left: 30px;
-        margin-top: 36px;
-
-        &:hover {
-          color: #1d39c4;
-        }
-      }
-    }
   }
 
   .messageBlock {
@@ -58,19 +30,11 @@
     @include text(16px, 16px, 400);
     color: $textColor;
     margin-left: 80px;
-    margin-top: 10px;
+    margin-top: 5px;
 
     .pagination {
       padding-right: 5px;
       cursor: pointer;
     }
   }
-
 }
-
-
-.block {
-  //width: 300px;
-
-}
-

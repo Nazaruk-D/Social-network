@@ -1,0 +1,22 @@
+@import '../../../components/common/styles/scss/variables';
+@import '../../../components/common/styles/scss/mixins';
+
+.addMessageFormBlock{
+  @include flex(row, flex-start, flex-end, wrap);
+  position: relative;
+  width: 100%;
+
+  .textField {
+    @include text(15px, 15px, 400);
+    @include scrollBar();
+    margin-top: 20px;
+    height: 35px;
+    width: 80%;
+    background-color: rgba(26, 26, 26, 0.9);
+    color: $textColor;
+    border-color: rgba(26, 26, 26, 0.9);
+    resize: none;
+    padding: 10px;
+  }
+
+}

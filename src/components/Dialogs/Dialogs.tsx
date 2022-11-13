@@ -1,12 +1,10 @@
 import React from 'react';
 import s from './Dialogs.module.scss'
 import {DialogsDataType, InitialStateType} from "../../redux/dialogs-reducer";
-import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {TextArea} from "../common/FormsControl/FormsControl";
-import {maxLengthCreator, required} from "../../utils/validators/validators";
 import {useParams} from "react-router-dom";
 import {Messages} from "./DialogsComponents/Message/Message";
 import {FriendsList} from "./DialogsComponents/FriendsList/FriendsList";
+import {AddMessageForm} from "../common/AddMessageForm/AddMessageForm";
 
 export type DialogTypeProps = {
     SendMessage: (values: string, userId: string) => void
@@ -19,11 +17,10 @@ export type DialogTypeProps = {
 
 
 export const Dialogs: React.FC<DialogTypeProps> = (props) => {
-
     let {userId} = useParams<{ userId: string }>()
 
-    const addNewMessage = (values: AddMessageFormType) => {
-        props.SendMessage(values.newMessageBody, userId)
+    const addNewMessage = (values: string) => {
+        props.SendMessage(values, userId)
     }
 
     const deleteMessage = (friendsId: string, messageId: string) => {
@@ -53,31 +50,10 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
                 <div>
                     {messages}
                 </div>
-                {userId && <AddMessageFormRedux onSubmit={addNewMessage}/>}
+                {userId && <AddMessageForm onSubmit={addNewMessage}/>}
             </div>
         </div>
     )
 }
 
 
-export type AddMessageFormType = {
-    newMessageBody: string
-}
-
-const maxLength50 = maxLengthCreator(50)
-
-export const AddMessageForm: React.FC<InjectedFormProps<AddMessageFormType>> = (props) => {
-    return (
-        <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field component={TextArea} validate={[required, maxLength50]} name={"newMessageBody"}
-                       placeholder={"Enter your message"} className={s.textField}/>
-            </div>
-            <div className={s.buttonBlock}>
-                <button className={s.button}>Send message</button>
-            </div>
-        </form>
-    )
-}
-
-const AddMessageFormRedux = reduxForm<AddMessageFormType>({form: "dialogAddMessageForm"})(AddMessageForm)

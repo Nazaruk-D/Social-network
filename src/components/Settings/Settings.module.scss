@@ -19,10 +19,10 @@
       transition: width 2s ease-in-out;
     }
     .portalOn {
-      width: 600px;
+      width: 550px;
       margin-left: 150px;
       transition: width 2s ease-in-out;
-      cursor: pointer;
+      cursor: url('./../../assets/png/cursor.png'), default;
     }
 
     .portalGun {

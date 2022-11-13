@@ -3,10 +3,10 @@ import s from "./MyPosts.module.scss";
 import {Post} from "./Posts/Post";
 import {addPostAC, profilePagePropsType} from "../../../redux/profile-reducer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {AddMessageFormType} from "../../Dialogs/Dialogs";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {TextArea} from "../../common/FormsControl/FormsControl";
 import {useAppDispatch} from "../../../redux/redux-store";
+import {AddMessageForm} from "../../common/AddMessageForm/AddMessageForm";
 
 
 type MyPostPropType = {
@@ -52,14 +52,14 @@ export const MyPosts: React.FC<MyPostPropType> = React.memo((props) => {
         return <span key={index} className={s.pagination} style={isActive} onClick={() => setPage(p)}>{p}</span>
     })
 
-    const addPost = (values: AddMessageFormType) => {
-        props.addPost(values.newMessageBody)
+    const addPost = (values: string) => {
+        props.addPost(values)
     }
 
     return (
         <div className={s.myPostContainer}>
             <div className={s.addForm}>
-                <AddNewPostFormRedux onSubmit={addPost}/>
+                <AddMessageForm onSubmit={addPost}/>
             </div>
             <div className={s.messageBlock}>
                 <div className={s.item}>
@@ -73,30 +73,6 @@ export const MyPosts: React.FC<MyPostPropType> = React.memo((props) => {
     )
 })
 
-type AddNewPostFormType = {
-    newMessageBody: string
-}
-
-const maxLength10 = maxLengthCreator(10)
 
 
-const AddNewPostForm: React.FC<InjectedFormProps<AddNewPostFormType>> = (props) => {
-    const dispatch = useAppDispatch()
-    const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.keyCode === 13) {
-            dispatch(addPostAC(e.currentTarget.value))
-        }
-    }
-
-    return (
-        <form onSubmit={props.handleSubmit} className={s.formContainer}>
-            <Field component={TextArea} name={"newMessageBody"} placeholder={"Enter your message"}
-                   className={s.textArea} validate={[required, maxLength10]} onKeyDown={onKeyDownHandler}/>
-            <button className={s.addPostButton}>AddPost</button>
-        </form>
-    )
-}
-
-
-const AddNewPostFormRedux = reduxForm<AddNewPostFormType>({form: "profileAddMessageForm"})(AddNewPostForm)
 

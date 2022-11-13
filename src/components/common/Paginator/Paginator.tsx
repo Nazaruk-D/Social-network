@@ -42,7 +42,6 @@ const Paginator: React.FC<PaginatorPropsType> = ({
             </div>
             {portionCount > portionNumber &&
                 <button onClick={() => setPortionNumber(portionNumber + 1)}> Next </button>}
-
         </div>
     );
 };
