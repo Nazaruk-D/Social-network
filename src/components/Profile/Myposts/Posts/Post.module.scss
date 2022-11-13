@@ -12,9 +12,10 @@
 
     .avaBlock {
         height: 80px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex(row, center, center, wrap);
+        //display: flex;
+        //justify-content: center;
+        //align-items: center;
         margin-left: 15px;
         margin-right: 5px;
 
@@ -24,6 +25,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 1px solid black;
+            z-index: 1;
         }
     }
 

@@ -1,0 +1,41 @@
+@import '../../common/styles/scss/variables';
+@import '../../common/styles/scss/mixins';
+
+.zoomPhotoContainer {
+  position: absolute;
+  top: 100%;
+  left: 180%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 660px;
+  background: #111;
+  box-shadow: 0 30px 20px -20px #000;
+  box-sizing: border-box;
+  z-index: 10;
+  @include flex(column, center, center, warp);
+
+  .closeIcon{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .zoomPhoto {
+    width: 65%;
+    height: 80%;
+    border-radius: 61% 39% 27% 73% / 31% 30% 70% 69%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  button {
+    padding: 10px;
+    border: 1px solid rgba(170, 170, 202, 0.87);
+    border-radius: 10px;
+    cursor: pointer;
+    color: $textColorYellow;
+
+  }
+
+}

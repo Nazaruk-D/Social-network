@@ -2,6 +2,7 @@ import React, {FC, useState} from "react";
 import FileInput from "./FileInput";
 import ImageCropper from "./ImageCropper";
 import s from './UploadPhoto.module.scss'
+import {AiFillCloseCircle} from "react-icons/ai";
 
 type UploadPhotoPropsType = {
     setUploadPhoto: (uploadPhoto: boolean) => void
@@ -21,7 +22,6 @@ const UploadPhoto: FC<UploadPhotoPropsType> = ({savePhoto, setUploadPhoto}) => {
 
     // Generating Cropped Image When Done Button Clicked
     const onCropDone = (imgCroppedArea: any) => {
-
         const canvasEle = document.createElement("canvas");
         canvasEle.width = imgCroppedArea.width;
         canvasEle.height = imgCroppedArea.height;
@@ -44,13 +44,10 @@ const UploadPhoto: FC<UploadPhotoPropsType> = ({savePhoto, setUploadPhoto}) => {
             );
 
             const dataURL = canvasEle.toDataURL("image/jpeg");
-
             setImgAfterCrop(dataURL);
             setCurrentPage("img-cropped");
             savePhoto(dataURL)
-
             urlToObject(dataURL)
-
         };
     };
 
@@ -78,7 +75,8 @@ const UploadPhoto: FC<UploadPhotoPropsType> = ({savePhoto, setUploadPhoto}) => {
 
     return (
         <div className={s.uploadPhotoContainer}>
-            <div className={s.closeTag} onClick={() => setUploadPhoto(false)}>X</div>
+            <div className={s.closeTag} onClick={() => setUploadPhoto(false)}><AiFillCloseCircle
+                style={{fontSize: "22px"}}/></div>
             {currentPage === "choose-img" ? (
                 <FileInput onImageSelected={onImageSelected}/>
             ) : currentPage === "crop-img" ? (

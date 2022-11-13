@@ -19,7 +19,7 @@
     margin-top: 25px;
     margin-left: 30px;
 
-    .avatarBlock{
+    .avatarBlock {
       @include flex(column, center, center, wrap);
       width: 100%;
       margin-top: 15px;
@@ -27,15 +27,17 @@
       .mainAvatar {
         position: relative;
 
-        .avatar{
+        .avatar {
           width: 200px;
           margin: 20px 0;
           //margin-bottom: 20px;
           background-color: #bcbcca;
           border-radius: 61% 39% 27% 73% / 31% 30% 70% 69%;
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
         }
-        .updatePhoto {
+
+        .photoBlock {
           position: absolute;
           top: 0;
           left: 0;
@@ -51,31 +53,55 @@
           margin: 20px 0;
           border-radius: 61% 39% 27% 73% / 31% 30% 70% 69%;
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-          &:hover{
-            opacity: 1;
-          }
-        }
+          z-index: 6;
 
-        .updatePhotoButton {
-          margin-top: 75px;
-          padding: 10px;
-          border: 1px solid rgba(170,170,202,0.87);
-          border-radius: 10px;
-          cursor: pointer;
-          color: $textColorYellow;
           &:hover {
-            margin-top: 77px;
+            opacity: 111;
+          }
+
+          .buttonBlock {
+            margin-top: 45px;
+            margin-left: 15px;
+            //background-color: red;
+            height: 110px;
+            @include flex(column, center, center, wrap);
+
+            .updatePhotoButton {
+              width: 120px;
+              padding: 10px;
+              border: 1px solid rgba(170, 170, 202, 0.87);
+              border-radius: 10px;
+              cursor: pointer;
+              color: $textColorYellow;
+
+              &:hover {
+                //margin-top: 77px;
+              }
+            }
+
+            .zoomPhotoButton {
+              width: 120px;
+              padding: 10px;
+              margin: 10px;
+              border: 1px solid rgba(170, 170, 202, 0.87);
+              border-radius: 10px;
+              cursor: pointer;
+              color: $textColorYellow;
+
+              &:hover {
+                //margin-top: 77px;
+              }
+            }
           }
         }
 
-        .back{
-
-            position: relative;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: white;
+        .back {
+          position: relative;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-color: white;
 
         }
       }
@@ -85,7 +111,7 @@
         display: flex;
         align-items: center;
 
-        .supportText{
+        .supportText {
           position: absolute;
           width: 200px;
           left: 50px;
@@ -105,19 +131,19 @@
       }
     }
 
-    .profileBlock{
+    .profileBlock {
       margin-left: 50px;
 
-      .profileStatus{
+      .profileStatus {
         margin-top: 10px;
         font-size: 15px;
         font-weight: 600;
-        @include text (22x, 22px, 400);
+        @include text(22x, 22px, 400);
       }
 
       .profileDataForm {
         //background-color: red;
-        @include text (18x, 32px, 400);
+        @include text(18x, 32px, 400);
         margin-top: 20px;
         font-size: 15px;
         //display: flex;
@@ -128,12 +154,14 @@
     }
   }
 }
+
 .buttonEditProfile {
   background-color: black;
   color: white;
   border-radius: 50px;
   margin-top: 10px;
   cursor: pointer;
+
   &:hover {
     color: #1d39c4;
   }
