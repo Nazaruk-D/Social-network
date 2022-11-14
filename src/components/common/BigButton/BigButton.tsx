@@ -1,14 +1,14 @@
 import React, {FC} from 'react';
-import s from "./Button.module.scss";
+import s from "./BigButton.module.scss"
 
 type ButtonPropsType = {
     onClick: () => void
 }
 
-const Button: FC<ButtonPropsType> = ({onClick}) => {
+const BigButton: FC<ButtonPropsType> = ({onClick}) => {
     return (
         <button className={s.button} onClick={onClick}>AddPost</button>
     );
 };
 
-export default Button;
+export default BigButton;

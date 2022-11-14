@@ -75,6 +75,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
         status: state.profile.status,
         authorizedUserId: state.auth.id,
         isAuth: state.auth.isAuth,
+
     }
 }
 

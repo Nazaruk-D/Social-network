@@ -41,10 +41,10 @@ beforeEach(() => {
 })
 
 
-
 test('new post should be added', () => {
-    let action = addPostAC("Test")
-    let newState = profileReducer(startState,action)
+    let avatar = "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
+    let action = addPostAC("Test", avatar)
+    let newState = profileReducer(startState, action)
 
     expect(newState.postData.length).toBe(5)
     expect(newState.postData[4].message).toBe("Test")

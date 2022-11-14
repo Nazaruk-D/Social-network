@@ -1,24 +1,22 @@
 import React, {useState} from "react";
 import s from "./MyPosts.module.scss";
 import {Post} from "./Posts/Post";
-import {addPostAC, profilePagePropsType} from "../../../redux/profile-reducer";
-import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {maxLengthCreator, required} from "../../../utils/validators/validators";
-import {TextArea} from "../../common/FormsControl/FormsControl";
-import {useAppDispatch} from "../../../redux/redux-store";
+import {profilePagePropsType, ProfileType} from "../../../redux/profile-reducer";
 import {AddMessageForm} from "../../common/AddMessageForm/AddMessageForm";
 
 
 type MyPostPropType = {
     state: profilePagePropsType
-    addPost: (values: string) => void
+    addPost: (values: string, ava: string) => void
     addLike: (idUser: string) => void
+    profile: ProfileType
 }
 
 export const MyPosts: React.FC<MyPostPropType> = React.memo((props) => {
 
     const [page, setPage] = useState(1)
     const postsArray = props.state.postData
+    const ava = props.profile!.photos.large
     const allPage = Math.ceil(postsArray.length / 5)
     const pageVision = []
 
@@ -37,6 +35,8 @@ export const MyPosts: React.FC<MyPostPropType> = React.memo((props) => {
 
     const portionArray = foo(page)
 
+
+
     let postsElements = portionArray!.map(p => <div key={p.id}><Post img={p.avatar}
                                                                      name={p.name}
                                                                      post={p.message}
@@ -52,9 +52,12 @@ export const MyPosts: React.FC<MyPostPropType> = React.memo((props) => {
         return <span key={index} className={s.pagination} style={isActive} onClick={() => setPage(p)}>{p}</span>
     })
 
+    const avatar = ava ? ava : "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
+
     const addPost = (values: string) => {
-        props.addPost(values)
+        props.addPost(values, avatar)
     }
+
 
     return (
         <div className={s.myPostContainer}>

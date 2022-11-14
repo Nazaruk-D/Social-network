@@ -44,7 +44,6 @@ export const usersReducer = (state: InitialStateType = initialState, action: any
         case FOLLOW:
             return {...state, users: state.users.map(u => u.id === action.userId ? {...u, followed: true} : u)}
         case UNFOLLOW:
-
             return {...state, users: state.users.map(u => u.id === action.userId ? {...u, followed: false} : u)}
         case SETUSERS:
             return {...state, users: action.users}
@@ -74,7 +73,6 @@ export const getUsersThunk = (currentPage: number, pageSize: number, term?: stri
     dispatch(toggleIsFetching(true))
     dispatch(setCurrentPage(currentPage))
     usersAPI.getUsers(currentPage, pageSize, term, friend).then(data => {
-        debugger
         dispatch(toggleIsFetching(false))
         dispatch(setUsers(data.items))
         dispatch(setTotalUsersCount(data.totalCount))

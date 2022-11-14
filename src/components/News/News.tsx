@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s from './News.module.scss'
 import PartNews from "./PartNews/PartNews";
+import MainButton from "../common/MainButton/MainButton";
 
 
 export const News = () => {
@@ -113,11 +114,8 @@ export const News = () => {
     const [viewNews, setViewNews] = useState<NewsType[]>([])
 
     const foo = (arr: NewsType[]) => {
-        // const sortArr = arr.sort(() => 0.5 - Math.random());
         const newArr: NewsType[] = []
-        // for (let i = 0; i < 3; i++) {
-        //     newArr.push(sortArr[i])
-        // }
+
         for (let i = arr.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1)); // случайный индекс от 0 до i
             [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -140,7 +138,8 @@ export const News = () => {
                                                                 author={n.author}/>)}
             </div>
             <div className={s.newsButtonBlock}>
-                <button onClick={() => setViewNews(foo(news))} className={s.newsButton}>get random news</button>
+                <MainButton onClick={() => setViewNews(foo(news))} nameButton={"get random news"}/>
+                {/*<button onClick={() => setViewNews(foo(news))} className={s.newsButton}>get random news</button>*/}
             </div>
         </div>
     );

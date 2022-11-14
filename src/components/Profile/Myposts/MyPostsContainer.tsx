@@ -3,26 +3,29 @@ import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
 import {AppStateType} from "../../../redux/redux-store";
 import {Dispatch} from "redux";
-import {addLike, addPostAC, profilePagePropsType} from "../../../redux/profile-reducer";
+import {addLike, addPostAC, profilePagePropsType, ProfileType} from "../../../redux/profile-reducer";
 
 type MapStatePropsType = {
     state: profilePagePropsType
+    profile: ProfileType
+
 }
 type MapDispatchPropType = {
-    addPost: (newMessageBody: string) => void
+    addPost: (values: string, ava: string) => void
     addLike: (idUser: string) => void
 }
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType=> {
     return {
-        state: state.profile
+        state: state.profile,
+        profile: state.profile.profile,
     }
 }
 
 let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropType => {
     return {
-        addPost: (newPostText: string) => {
-            dispatch(addPostAC(newPostText))
+        addPost: (newPostText: string, ava: string) => {
+            dispatch(addPostAC(newPostText, ava))
         },
         addLike: (idUser: string) => {
             dispatch(addLike(idUser))

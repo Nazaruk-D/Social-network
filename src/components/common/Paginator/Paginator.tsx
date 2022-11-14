@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import s from "./Paginator.module.scss";
+import MainButton from "../MainButton/MainButton";
 
 type PaginatorPropsType = {
     totalItemsCount: any
@@ -32,7 +33,9 @@ const Paginator: React.FC<PaginatorPropsType> = ({
     return (
         <div className={s.paginatorBlock}>
             {portionNumber > 1 &&
-                <button onClick={() => setPortionNumber(portionNumber - 1)}> Previous </button>}
+                <MainButton onClick={() => setPortionNumber(portionNumber - 1)} nameButton={"previous"}/>
+                // <button onClick={() => setPortionNumber(portionNumber - 1)}> Previous </button>
+            }
             <div className={s.pages}>
                 {pages
                     .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
@@ -41,7 +44,9 @@ const Paginator: React.FC<PaginatorPropsType> = ({
                                              onClick={() => onPageChanged(p)}>{p}</span>)}
             </div>
             {portionCount > portionNumber &&
-                <button onClick={() => setPortionNumber(portionNumber + 1)}> Next </button>}
+                <MainButton onClick={() => setPortionNumber(portionNumber + 1)} nameButton={"next"}/>
+                // <button onClick={() => setPortionNumber(portionNumber + 1)}> Next </button>
+            }
         </div>
     );
 };

@@ -7,6 +7,7 @@ import {getRandomArrayElement} from "../../Users/getRandomArrayElement";
 import 'react-image-crop/src/ReactCrop.scss'
 import UploadPhoto from "../../common/UploadPhoto/UploadPhoto";
 import ZoomPhoto from "../../common/ZoomPhoto/ZoomPhoto";
+import MainButton from "../../common/MainButton/MainButton";
 
 
 type ProfileInfoType = {
@@ -104,7 +105,10 @@ const ProfileData: FC<ProfileBlockPropsType> = ({profile, isOwner, goToEditMode}
                 {/*return <Contact key={key} contactTitle={key} contactValue={profile!.contacts[key]} />*/}
                 {/*})}*/}
             </div>
-            {isOwner && <button onClick={goToEditMode} className={s.buttonEditProfile}>edit</button>}
+            {isOwner &&
+                // <button onClick={goToEditMode} className={s.buttonEditProfile}>edit</button>
+                <MainButton onClick={()=>goToEditMode!()} nameButton={"edit"}/>
+            }
         </div>
     )
 }

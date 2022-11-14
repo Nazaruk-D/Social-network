@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import s from "./AddMessageForm.module.scss";
-import Button from "../Button/Button";
+import BigButton from "../BigButton/BigButton";
+
 
 export type AddMessageFormType = {
     onSubmit: (values: string) => void
@@ -26,7 +27,7 @@ export const AddMessageForm: React.FC<AddMessageFormType> = (props) => {
             <textarea className={s.textField} placeholder={"Enter your message"} value={value}
                       onChange={setValueHandler}>
             </textarea>
-            <Button onClick={sendMessage}/>
+            <BigButton onClick={sendMessage}/>
         </div>
     )
 }

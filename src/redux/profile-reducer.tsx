@@ -103,7 +103,9 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
                 name: "",
                 message: action.newPostText,
                 likesCount: 0,
-                avatar: "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
+                // avatar: "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
+                avatar: action.ava
+
             }
             return {
                 ...state,
@@ -128,7 +130,7 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
 
 }
 
-export const addPostAC = (newPostText: string) => ({type: "ADD-POST", newPostText} as const)
+export const addPostAC = (newPostText: string, ava: string) => ({type: "ADD-POST", newPostText, ava} as const)
 export const addLike = (userId: string) => {
     debugger
     return ({type: "ADD-LIKE", userId} as const)

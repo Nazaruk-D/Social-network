@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import s from "./Users.module.scss";
-import {getUsersThunk, UsersType} from "../../redux/users-reducer";
+import {UsersType} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
 import Paginator from "../common/Paginator/Paginator";
 import {getRandomArrayElement} from "./getRandomArrayElement";
-import InputXXX from "./Input/Input";
+import SearchPerson from "./SearchPerson/SearchPerson";
+import MainButton from "../common/MainButton/MainButton";
 
 
 export type UsersPropsType = {
@@ -33,40 +34,22 @@ const Users: React.FC<UsersPropsType> = ({
                                              findPerson
                                          }) => {
 
-    // const [myFriend, setMyFriend] = useState<boolean>(true)
-    // const dispatch = useAppDispatch()
-
-    // const xxx = () => {
-    //     setMyFriend(true)
-    // }
-    //
-    // const yyy = () => {}
-    //
-    // useEffect(()=>{
-    //     dispatch(getUsersThunk(1, 10, "", myFriend))
-    // },[myFriend])
-
 
     return (
         <div className={s.usersContainer}>
             <div className={s.paginatorBlock}>
-                <InputXXX findPerson={findPerson}/>
+                <SearchPerson findPerson={findPerson}/>
                 <Paginator currentPage={currentPage} totalItemsCount={totalItemsCount} pageSize={pageSize}
                            onPageChanged={onPageChanged} portionSize={10}/>
-                <button onClick={() => {
-                    myFriend(true)
-                }}>My friends
-                </button>
-                <button onClick={() => {
-                    onPageChanged(3)
-                }}>All people
-                </button>
+                <div className={s.sortBlock}>
+                    <MainButton onClick={() => myFriend(true)} nameButton={"my friends"}/>
+                    <MainButton onClick={() => onPageChanged(1)} nameButton={"all people"}/>
+                </div>
             </div>
             <div className={s.usersBlock}>
                 {users.map((u: UsersType) =>
                     <div key={u.id} className={s.user}>
                         <NavLink to={'/profile/' + u.id} className={s.avatar}>
-                            {/*<img src={u.photos.small != null ? u.photos.small : userPhoto} className={s.avatarImg}/>*/}
                             <img src={u.photos.small != null ? u.photos.small : getRandomArrayElement()}
                                  className={s.avatarImg}/>
                         </NavLink>
@@ -79,12 +62,12 @@ const Users: React.FC<UsersPropsType> = ({
                         </div>
                         <div className={s.followButton}>
                             {u.followed
-                                ? <button disabled={followingInProgress.some(id => id === u.id)} onClick={() => {
+                                ? <MainButton onClick={() => {
                                     unfollow(u.id)
-                                }}>Unfollow</button>
-                                : <button disabled={followingInProgress.some(id => id === u.id)} onClick={() => {
+                                }} nameButton={"unfollow"} disable={followingInProgress.some(id => id === u.id)}/>
+                                : <MainButton onClick={() => {
                                     follow(u.id)
-                                }}>Follow</button>
+                                }} nameButton={"follow"} disable={followingInProgress.some(id => id === u.id)}/>
                             }
                         </div>
                     </div>)}

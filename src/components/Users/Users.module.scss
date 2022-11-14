@@ -7,6 +7,15 @@
 
 
   .paginatorBlock {
+    @include flex(row, space-between, center, wrap);
+    width: 95%;
+    height: 35px;
+    //background-color: red;
+
+    .sortBlock{
+      @include flex(row, space-between, center, wrap);
+      width: 190px;
+    }
   }
 
   .usersBlock {
@@ -24,7 +33,7 @@
       margin-top: 10px;
       margin-right: 5px;
       //background-color: black;
-      padding: 10px;
+      padding: 8px;
       @include flex(row, flex-start, center, wrap);
 
       .avatar {
@@ -51,7 +60,8 @@
 
       .followButton{
         @include flex(row, flex-start, flex-end, wrap);
-        margin-left: 10px;
+        margin-top: 8px;
+        margin-left: 15px;
         height: 65px;
       }
     }

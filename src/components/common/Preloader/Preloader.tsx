@@ -6,7 +6,10 @@ export const Preloader = () => {
     return (
         <div className={s.loading}>
             <div className={s.backgroundPreloader}>
+                <div className={s.vision2}></div>
                 <img src={gif} alt="loading..." className={s.crazySun}/>
+                <div className={s.vision}></div>
+
             </div>
         </div>
     );

@@ -1,17 +1,16 @@
 import React, {FC} from 'react';
-import button from '../../../assets/png/button.webp'
-// import img from '../../../assets/images/image.webp'
-import s from './MainButton.module.scss'
+import s from "./MainButton.module.scss"
 
-type CucumberPropsType = {
-    buttonName: string
+type ButtonPropsType = {
+    onClick: () => void
+    nameButton: string
+    disable?: boolean
 }
 
-export const MainButton: FC<CucumberPropsType> = ({buttonName}) => {
+const MainButton: FC<ButtonPropsType> = ({onClick, nameButton, disable}) => {
     return (
-        <div>
-            <span className={s.button}><div className={s.textButton}>{buttonName}</div></span>
-        </div>
+        <button className={s.button} onClick={onClick} disabled={disable}>{nameButton}</button>
     );
 };
 
+export default MainButton;
