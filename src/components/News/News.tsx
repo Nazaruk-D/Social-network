@@ -117,7 +117,7 @@ export const News = () => {
         const newArr: NewsType[] = []
 
         for (let i = arr.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1)); // случайный индекс от 0 до i
+            let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
             [arr[i], arr[j]] = [arr[j], arr[i]];
         }
         for (let i = 0; i < 3; i++) {
@@ -133,13 +133,14 @@ export const News = () => {
     return (
         <div className={s.newsContainer}>
             <div className={s.newsBlock}>
-                {viewNews.map((n: NewsType, index) => <PartNews key={index} title={n.title} photo={n.photo}
-                                                                text={n.text}
-                                                                author={n.author}/>)}
+                {viewNews.map((n: NewsType, index) => <PartNews key={index}
+                                                                        title={n.title}
+                                                                        photo={n.photo}
+                                                                        text={n.text}
+                                                                        author={n.author}/>)}
             </div>
             <div className={s.newsButtonBlock}>
                 <MainButton onClick={() => setViewNews(foo(news))} nameButton={"get random news"}/>
-                {/*<button onClick={() => setViewNews(foo(news))} className={s.newsButton}>get random news</button>*/}
             </div>
         </div>
     );

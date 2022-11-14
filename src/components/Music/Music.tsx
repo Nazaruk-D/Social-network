@@ -34,6 +34,8 @@ export const Music = () => {
     const [songs, setSongs] = useState(musicList)
     const [isPlaying, setIsPlaying] = useState(false)
     const [currentSong, setCurrentSong] = useState(musicList[0])
+    const [repeat, setRepeat] = useState(false)
+    const [random, setRandom] = useState(false)
     const audioElem: any = useRef()
 
     const onTimeUpdating = () => {
@@ -50,11 +52,14 @@ export const Music = () => {
         }
     }, [isPlaying])
 
+
+
     return (
         <div className={s.musicContainer}>
-            <audio src={currentSong.music} ref={audioElem} onTimeUpdate={onTimeUpdating}/>
+            <audio src={currentSong.music} ref={audioElem} onTimeUpdate={onTimeUpdating} autoPlay/>
             <Player songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
-                    audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong}/>
+                    audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} setRepeat={setRepeat} repeat={repeat}
+                    setRandom={setRandom} random={random}/>
         </div>
     );
 };

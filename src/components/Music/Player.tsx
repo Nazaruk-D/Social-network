@@ -23,6 +23,10 @@ type PlayerPropsType = {
     audioElem: any
     currentSong: songs
     setCurrentSong: (currentSong: songs) => void
+    setRepeat: (repeat: boolean) => void
+    repeat: boolean
+    setRandom: (random: boolean) => void
+    random: boolean
 }
 
 const Player: FC<PlayerPropsType> = ({
@@ -32,41 +36,54 @@ const Player: FC<PlayerPropsType> = ({
                                          setIsPlaying,
                                          audioElem,
                                          currentSong,
-                                         setCurrentSong
+                                         setCurrentSong,
+                                         setRepeat, repeat, setRandom, random
                                      }) => {
 
     const clickRef: any = useRef();
+    const [sec, setSec] = useState("0:00")
 
     //player action button
     const playPause = () => {
         setIsPlaying(!isPlaying)
     }
+
     const skipBack = () => {
+        debugger
         const index = songs.findIndex(x => x.name === currentSong.name)
-        if (index === 0) {
+        if (random) {
+            setCurrentSong(songs[randomSongIndex()])
+        } else if (index === 0) {
+            debugger
             setCurrentSong(songs[songs.length - 1])
         } else {
+            debugger
             setCurrentSong(songs[index - 1])
         }
         audioElem.current.currentTime = 0;
+        setIsPlaying(true)
     }
+
     const skipNext = () => {
         const index = songs.findIndex(x => x.name === currentSong.name)
-        if (index === songs.length - 1) {
+        if (random) {
+            setCurrentSong(songs[randomSongIndex()])
+        } else if (index === songs.length - 1) {
+            debugger
             setCurrentSong(songs[0])
         } else {
+            debugger
             setCurrentSong(songs[index + 1])
         }
         audioElem.current.currentTime = 0;
+        setIsPlaying(true)
     }
-    const [sec, setSec] = useState("0:00")
 
 
     //Progress bar length
     const checkWidth = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         let width = clickRef.current.clientWidth
         const offset = e.nativeEvent.offsetX
-
         const divProgress = offset / width * 100
         audioElem.current.currentTime = divProgress / 100 * currentSong.length
     }
@@ -75,20 +92,35 @@ const Player: FC<PlayerPropsType> = ({
         const index = songs.findIndex(x => x.name === currentSong.name)
         if (currentSong.progress === 100) {
             audioElem.current.currentTime = 0;
-            if (index === songs.length - 1) {
+            if (repeat) {
+                setCurrentSong(currentSong)
+            } else if (random) {
+                setCurrentSong(songs[randomSongIndex()])
+            } else if (index === songs.length - 1) {
                 debugger
                 setCurrentSong(songs[0])
-                setIsPlaying(true)
-                setIsPlaying(true)
-
             } else {
                 setCurrentSong(songs[index + 1])
-                setIsPlaying(true)
-                setIsPlaying(true)
-
             }
         }
     }, [currentSong.progress])
+
+
+//If necessary, loop the track, I could not find a simpler way out of the situation than the one that is written below.
+// All the rest didn't give the option to automatically turn on after the song ended.
+    useEffect(() => {
+        if (repeat && currentSong.progress === 100) {
+            setTimeout(() => {
+                setIsPlaying(!isPlaying)
+            }, 100)
+        }
+        if (repeat && currentSong.progress === 0) {
+            setTimeout(() => {
+                setIsPlaying(true)
+            }, 100)
+        }
+    }, [setCurrentSong, currentSong])
+
     useEffect(() => {
         const currentTime = Math.ceil(audioElem.current.currentTime)
         if (currentTime < 60) {
@@ -97,30 +129,50 @@ const Player: FC<PlayerPropsType> = ({
             } else {
                 setSec("0:" + currentTime)
             }
-        } else if (currentTime >= 60) {
-            if (currentTime < 10) {
-                setSec("1:0" + currentTime)
+        } else if (currentTime >= 60 && currentTime < 120) {
+            const oneMin = currentTime - 60
+            if (oneMin < 10) {
+                setSec("1:0" + oneMin)
             } else {
-                setSec("1:" + currentTime)
+                setSec("1:" + oneMin)
             }
-        } else if (currentTime >= 120) {
-            if (currentTime < 10) {
-                setSec("2:0" + currentTime)
+        } else if (currentTime >= 120 && currentTime < 180) {
+            const twoMin = currentTime - 120
+            if (twoMin < 10) {
+                setSec("2:0" + twoMin)
             } else {
-                setSec("2:" + currentTime)
+                setSec("2:" + twoMin)
             }
-        } else if (currentTime >= 180) {
-            if (currentTime < 10) {
-                setSec("3:0" + currentTime)
+        } else if (currentTime >= 180 && currentTime < 240) {
+            const threeMin = currentTime - 180
+            if (threeMin < 10) {
+                setSec("3:0" + threeMin)
             } else {
-                setSec("3:" + currentTime)
+                setSec("3:" + threeMin)
             }
         } else {
             setSec("0:00")
         }
     }, [currentSong.progress])
 
-    // console.log("test")
+
+    const repeatSong = () => {
+        setRepeat(!repeat)
+        setRandom(false)
+    }
+
+    const randomSong = () => {
+        setRandom(!random)
+        setRepeat(false)
+    }
+
+    const randomSongIndex = () => {
+        return Math.floor(Math.random() * (songs.length))
+    }
+
+    const isRepeat = repeat ? {color: "cyan"} : {}
+    const isRandom = random ? {color: "cyan"} : {}
+
     return (
         <div className={s.playerContainer}>
             <div className="container">
@@ -138,16 +190,14 @@ const Player: FC<PlayerPropsType> = ({
                              src={currentSong.img} alt=""/>
                     </div>
                     <div className="player">
-                        <i className="fa fa-repeat" onClick={() => {
-                        }}><TbRepeat/></i>
+                        <i className="fa fa-repeat" style={isRepeat} onClick={repeatSong}><TbRepeat/></i>
                         <i className="fa fa-fast-backward" onClick={skipBack}><AiOutlineBackward/></i>
                         {isPlaying
                             ? <i className="fa fa-play" onClick={playPause}><BsPauseFill/></i>
                             : <i className="fa fa-play" onClick={playPause}><BsFillPlayFill/></i>
                         }
                         <i className="fa fa-fast-forward" onClick={skipNext}><AiOutlineForward/></i>
-                        <i className="fa fa-random" onClick={() => {
-                        }}><FaRandom/></i></div>
+                        <i className="fa fa-random" style={isRandom} onClick={randomSong}><FaRandom/></i></div>
                 </main>
                 <footer className={s.footer}>
                     <div className="title">{currentSong.name}</div>
