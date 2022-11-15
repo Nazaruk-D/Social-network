@@ -2,8 +2,9 @@ import React from "react";
 import s from "./Profile.module.scss";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./Myposts/MyPostsContainer";
-import {ProfileType} from "../../redux/profile-reducer";
+import {ProfileType, updateProfileDataThunk} from "../../redux/profile-reducer";
 import {Preloader} from "../common/Preloader/Preloader";
+import {ProfileDataTypeServer} from "../../api/api";
 
 type ProfileTypeProps = {
     profile: ProfileType
@@ -11,6 +12,8 @@ type ProfileTypeProps = {
     updateStatus: (status: string) => void
     isOwner: boolean
     savePhoto: any
+    authId: string
+    updateProfileData: (data: ProfileDataTypeServer, userId: string) => void
     // photo: string | null
 }
 
@@ -26,6 +29,8 @@ export const Profile: React.FC<ProfileTypeProps> = (props) => {
                 updateStatus={props.updateStatus}
                 isOwner={props.isOwner}
                 savePhoto={props.savePhoto}
+                authId={props.authId}
+                updateProfileData={props.updateProfileData}
             />
             <MyPostsContainer/>
         </div>);

@@ -1,13 +1,14 @@
-import React, {FC, useState} from "react";
+import React, {useState} from "react";
 import s from "./ProfileInfo.module.scss";
 import {ProfileType} from "../../../redux/profile-reducer";
-import ProfileStatus from './ProfileStatus'
-import {ProfileDataForm} from "./ProfileDataForm";
+import ProfileStatus from './ProfileStatus/ProfileStatus'
+import {ProfileDataForm} from "./ProfileDataForm/ProfileDataForm";
 import {getRandomArrayElement} from "../../Users/getRandomArrayElement";
 import 'react-image-crop/src/ReactCrop.scss'
 import UploadPhoto from "../../common/UploadPhoto/UploadPhoto";
 import ZoomPhoto from "../../common/ZoomPhoto/ZoomPhoto";
-import MainButton from "../../common/MainButton/MainButton";
+import {ProfileDataTypeServer} from "../../../api/api";
+import {ProfileData} from "./ProfileData/ProfileData";
 
 
 type ProfileInfoType = {
@@ -16,6 +17,9 @@ type ProfileInfoType = {
     updateStatus: (status: string) => void
     isOwner: boolean
     savePhoto: (file: any) => void
+    authId: string
+    updateProfileData: (data: ProfileDataTypeServer, userId: string) => void
+
 }
 
 export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePhoto, ...props}) => {
@@ -25,7 +29,7 @@ export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePh
     const [zoomPhoto, setZoomPhoto] = useState(false)
 
     const avatar = profile?.photos.large !== null ? profile?.photos.large : getRandomArrayElement()
-
+    const authMeNumber = Number(props.authId)
     return (
         <div className={s.profileInfoContainer}>
             <div className={s.profileInfoBlock}>
@@ -47,8 +51,8 @@ export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePh
                             </div>
                             : <div className={s.photoBlock}>
                                 <div className={s.buttonBlock}>
-                                <button className={s.zoomPhotoButton} onClick={() => setZoomPhoto(true)}> Zoom photo
-                                </button>
+                                    <button className={s.zoomPhotoButton} onClick={() => setZoomPhoto(true)}> Zoom photo
+                                    </button>
                                 </div>
                             </div>
                         }
@@ -59,12 +63,15 @@ export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePh
                 <div className={s.profileBlock}>
                     <div className={s.profileStatus}>
                         <div>Status:</div>
-                        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                        {profile!.userId === authMeNumber
+                            ? <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                            : <span>{props.status}</span>
+                        }
                     </div>
-
                     {editMode
                         ? <div className={s.profileDataForm}>
-                            <ProfileDataForm profile={profile}/>
+                            <ProfileDataForm profile={profile} updateProfileData={props.updateProfileData}
+                                             setEditMode={() => setEditMode(false)}/>
                         </div>
                         : <div className={s.profileDataForm}>
                             <ProfileData goToEditMode={() => setEditMode(true)} profile={profile} isOwner={isOwner}/>
@@ -76,43 +83,3 @@ export const ProfileInfo: React.FC<ProfileInfoType> = ({profile, isOwner, savePh
     )
 }
 
-type ProfileBlockPropsType = {
-    profile: ProfileType
-    isOwner?: boolean
-    goToEditMode?: () => void
-}
-
-const ProfileData: FC<ProfileBlockPropsType> = ({profile, isOwner, goToEditMode}) => {
-
-    return (
-        <div>
-            <div>
-                <b>Full Name</b>: {profile!.fullName}
-            </div>
-            <div>
-                <b>Looking for a job</b>: {profile!.lookingForAJob ? "yes" : "no"}
-            </div>
-            {profile!.lookingForAJob &&
-                <div>
-                    <b>My professional skills</b>: {profile!.lookingForAJobDescription}
-                </div>
-            }
-            <div>
-                <b>About me</b>: {profile!.aboutMe}
-            </div>
-            <div>
-                {/*<b>Contacts</b>: {Object.keys(profile!.contacts).map((key) => {*/}
-                {/*return <Contact key={key} contactTitle={key} contactValue={profile!.contacts[key]} />*/}
-                {/*})}*/}
-            </div>
-            {isOwner &&
-                // <button onClick={goToEditMode} className={s.buttonEditProfile}>edit</button>
-                <MainButton onClick={()=>goToEditMode!()} nameButton={"edit"}/>
-            }
-        </div>
-    )
-}
-
-const Contact = (contactTitle: string, contactValue: string) => {
-    return <div><b>{contactTitle}</b>: {contactValue}</div>
-}

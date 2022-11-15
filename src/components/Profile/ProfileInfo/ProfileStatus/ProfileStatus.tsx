@@ -1,4 +1,5 @@
 import React from 'react';
+import {RiEdit2Line} from "react-icons/ri";
 
 type ProfileStatusType = {
     status: string
@@ -41,7 +42,9 @@ class ProfileStatus extends React.Component<ProfileStatusType> {
                 {!this.state.editMode &&
                     <div>
                         <span
-                            onDoubleClick={this.activateEditeMode}>{this.props.status ? this.props.status : "изменить статус"}</span>
+                            onDoubleClick={this.activateEditeMode}>{this.props.status ? this.props.status : "изменить статус"}
+                        </span>
+                        <RiEdit2Line style={{fontSize:20, marginLeft: 15, position: "absolute"}}/>
                     </div>
                 }
                 {this.state.editMode &&

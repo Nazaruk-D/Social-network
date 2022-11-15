@@ -1,11 +1,12 @@
 import {v1} from "uuid";
 import {Dispatch} from "redux";
-import {profileAPI} from "../api/api";
+import {profileAPI, ProfileDataTypeServer} from "../api/api";
 import BethAva from '../assets/png/BethAva.webp'
 import JerryAva from '../assets/png/JerryAva.webp'
 import SummerAva from '../assets/png/SummerAva.png'
 import MortyAva from '../assets/png/MortyAva.webp'
 import RickAva from '../assets/png/RickAva.webp'
+import {AppThunk} from "./redux-store";
 
 export type profilePagePropsType = {
     postData: postDataPropsType []
@@ -129,10 +130,18 @@ export const addLike = (userId: string) => {
 export const setUserProfile = (profile: ProfileType) => ({type: "SET-USER-PROFILE", profile} as const)
 export const setStatusProfile = (status: string) => ({type: "SET-STATUS", status} as const)
 export const savePhotoSuccess = (photo: {large: string, small: string}) => ({type: "SAVE-PHOTO", photo} as const)
+
 export const setUserProfileThunk = (userId: string) => (dispatch: Dispatch) => {
     profileAPI.getProfile(userId)
         .then(data => {
             dispatch(setUserProfile(data))
+        })
+}
+
+export const updateProfileDataThunk = (data: ProfileDataTypeServer, userId: string): AppThunk => (dispatch) => {
+    profileAPI.updateProfileData(data)
+        .then(data => {
+            dispatch(setUserProfileThunk(userId))
         })
 }
 
