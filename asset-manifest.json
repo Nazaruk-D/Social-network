@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/Samurai-way/static/css/main.efb21117.css",
-    "main.js": "/Samurai-way/static/js/main.9c63fdbf.js",
+    "main.js": "/Samurai-way/static/js/main.d225627b.js",
     "static/css/587.839b792d.chunk.css": "/Samurai-way/static/css/587.839b792d.chunk.css",
     "static/js/587.2628fee8.chunk.js": "/Samurai-way/static/js/587.2628fee8.chunk.js",
     "static/css/434.c4f40c9c.chunk.css": "/Samurai-way/static/css/434.c4f40c9c.chunk.css",
-    "static/js/434.33b75e78.chunk.js": "/Samurai-way/static/js/434.33b75e78.chunk.js",
+    "static/js/434.c549f94a.chunk.js": "/Samurai-way/static/js/434.c549f94a.chunk.js",
     "static/js/289.8654a159.chunk.js": "/Samurai-way/static/js/289.8654a159.chunk.js",
     "static/js/856.0215d9bd.chunk.js": "/Samurai-way/static/js/856.0215d9bd.chunk.js",
     "static/media/gif3.gif": "/Samurai-way/static/media/gif3.d86695657fc92277b64f.gif",
@@ -60,16 +60,16 @@
     "static/media/35.webp": "/Samurai-way/static/media/35.fab6f2fb3de0af922ae5.webp",
     "index.html": "/Samurai-way/index.html",
     "main.efb21117.css.map": "/Samurai-way/static/css/main.efb21117.css.map",
-    "main.9c63fdbf.js.map": "/Samurai-way/static/js/main.9c63fdbf.js.map",
+    "main.d225627b.js.map": "/Samurai-way/static/js/main.d225627b.js.map",
     "587.839b792d.chunk.css.map": "/Samurai-way/static/css/587.839b792d.chunk.css.map",
     "587.2628fee8.chunk.js.map": "/Samurai-way/static/js/587.2628fee8.chunk.js.map",
     "434.c4f40c9c.chunk.css.map": "/Samurai-way/static/css/434.c4f40c9c.chunk.css.map",
-    "434.33b75e78.chunk.js.map": "/Samurai-way/static/js/434.33b75e78.chunk.js.map",
+    "434.c549f94a.chunk.js.map": "/Samurai-way/static/js/434.c549f94a.chunk.js.map",
     "289.8654a159.chunk.js.map": "/Samurai-way/static/js/289.8654a159.chunk.js.map",
     "856.0215d9bd.chunk.js.map": "/Samurai-way/static/js/856.0215d9bd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.efb21117.css",
-    "static/js/main.9c63fdbf.js"
+    "static/js/main.d225627b.js"
   ]
 }
