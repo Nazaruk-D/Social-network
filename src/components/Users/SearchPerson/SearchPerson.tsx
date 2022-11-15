@@ -1,6 +1,5 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useState} from 'react';
 import useDebounce from "../useDebounce/useDebounce";
-import {useAppDispatch} from "../../../redux/redux-store";
 import s from "./SearchPerson.module.scss"
 import MainButton from "../../common/MainButton/MainButton";
 
@@ -12,7 +11,6 @@ type InputPropsType = {
 const SearchPerson: FC<InputPropsType> = ({findPerson}) => {
     const [value, setValue] = useState<string>("")
     const debouncedValue = useDebounce(value, 500)
-    const dispatch = useAppDispatch()
 
 
     // useEffect(() => {
@@ -49,7 +47,6 @@ const SearchPerson: FC<InputPropsType> = ({findPerson}) => {
     return (
         <div>
             <input type="text" onChange={onChangeHandler} onKeyDown={onKeyDownHandler} value={value} className={s.input}/>
-            {/*<button onClick={onClickHandler}>search</button>*/}
             <MainButton onClick={onClickHandler} nameButton={"search"}/>
         </div>
     );

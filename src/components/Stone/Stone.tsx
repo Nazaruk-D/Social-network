@@ -3,14 +3,17 @@ import stone from "../../assets/png/stone.png";
 import './Stone.css';
 import {GoPrimitiveDot} from "react-icons/go";
 
+
+
 const Stone = () => {
 
+    document.onmousemove = (event) => {
 
-    document.onmousemove =  (event) => {
-        let x = event.x - 290;
-        let y = event.y - 745;
-        // console.log("x " + x)
-        // console.log("y " + y)
+        let eyeCoordinatesX = document.querySelector('.outs1')!.getBoundingClientRect().x
+        let eyeCoordinatesY = document.querySelector('.outs1')!.getBoundingClientRect().y
+
+        let x = event.clientX - eyeCoordinatesX;
+        let y = event.clientY - eyeCoordinatesY;
 
         const arcctg = (x: number, y: number) => {
             if (x > 0 && y > 0) return Math.PI / 2 - Math.atan(x / y)
@@ -23,11 +26,10 @@ const Stone = () => {
         document.querySelector('.outs1').style.transform = 'rotate(' + 57.2958 * arcctg(x, y) + 'deg)'
         // @ts-ignore
         document.querySelector('.outs2').style.transform = 'rotate(' + 57.2958 * arcctg(x - 45, y) + 'deg)'
-
     }
 
     document.onclick = () => {
-        const color = '#' + (Math.random().toString(16) + '000000').substring(2,8).toUpperCase()
+        const color = '#' + (Math.random().toString(16) + '000000').substring(2, 8).toUpperCase()
         // @ts-ignore
         document.querySelector('.eye1').style.color = color
         // @ts-ignore
@@ -41,7 +43,7 @@ const Stone = () => {
                 <div className="eye1"><GoPrimitiveDot style={{fontSize: "12px"}}/></div>
             </div>
             <div className="outs2">
-                <div className="eye2"> <GoPrimitiveDot style={{fontSize: "12px"}}/> </div>
+                <div className="eye2"><GoPrimitiveDot style={{fontSize: "12px"}}/></div>
             </div>
         </div>
     );

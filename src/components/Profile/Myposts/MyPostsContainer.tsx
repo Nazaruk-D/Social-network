@@ -8,8 +8,8 @@ import {addLike, addPostAC, profilePagePropsType, ProfileType} from "../../../re
 type MapStatePropsType = {
     state: profilePagePropsType
     profile: ProfileType
-
 }
+
 type MapDispatchPropType = {
     addPost: (values: string, ava: string) => void
     addLike: (idUser: string) => void

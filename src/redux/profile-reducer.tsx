@@ -7,20 +7,11 @@ import SummerAva from '../assets/png/SummerAva.png'
 import MortyAva from '../assets/png/MortyAva.webp'
 import RickAva from '../assets/png/RickAva.webp'
 
-
 export type profilePagePropsType = {
     postData: postDataPropsType []
     profile: ProfileType
     status: string
 }
-
-export type ActionType =
-    ReturnType<typeof addPostAC>
-    | ReturnType<typeof setUserProfile>
-    | ReturnType<typeof setStatusProfile>
-    | ReturnType<typeof savePhotoSuccess>
-    | ReturnType<typeof addLike>
-
 
 export type postDataPropsType = {
     id: string
@@ -169,3 +160,12 @@ export const savePhoto = (file: any) => (dispatch: Dispatch) => {
             }
         })
 }
+
+
+export type ActionType =
+    ReturnType<typeof addPostAC>
+    | ReturnType<typeof setUserProfile>
+    | ReturnType<typeof setStatusProfile>
+    | ReturnType<typeof savePhotoSuccess>
+    | ReturnType<typeof addLike>
+

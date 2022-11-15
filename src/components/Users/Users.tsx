@@ -22,7 +22,7 @@ export type UsersPropsType = {
     myProfileId: string
 }
 
-const Users: React.FC<UsersPropsType> = ({
+const Users: React.FC<UsersPropsType> = React.memo ( ({
                                              users,
                                              currentPage,
                                              onPageChanged,
@@ -36,7 +36,7 @@ const Users: React.FC<UsersPropsType> = ({
                                              myProfileId
                                          }) => {
 
-
+    console.log("User")
     return (
         <div className={s.usersContainer}>
             <div className={s.paginatorBlock}>
@@ -79,6 +79,6 @@ const Users: React.FC<UsersPropsType> = ({
             </div>
         </div>
     );
-};
+});
 
 export default Users;

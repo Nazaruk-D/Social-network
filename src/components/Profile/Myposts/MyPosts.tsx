@@ -10,6 +10,7 @@ type MyPostPropType = {
     addPost: (values: string, ava: string) => void
     addLike: (idUser: string) => void
     profile: ProfileType
+
 }
 
 export const MyPosts: React.FC<MyPostPropType> = React.memo((props) => {
@@ -44,6 +45,8 @@ export const MyPosts: React.FC<MyPostPropType> = React.memo((props) => {
                                                                      buttonName={"Like"}
                                                                      addLike={props.addLike}
                                                                      p={p}
+                                                                     profile={props.profile}
+
     />
     </div>)
 
