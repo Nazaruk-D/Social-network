@@ -19,6 +19,7 @@ export type UsersPropsType = {
     followingInProgress: []
     myFriend: (userId: boolean) => void
     findPerson: (term: string) => void
+    myProfileId: string
 }
 
 const Users: React.FC<UsersPropsType> = ({
@@ -31,7 +32,8 @@ const Users: React.FC<UsersPropsType> = ({
                                              follow,
                                              unfollow,
                                              myFriend,
-                                             findPerson
+                                             findPerson,
+                                             myProfileId
                                          }) => {
 
 
@@ -60,17 +62,20 @@ const Users: React.FC<UsersPropsType> = ({
                                 <div>id: {u.id}</div>
                             </div>
                         </div>
-                        <div className={s.followButton}>
-                            {u.followed
-                                ? <MainButton onClick={() => {
-                                    unfollow(u.id)
-                                }} nameButton={"unfollow"} disable={followingInProgress.some(id => id === u.id)}/>
-                                : <MainButton onClick={() => {
-                                    follow(u.id)
-                                }} nameButton={"follow"} disable={followingInProgress.some(id => id === u.id)}/>
-                            }
-                        </div>
-                    </div>)}
+                        {u.id != myProfileId &&
+                            <div className={s.followButton}>
+                                {u.followed
+                                    ? <MainButton onClick={() => {
+                                        unfollow(u.id)
+                                    }} nameButton={"unfollow"} disable={followingInProgress.some(id => id === u.id)}/>
+                                    : <MainButton onClick={() => {
+                                        follow(u.id)
+                                    }} nameButton={"follow"} disable={followingInProgress.some(id => id === u.id)}/>
+                                }
+                            </div>
+                        }
+                    </div>
+                )}
             </div>
         </div>
     );
