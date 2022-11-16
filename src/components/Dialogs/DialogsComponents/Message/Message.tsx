@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import s from "./Message.module.scss"
 import {Message} from "../../../../redux/dialogs-reducer";
 import {useParams} from "react-router-dom";
@@ -13,14 +13,9 @@ type MessageProps = {
 export const Messages: React.FC<MessageProps> = (props) => {
     let {userId} = useParams<{ userId: string }>()
 
-    //удалить или пофиксить
-    const [visible, setVisible] = useState(true)
-
     const deleteMessage = (friendsId: string, messageId: string) => {
         props.deleteMessage(friendsId, messageId)
     }
-
-    const deleteButton = visible ? {opacity: "100%"} : {opacity: "0%"}
 
     return (
         <div className={s.messageContainer}>
@@ -32,7 +27,7 @@ export const Messages: React.FC<MessageProps> = (props) => {
                         <div>{m.message}</div>
                         <div className={s.data}>{m.dataMessage}</div>
                     </div>
-                    <div className={s.delete} onClick={() => deleteMessage(userId, m.idMessage)} style={ deleteButton}>
+                    <div className={s.delete} onClick={() => deleteMessage(userId, m.idMessage)}>
                         <MdDeleteForever style={{fontSize: "20px"}}/>
                     </div>
                 </div>
@@ -42,7 +37,7 @@ export const Messages: React.FC<MessageProps> = (props) => {
                         <div className={s.data}>{m.dataMessage}</div>
                     </div>
                 </div>
-            )}
+            ).reverse()}
         </div>
 
     )

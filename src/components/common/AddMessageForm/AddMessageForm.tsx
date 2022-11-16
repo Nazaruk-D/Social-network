@@ -18,14 +18,21 @@ export const AddMessageForm: React.FC<AddMessageFormType> = (props) => {
     const sendMessage = () => {
         if (value !== "") {
             props.onSubmit(value)
+            setValue("")
         }
-        setValue("")
+    }
+
+    const onKeyDownHandler = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === "Enter") {
+            props.onSubmit(value)
+            setValue("")
+        }
     }
 
     return (
         <div className={s.addMessageFormBlock}>
             <textarea className={s.textField} placeholder={"Enter your message"} value={value}
-                      onChange={setValueHandler}>
+                      onChange={setValueHandler} onKeyDown={onKeyDownHandler}>
             </textarea>
             <BigButton onClick={sendMessage}/>
         </div>

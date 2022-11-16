@@ -3,6 +3,8 @@
 
 .messageContainer {
   @include scrollBar();
+  display: flex;
+  flex-direction: column-reverse;
   overflow-y: auto;
   float:bottom;
   width: 98%;

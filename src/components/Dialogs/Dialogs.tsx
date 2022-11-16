@@ -47,9 +47,7 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
                 {dialogElements}
             </div>
             <div className={s.messages}>
-                <div>
                     {messages}
-                </div>
                 {userId && <AddMessageForm onSubmit={addNewMessage}/>}
             </div>
         </div>
