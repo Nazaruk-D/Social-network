@@ -1,0 +1,31 @@
+@import '../../../components/common/styles/scss/variables';
+@import '../../../components/common/styles/scss/mixins';
+
+
+.formControl.error input,
+.formControl.error textarea {
+    border: 2px solid red;
+}
+.formControl.error span {
+    color: red;
+}
+
+.error {
+    @include text(14px, 14px, 400);
+}
+
+.formError {
+    border: 1px solid red;
+    padding: 5px;
+    color: #c96a6a;
+    width: 85px;
+
+}
+
+input{
+    background-color: rgba(26, 26, 26, 0.9);
+    color: $textColor;
+    border-color: rgba(26, 26, 26, 0.9);
+    resize: none;
+    padding: 5px;
+}

@@ -20,6 +20,10 @@ const Login = (props: any) => {
         <div className={s.loginContainer}>
             <div className={s.loginBlock}>
                 <h1 className={s.login}>Login</h1>
+                <div><p className={s.description}>To log in get registered <a style={{textDecoration: "none"}} href="https://social-network.samuraijs.com/">here</a></p>
+                    <p className={s.description}>or use common test account credentials:</p>
+                    <p className={s.description}>Email: <b>free@samuraijs.com</b> </p>
+                    <p className={s.description}>Password: <b>free</b> </p></div>
                 <LoginReduxForm onSubmit={onSubmit}/>
             </div>
         </div>

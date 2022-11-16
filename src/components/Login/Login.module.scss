@@ -4,23 +4,33 @@
 
 .loginContainer {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 100px;
+  @include flex(column, flex-start, center, wrap);
+  margin-top: 80px;
+  margin-right: 180px;
 
 
   .loginBlock {
-    width: 300px;
-    height: 350px;
-    //background-color: white;
     @include flex(column, center, center, wrap);
+    width: 330px;
+    height: 450px;
+    background-color: $bgColorGray;
+    border-radius: 10px;
+    border: 1px solid $bgColor;
+    box-shadow: 0px 4px 52px 0px rgba(255, 255, 255, 0.4);
     //background-color: red;
 
     .login {
       @include text(55px, 55px, 600);
-      color: $textColor
+      color: $textColor;
+      margin-top: 0px;
+      margin-bottom: 30px;
+
+    }
+
+    .description{
+      @include text(14px, 14px, 400);
+      justify-content: left;
+      margin-top: 0px;
     }
   }
 }
