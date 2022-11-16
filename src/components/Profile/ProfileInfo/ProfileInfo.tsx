@@ -17,7 +17,7 @@ type ProfileInfoType = {
     updateStatus: (status: string) => void
     isOwner: boolean
     savePhoto: (file: any) => void
-    authId: string
+    authId: number | null
     updateProfileData: (data: ProfileDataTypeServer, userId: string) => void
 
 }

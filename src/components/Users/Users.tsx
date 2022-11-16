@@ -10,8 +10,8 @@ import MainButton from "../common/MainButton/MainButton";
 
 export type UsersPropsType = {
     users: UsersType[]
-    follow: (userId: string) => void
-    unfollow: (userId: string) => void
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
     totalItemsCount: any
     currentPage: number
     pageSize: number
@@ -19,7 +19,7 @@ export type UsersPropsType = {
     followingInProgress: []
     myFriend: (userId: boolean) => void
     findPerson: (term: string) => void
-    myProfileId: string
+    myProfileId: number
 }
 
 const Users: React.FC<UsersPropsType> = React.memo ( ({

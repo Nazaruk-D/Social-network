@@ -29,13 +29,13 @@ type MapStatePropsType = {
     currentPage: number
     isFetching: boolean
     followingInProgress: []
-    myProfileId: string
+    myProfileId: number | null
 }
 type MapDispatchPropType = {
-    follow: (userId: string) => void
-    unfollow: (userId: string) => void
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
     setCurrentPage: (page: any) => void
-    toggleIsFollowingProgress: (followingInProgress: boolean, userId: string) => void
+    toggleIsFollowingProgress: (followingInProgress: boolean, userId: number) => void
     getUsersThunk: (currentPage: number, pageSize: number, term?: string, friend?: boolean) => void
 }
 
@@ -79,7 +79,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                          followingInProgress={this.props.followingInProgress}
                          myFriend={this.myFriend}
                          findPerson={this.findPerson}
-                         myProfileId={this.props.myProfileId}
+                         myProfileId={this.props.myProfileId!}
 
                 />
             }

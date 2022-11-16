@@ -11,7 +11,7 @@ const FOLLOWING_IN_PROGRESS = "FOLLOWING_IN_PROGRESS"
 
 
 export type UsersType = {
-    id: string
+    id: number
     followed: boolean
     photos: {small: string}
     name: string

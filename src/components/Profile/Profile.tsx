@@ -12,7 +12,7 @@ type ProfileTypeProps = {
     updateStatus: (status: string) => void
     isOwner: boolean
     savePhoto: any
-    authId: string
+    authId: number | null
     updateProfileData: (data: ProfileDataTypeServer, userId: string) => void
 }
 

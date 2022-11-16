@@ -95,7 +95,6 @@ export const profileReducer = (state: profilePagePropsType = initialState, actio
                 name: "",
                 message: action.newPostText,
                 likesCount: 0,
-                // avatar: "https://sun9-55.userapi.com/impf/4OVa92OuK5A2PL1OkHkfDHRK41EaNgTpv860Tw/DVztYSAWFbA.jpg?size=512x512&quality=96&sign=2df645602452340721ae5fcaeffc49ae&type=album"
                 avatar: action.ava
 
             }
@@ -132,13 +131,16 @@ export const setStatusProfile = (status: string) => ({type: "SET-STATUS", status
 export const savePhotoSuccess = (photo: {large: string, small: string}) => ({type: "SAVE-PHOTO", photo} as const)
 
 export const setUserProfileThunk = (userId: string) => (dispatch: Dispatch) => {
+    debugger
     profileAPI.getProfile(userId)
         .then(data => {
             dispatch(setUserProfile(data))
+            console.log(data)
         })
 }
 
 export const updateProfileDataThunk = (data: ProfileDataTypeServer, userId: string): AppThunk => (dispatch) => {
+    debugger
     profileAPI.updateProfileData(data)
         .then(data => {
             dispatch(setUserProfileThunk(userId))

@@ -27,9 +27,9 @@ export const appReducer = (state: InitialStateType = initialState, action: actio
 export const initializedSuccess = () => ({type: "INITIALIZED-SUCCESS",} as const)
 
 export const initializeApp = ():AppThunk => (dispatch) => {
-    // let promise = Promise.resolve(dispatch(getAuthUserData()))
-    // promise.then(() => dispatch(initializedSuccess()))
-    let promise = dispatch(getAuthUserData())
+    let promise = Promise.resolve(dispatch(getAuthUserData()))
+    promise.then(() => dispatch(initializedSuccess()))
+    // let promise = dispatch(getAuthUserData())
     Promise.all([promise])
         .then(() => dispatch(initializedSuccess()))
 

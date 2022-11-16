@@ -17,37 +17,37 @@ import {ProfileDataTypeServer} from "../../api/api";
 
 
 type PathParamType = {
-    userId: string
+    userId: number | null
 }
 
 type MapStatePropsType = {
     profile: ProfileType
     status: string
-    authorizedUserId: string
+    authorizedUserId: number | null
     isAuth: boolean
-    authId: string
+    authId: number | null
 }
 type MapDispatchPropType = {
-    setUserProfileThunk: (userId: string) => void
-    getStatus: (userId: string) => void
+    setUserProfileThunk: (userId: number | null) => void
+    getStatus: (userId: number | null) => void
     updateStatus: (status: string) => void
     savePhoto: (file: any) => void
     updateProfileDataThunk: (data: ProfileDataTypeServer, userId: string) => void
 }
 
-type ProfileContainerPropsType = RouteComponentProps<PathParamType> & MapStatePropsType & MapDispatchPropType
+// type ProfileContainerPropsType = RouteComponentProps<PathParamType> & MapStatePropsType & MapDispatchPropType
+type ProfileContainerPropsType = RouteComponentProps<any> & MapStatePropsType & MapDispatchPropType
 
 class ProfileContainer extends React.Component<ProfileContainerPropsType> {
 
     refreshProfile() {
         let userId = this.props.match.params.userId
         if(!userId) {
-            // userId = "25415"
             userId = this.props.authorizedUserId
             if(!userId) {
                 this.props.history.push("/login")
             }
-        } // 25415
+        }
         this.props.setUserProfileThunk(userId)
         this.props.getStatus(userId)
     }
