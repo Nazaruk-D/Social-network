@@ -2,6 +2,7 @@ import React, {FC, useState} from 'react';
 import MainButton from "../../../common/MainButton/MainButton";
 import {ProfileType} from "../../../../redux/profile-reducer";
 import {ProfileDataTypeServer} from "../../../../api/api";
+import {FormInput} from "../../../common/FormInput/FormInput";
 
 type ProfileDataFormPropsType = {
     profile: ProfileType
@@ -60,11 +61,9 @@ export const ProfileDataForm: FC<ProfileDataFormPropsType> = ({profile, updatePr
     return (
         <form>
             <div>
-                {/*<b>Full Name</b>: {createField("Full name", "fullname", [], Input)}*/}
-                <b>Full Name</b>: <input type="text" value={profileData.fullName} onChange={inputFullName}/>
+                <b>Full Name</b>: <FormInput value={profileData.fullName} onChange={inputFullName}/>
             </div>
             <div>
-                {/*<b>Looking for a job</b>: {profile!.lookingForAJob ? "yes" : "no"}*/}
                 <b>Looking for a job</b>:
                 <label>
                     <input type="radio" name={"radio"} value={"true"} checked={profileData.lookingForAJob}
@@ -73,28 +72,21 @@ export const ProfileDataForm: FC<ProfileDataFormPropsType> = ({profile, updatePr
                            onChange={() => radioLookingForAJob(false)}/> no
                 </label>
             </div>
-            {/*{profile!.lookingForAJob &&*/}
             {profileData.lookingForAJob &&
                 <div>
-                    {/*<b>My professional skills</b>: {profile!.lookingForAJobDescription}*/}
-                    <b>My professional skills</b>: <input type="text" value={profileData.lookingForAJobDescription}
-                                                          onChange={inputDescription}/>
+                    <b>My professional skills</b>: <FormInput value={profileData.lookingForAJobDescription} onChange={inputDescription}/>
                 </div>
             }
             <div>
-                {/*<b>About me</b>: {profile!.aboutMe}*/}
-                <b>About me</b>: <input type="text" value={profileData.aboutMe} onChange={inputAboutMe}/>
+                <b>About me</b>: <FormInput value={profileData.aboutMe} onChange={inputAboutMe}/>
             </div>
             <div>
-                {/*<b>Contacts</b>: {Object.keys(profile!.contacts).map((key) => {*/}
-                {/*return <Contact key={key} contactTitle={key} contactValue={profile!.contacts[key]} />*/}
-                {/*})}*/}
+
             </div>
-            <div style={{display: "flex", justifyContent: "flex-end"}}>
+            <div style={{display: "flex", justifyContent: "flex-end", marginTop: 10}}>
                 <span><MainButton onClick={onCLickHandler} nameButton={"save"}/></span>
                 <span style={{marginLeft:"5px"}}><MainButton onClick={() => setEditMode()} nameButton={"close"}/></span>
             </div>
-
         </form>
     );
 };

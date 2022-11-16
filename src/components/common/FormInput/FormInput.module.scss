@@ -1,0 +1,16 @@
+@import '../../../components/common/styles/scss/variables';
+@import '../../../components/common/styles/scss/mixins';
+
+
+.input {
+  @include text(15px, 15px, 400);
+  @include scrollBar();
+  //width: 60%;
+  height: 6px;
+  background-color: rgba(26, 26, 26, 0.9);
+  color: $textColor;
+  border-color: rgba(26, 26, 26, 0.9);
+  resize: none;
+  padding: 10px;
+}
+

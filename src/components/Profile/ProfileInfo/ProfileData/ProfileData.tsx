@@ -33,7 +33,7 @@ export const ProfileData: FC<ProfileBlockPropsType> = ({profile, isOwner, goToEd
             </div>
             {isOwner &&
                 // <button onClick={goToEditMode} className={s.buttonEditProfile}>edit</button>
-                <div style={{display:"flex", justifyContent: "flex-end"}}><MainButton onClick={() => goToEditMode!()} nameButton={"edit"}/></div>
+                <div style={{display:"flex", justifyContent: "flex-end", marginTop: 11}}><MainButton onClick={() => goToEditMode!()} nameButton={"edit"}/></div>
             }
         </div>
     )
