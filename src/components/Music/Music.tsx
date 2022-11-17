@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
 import s from './Music.module.scss'
-import './m.scss'
 import Player from "./Player";
 
 
@@ -53,13 +52,12 @@ export const Music = () => {
     }, [isPlaying])
 
 
-
     return (
         <div className={s.musicContainer}>
             <audio src={currentSong.music} ref={audioElem} onTimeUpdate={onTimeUpdating} autoPlay/>
             <Player songs={songs} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
-                    audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} setRepeat={setRepeat} repeat={repeat}
-                    setRandom={setRandom} random={random}/>
+                    audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong}
+                    setRepeat={setRepeat} repeat={repeat} setRandom={setRandom} random={random}/>
         </div>
     );
 };
