@@ -9,10 +9,7 @@ import {AddMessageForm} from "../common/AddMessageForm/AddMessageForm";
 export type DialogTypeProps = {
     SendMessage: (values: string, userId: string) => void
     DeleteMessage: (friendsId: string, messageId: string) => void
-    updateNewMessageBody: (body: any) => void
     dialogs: InitialStateType
-    newMessageBody: string
-    isAuth: boolean
 }
 
 
@@ -37,8 +34,6 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
         ? <div key={index}><Messages messages={dialog.messages} deleteMessage={deleteMessage}/></div>
         : null
     )
-    // if (!props.isAuth) return <Redirect to={"/login"}/>
-
 
     return (
         <div className={s.dialogsContainer}>

@@ -20,9 +20,8 @@ export const Messages: React.FC<MessageProps> = (props) => {
     return (
         <div className={s.messageContainer}>
             {props.messages.map((m) => m.myPost
-                ? <div className={s.myMessageBlock} key={m.idMessage} >
+                ? <div className={s.myMessageBlock} key={m.idMessage}>
                     <div className={s.myMessage}
-                         // onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)}
                     >
                         <div>{m.message}</div>
                         <div className={s.data}>{m.dataMessage}</div>
@@ -39,7 +38,6 @@ export const Messages: React.FC<MessageProps> = (props) => {
                 </div>
             ).reverse()}
         </div>
-
     )
 }
 

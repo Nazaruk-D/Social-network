@@ -54,7 +54,6 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                     name={'rememberMe'}
                     component={Input}
                     validate={[required, maxLength20]}
-                    // style={{marginBottom: "10px"}}
                 />
 
             </div>
@@ -65,8 +64,6 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
             {props.error && <div className={s.formError}>
                 {props.error}
             </div>}
-
-
         </form>
     );
 };

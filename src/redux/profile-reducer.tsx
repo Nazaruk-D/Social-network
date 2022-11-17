@@ -134,8 +134,9 @@ export const setUserProfileThunk = (userId: string) => (dispatch: Dispatch) => {
     debugger
     profileAPI.getProfile(userId)
         .then(data => {
-            dispatch(setUserProfile(data))
+            debugger
             console.log(data)
+            dispatch(setUserProfile(data))
         })
 }
 
@@ -143,6 +144,9 @@ export const updateProfileDataThunk = (data: ProfileDataTypeServer, userId: stri
     debugger
     profileAPI.updateProfileData(data)
         .then(data => {
+            debugger
+            console.log(data)
+            console.log(userId)
             dispatch(setUserProfileThunk(userId))
         })
 }
@@ -150,6 +154,8 @@ export const updateProfileDataThunk = (data: ProfileDataTypeServer, userId: stri
 export const getStatus = (userId: string) => (dispatch: Dispatch) => {
     profileAPI.getStatus(userId)
         .then(response => {
+            debugger
+            console.log(response)
             dispatch(setStatusProfile(response.data))
         })
 }
@@ -157,6 +163,8 @@ export const getStatus = (userId: string) => (dispatch: Dispatch) => {
 export const updateStatus = (status: string) => (dispatch: Dispatch) => {
     profileAPI.updateStatus(status)
         .then(response => {
+            debugger
+            console.log(response)
             if (response.data.resultCode === 0) {
                 dispatch(setStatusProfile(status))
             }

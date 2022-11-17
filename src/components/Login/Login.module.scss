@@ -8,7 +8,6 @@
   margin-top: 80px;
   margin-right: 180px;
 
-
   .loginBlock {
     @include flex(column, center, center, wrap);
     width: 330px;
@@ -17,20 +16,18 @@
     border-radius: 10px;
     border: 1px solid $bgColor;
     box-shadow: 0px 4px 52px 0px rgba(255, 255, 255, 0.4);
-    //background-color: red;
 
     .login {
       @include text(55px, 55px, 600);
       color: $textColor;
-      margin-top: 0px;
+      margin-top: 0;
       margin-bottom: 30px;
-
     }
 
     .description{
       @include text(14px, 14px, 400);
       justify-content: left;
-      margin-top: 0px;
+      margin-top: 0;
     }
   }
 }

@@ -57,7 +57,7 @@ export const Music = () => {
     return (
         <div className={s.musicContainer}>
             <audio src={currentSong.music} ref={audioElem} onTimeUpdate={onTimeUpdating} autoPlay/>
-            <Player songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
+            <Player songs={songs} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
                     audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} setRepeat={setRepeat} repeat={repeat}
                     setRandom={setRandom} random={random}/>
         </div>

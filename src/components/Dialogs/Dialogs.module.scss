@@ -3,36 +3,35 @@
 
 
 .dialogsContainer {
-    @include flex(row, flex-start, flex-start, wrap);
-    height: 85%;
-    margin-top: 50px;
-    margin-left: 38px;
+  @include flex(row, flex-start, flex-start, wrap);
+  height: 85%;
+  margin-top: 50px;
+  margin-left: 38px;
 
-    .friendsList {
-        width: 300px;
-        height: 100%;
-        background-color: $textColorYellow;
-        text-decoration: none;
-        border-radius: 15px;
+  .friendsList {
+    width: 300px;
+    height: 100%;
+    background-color: $textColorYellow;
+    text-decoration: none;
+    border-radius: 15px;
 
-        .title{
-            @include text(18px, 18px, 600);
-            @include flex(row, center,center, wrap);
-            height: 60px;
-        }
+    .title {
+      @include text(18px, 18px, 600);
+      @include flex(row, center, center, wrap);
+      height: 60px;
     }
+  }
 
-    .messages {
-        padding-top: 30px;
-        padding-left: 40px;
-        box-sizing: border-box;
-        color: black;
-        width: 700px;
-        height: 100%;
-        background-color: $bgColorGray;
-        border-radius: 15px;
-
-    }
+  .messages {
+    padding-top: 30px;
+    padding-left: 40px;
+    box-sizing: border-box;
+    color: black;
+    width: 700px;
+    height: 100%;
+    background-color: $bgColorGray;
+    border-radius: 15px;
+  }
 }
 
 

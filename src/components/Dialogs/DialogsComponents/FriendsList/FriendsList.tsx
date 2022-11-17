@@ -8,12 +8,12 @@ type FriendsListProps = {
     ava: string
 }
 
-export const FriendsList: React.FC<FriendsListProps> = (props) => {
+export const FriendsList: React.FC<FriendsListProps> = ({name,ava,id}) => {
     return (
         <div className={s.friendBlock}>
-                <NavLink to={"/dialogs/" + props.id} className={s.friend}>
-                    <img src={props.ava} className={s.ava} alt=""/>
-                    <div className={s.nameTd}>{props.name}</div>
+                <NavLink to={"/dialogs/" + id} className={s.friend}>
+                    <img src={ava} className={s.ava} alt="avatar"/>
+                    <div className={s.nameTd}>{name}</div>
                 </NavLink>
         </div>
     )

@@ -7,17 +7,9 @@ import {AiOutlineForward} from "react-icons/ai";
 import {FaRandom} from "react-icons/fa";
 import {TbRepeat} from "react-icons/tb";
 
-type songs = {
-    img: string
-    name: string
-    music: string
-    progress?: number
-    length?: any
-}
 
 type PlayerPropsType = {
     songs: songs[]
-    setSongs: (songs: songs[]) => void
     isPlaying: boolean
     setIsPlaying: (isPlaying: boolean) => void
     audioElem: any
@@ -28,10 +20,16 @@ type PlayerPropsType = {
     setRandom: (random: boolean) => void
     random: boolean
 }
+type songs = {
+    img: string
+    name: string
+    music: string
+    progress?: number
+    length?: any
+}
 
 const Player: FC<PlayerPropsType> = ({
                                          songs,
-                                         setSongs,
                                          isPlaying,
                                          setIsPlaying,
                                          audioElem,
@@ -121,7 +119,12 @@ const Player: FC<PlayerPropsType> = ({
         }
     }, [setCurrentSong, currentSong])
 
+
+
+
     useEffect(() => {
+        // const currentTime = Math.ceil(audioElem.current.currentTime)
+        // foo(currentTime)
         const currentTime = Math.ceil(audioElem.current.currentTime)
         if (currentTime < 60) {
             if (currentTime < 10) {

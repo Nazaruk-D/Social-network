@@ -2,34 +2,35 @@
 @import '../../../../components/common/styles/scss/mixins';
 
 .friendBlock {
-    @include flex(column, flex-start, flex-start, wrap);
-    width: 100%;
-    padding-top: 10px;
-    .friend{
-        @include flex(row, flex-start, center, wrap);
-        width: 100%;
-        padding: 15px 30px;
-        text-decoration: none;
-        &:hover {
-            background-color: rgba(255,255,255, 0.2);
-        }
-        .ava {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+  @include flex(column, flex-start, flex-start, wrap);
+  width: 100%;
+  padding-top: 10px;
 
-        .nameTd {
-            @include text(18px, 18px, 500);
-            padding-left: 15px;
-            text-decoration: none;
-            color: #444;
-            cursor: pointer;
-            touch-action: manipulation;
-            outline: none;
-        }
+  .friend {
+    @include flex(row, flex-start, center, wrap);
+    width: 100%;
+    padding: 15px 30px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
     }
 
+    .ava {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
+    .nameTd {
+      @include text(18px, 18px, 500);
+      padding-left: 15px;
+      text-decoration: none;
+      color: #444;
+      cursor: pointer;
+      touch-action: manipulation;
+      outline: none;
+    }
+  }
 }

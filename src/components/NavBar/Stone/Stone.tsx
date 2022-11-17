@@ -1,5 +1,5 @@
 import React from 'react';
-import stone from "../../assets/png/stone.png";
+import stone from "../../../assets/png/stone.png";
 import './Stone.css';
 import {GoPrimitiveDot} from "react-icons/go";
 
@@ -22,18 +22,14 @@ const Stone = () => {
             if (x > 0 && y < 0) return 3 * Math.PI / 2 + Math.abs(Math.atan(x / y))
         }
 
-        // @ts-ignore
-        document.querySelector('.outs1').style.transform = 'rotate(' + 57.2958 * arcctg(x, y) + 'deg)'
-        // @ts-ignore
-        document.querySelector('.outs2').style.transform = 'rotate(' + 57.2958 * arcctg(x - 45, y) + 'deg)'
+        document.querySelector<HTMLElement>('.outs1')!.style.transform = 'rotate(' + 57.2958 * arcctg(x, y)! + 'deg)'
+        document.querySelector<HTMLElement>('.outs2')!.style.transform = 'rotate(' + 57.2958 * arcctg(x - 45, y)! + 'deg)'
     }
 
     document.onclick = () => {
         const color = '#' + (Math.random().toString(16) + '000000').substring(2, 8).toUpperCase()
-        // @ts-ignore
-        document.querySelector('.eye1').style.color = color
-        // @ts-ignore
-        document.querySelector('.eye2').style.color = color
+        document.querySelector<HTMLElement>('.eye1')!.style.color = color
+        document.querySelector<HTMLElement>('.eye2')!.style.color = color
     }
 
     return (

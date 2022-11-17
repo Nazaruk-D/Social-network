@@ -2,14 +2,10 @@
 @import '../../common/styles/scss/mixins';
 
 .loginFormContainer {
-  //background-color: red;
   @include flex(column, flex-start, space-evenly, wrap);
   width: 250px;
-  //height: 190px;
 
-  .email {
-
-  }
+  .email {}
 
   .password {
     position: relative;
@@ -28,7 +24,6 @@
     color: $textColor;
     @include text(18px, 18px, 400);
     margin: 10px 0;
-
 
     .rememberMeText {
       @include text(16px, 16px, 400);
