@@ -1,33 +1,6 @@
 .nav {
-        margin-top: 10px;
-        cursor: pointer;
-        /*background-color: blue;*/
-}
-
-.item a {
-        /*display: inline-block;*/
-        /*padding: 0 20px;*/
-        /*margin: 0 0 5px 0;*/
-        /*outline: none;*/
-        /*line-height: 36px;*/
-        /*font-size: 12px;*/
-        /*text-align: center;*/
-        /*width: 95%;*/
-        /*!*width: 90px;*!*/
-        /*font-weight: 600;*/
-        /*text-decoration: none;*/
-        /*color: #444;*/
-        /*background-color: #fff;*/
-        /*box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);*/
-        /*cursor: pointer;*/
-        /*user-select: none;*/
-        /*appearance: none;*/
-        /*touch-action: manipulation;*/
-        /*vertical-align: top;*/
-        /*transition: box-shadow 0.2s;*/
-        /*border-radius: 5px;*/
-        /*margin-top: 10px;*/
-        /*box-sizing: border-box;*/
+    margin-top: 10px;
+    cursor: pointer;
 
 }
 
@@ -36,5 +9,5 @@
 }
 
 .friends {
-        margin-top: 100px;
+    margin-top: 100px;
 }

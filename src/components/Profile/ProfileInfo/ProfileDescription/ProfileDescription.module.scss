@@ -1,0 +1,21 @@
+@import '../../../common/styles/scss/variables';
+@import '../../../common/styles/scss/mixins';
+
+
+.profileBlock {
+  margin-left: 50px;
+
+  .profileStatus {
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    @include text(22x, 22px, 400);
+  }
+
+  .profileDataForm {
+    @include text(18x, 32px, 400);
+    width: 300px;
+    margin-top: 20px;
+    font-size: 15px;
+  }
+}

@@ -113,7 +113,7 @@ export const News = () => {
 
     const [viewNews, setViewNews] = useState<NewsType[]>([])
 
-    const foo = (arr: NewsType[]) => {
+    const randomNews = (arr: NewsType[]) => {
         const newArr: NewsType[] = []
 
         for (let i = arr.length - 1; i > 0; i--) {
@@ -127,20 +127,20 @@ export const News = () => {
     }
 
     useEffect(() => {
-        setViewNews(foo(news))
+        setViewNews(randomNews(news))
     }, [])
 
     return (
         <div className={s.newsContainer}>
             <div className={s.newsBlock}>
                 {viewNews.map((n: NewsType, index) => <PartNews key={index}
-                                                                        title={n.title}
-                                                                        photo={n.photo}
-                                                                        text={n.text}
-                                                                        author={n.author}/>)}
+                                                                title={n.title}
+                                                                photo={n.photo}
+                                                                text={n.text}
+                                                                author={n.author}/>)}
             </div>
             <div className={s.newsButtonBlock}>
-                <MainButton onClick={() => setViewNews(foo(news))} nameButton={"get random news"}/>
+                <MainButton onClick={() => setViewNews(randomNews(news))} nameButton={"get random news"}/>
             </div>
         </div>
     );

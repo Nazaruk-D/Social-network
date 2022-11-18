@@ -4,7 +4,6 @@
     justify-content: center;
     position: relative;
     opacity: 100%;
-
 }
 
 .stone {
@@ -25,12 +24,10 @@
     left: 6px;
     top: -3px;
 }
+
 .eye1:after {
-     position: absolute;
-     /*content: "\2022";*/
-     /*right: 0;*/
-     /*top: -5px;*/
- }
+    position: absolute;
+}
 
 
 .outs2 {
@@ -44,15 +41,11 @@
 
 .eye2 {
     position: absolute;
-    /*top: -15px;*/
     left: 6px;
     top: -3px;
 }
-.eye2:after {
-     position: absolute;
-     /*content: "\2022";*/
-     /*right: 0;*/
-     /*top: -15px;*/
 
- }
+.eye2:after {
+    position: absolute;
+}
 

@@ -1,0 +1,70 @@
+@import '../../../common/styles/scss/variables';
+@import '../../../common/styles/scss/mixins';
+
+.avatarBlock {
+  @include flex(column, center, center, wrap);
+  width: 100%;
+  margin-top: 15px;
+
+  .mainAvatar {
+    position: relative;
+
+    .avatar {
+      width: 200px;
+      margin: 20px 0;
+      background-color: #bcbcca;
+      border-radius: 61% 39% 27% 73% / 31% 30% 70% 69%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    }
+
+    .photoBlock {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 3px;
+      right: 0;
+      color: #fff;
+      background: rgba(159, 156, 151, 0.8);
+      text-align: center;
+      transition: opacity .25s ease-in-out;
+      opacity: 0;
+      overflow: hidden;
+      width: 200px;
+      margin: 20px 0;
+      border-radius: 61% 39% 27% 73% / 31% 30% 70% 69%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      z-index: 6;
+
+      &:hover {
+        opacity: 111;
+      }
+
+      .buttonBlock {
+        margin-top: 45px;
+        margin-left: 15px;
+        height: 110px;
+        @include flex(column, center, center, wrap);
+
+        .updatePhotoButton {
+          width: 120px;
+          padding: 10px;
+          border: 1px solid rgba(170, 170, 202, 0.87);
+          border-radius: 10px;
+          cursor: pointer;
+          color: $textColorYellow;
+        }
+
+        .zoomPhotoButton {
+          width: 120px;
+          padding: 10px;
+          margin: 10px;
+          border: 1px solid rgba(170, 170, 202, 0.87);
+          border-radius: 10px;
+          cursor: pointer;
+          color: $textColorYellow;
+        }
+      }
+    }
+  }
+}

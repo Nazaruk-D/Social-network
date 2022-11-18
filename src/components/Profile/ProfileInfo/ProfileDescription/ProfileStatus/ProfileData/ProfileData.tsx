@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import {ProfileType} from "../../../../redux/profile-reducer";
-import MainButton from "../../../common/MainButton/MainButton";
+import {ProfileType} from "../../../../../../redux/profile-reducer";
+import MainButton from "../../../../../common/MainButton/MainButton";
 
 type ProfileBlockPropsType = {
     profile: ProfileType
