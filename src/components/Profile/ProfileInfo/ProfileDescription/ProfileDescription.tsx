@@ -1,8 +1,8 @@
 import React, {FC, useState} from 'react';
 import s from "./ProfileDescription.module.scss";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
-import {ProfileDataForm} from "./ProfileStatus/ProfileDataForm/ProfileDataForm";
-import {ProfileData} from "./ProfileStatus/ProfileData/ProfileData";
+import {ProfileDataForm} from "./ProfileDataForm/ProfileDataForm";
+import {ProfileData} from "./ProfileData/ProfileData";
 import {ProfileType} from "../../../../redux/profile-reducer";
 import {ProfileDataTypeServer} from "../../../../api/api";
 

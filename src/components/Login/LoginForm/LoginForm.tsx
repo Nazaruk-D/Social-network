@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {Input} from "../../common/FormsControl/FormsControl";
+import {Input} from "../../../common/FormsControl/FormsControl";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import s from "./LoginForm.module.scss"
-import MainButton from "../../common/MainButton/MainButton";
+import MainButton from "../../../common/MainButton/MainButton";
 import {BsFillEyeFill, BsFillEyeSlashFill} from "react-icons/bs";
 
 type FormDataType = {

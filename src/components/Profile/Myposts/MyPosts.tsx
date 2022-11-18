@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import s from "./MyPosts.module.scss";
 import {Post} from "./Posts/Post";
 import {profilePagePropsType, ProfileType} from "../../../redux/profile-reducer";
-import {AddMessageForm} from "../../common/AddMessageForm/AddMessageForm";
+import {AddMessageForm} from "../../../common/AddMessageForm/AddMessageForm";
 
 
 type MyPostPropType = {

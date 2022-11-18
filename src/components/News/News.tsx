@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s from './News.module.scss'
 import PartNews from "./PartNews/PartNews";
-import MainButton from "../common/MainButton/MainButton";
+import MainButton from "../../common/MainButton/MainButton";
 
 
 export const News = () => {

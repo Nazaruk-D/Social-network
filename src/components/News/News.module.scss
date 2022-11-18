@@ -1,5 +1,5 @@
-@import '../common/styles/scss/variables';
-@import '../common/styles/scss/mixins';
+@import '../../common/styles/scss/variables';
+@import '../../common/styles/scss/mixins';
 
 .newsContainer {
   @include flex(column, center, flex-start, wrap);

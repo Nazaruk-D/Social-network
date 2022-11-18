@@ -4,7 +4,7 @@ import {DialogsDataType, InitialStateType} from "../../redux/dialogs-reducer";
 import {useParams} from "react-router-dom";
 import {Messages} from "./DialogsComponents/Message/Message";
 import {FriendsList} from "./DialogsComponents/FriendsList/FriendsList";
-import {AddMessageForm} from "../common/AddMessageForm/AddMessageForm";
+import {AddMessageForm} from "../../common/AddMessageForm/AddMessageForm";
 
 export type DialogTypeProps = {
     SendMessage: (values: string, userId: string) => void

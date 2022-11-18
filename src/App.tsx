@@ -6,7 +6,7 @@ import {compose} from "redux";
 import {AppStateType} from "./redux/redux-store";
 import {initializeApp} from "./redux/app-reducer";
 import s from './App.module.scss'
-import {Preloader} from "./components/common/Preloader/Preloader";
+import {Preloader} from "./common/Preloader/Preloader";
 import RoutesApp from "./components/RoutesApp/RoutesApp";
 import NavBar from "./components/NavBar/NavBar";
 

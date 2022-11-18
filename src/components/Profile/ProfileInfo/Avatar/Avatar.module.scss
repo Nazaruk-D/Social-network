@@ -1,5 +1,5 @@
-@import '../../../common/styles/scss/variables';
-@import '../../../common/styles/scss/mixins';
+@import '../../../../common/styles/scss/variables';
+@import '../../../../common/styles/scss/mixins';
 
 .avatarBlock {
   @include flex(column, center, center, wrap);

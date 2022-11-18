@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Nav.module.css";
 import {NavLink} from "react-router-dom";
-import {MenuButton} from "../../common/MenuButton/MenuButton";
+import {MenuButton} from "../../../common/MenuButton/MenuButton";
 import {routes} from "./routes";
 
 

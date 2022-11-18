@@ -2,10 +2,10 @@ import React from 'react';
 import s from "./Users.module.scss";
 import {UsersType} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
-import Paginator from "../common/Paginator/Paginator";
+import Paginator from "../../common/Paginator/Paginator";
 import {getRandomArrayElement} from "./getRandomArrayElement";
 import SearchPerson from "./SearchPerson/SearchPerson";
-import MainButton from "../common/MainButton/MainButton";
+import MainButton from "../../common/MainButton/MainButton";
 
 
 export type UsersPropsType = {

@@ -18,7 +18,7 @@ import {
     getTotalUsersCount,
     getUsers
 } from "../../redux/selectors/user-selectors";
-import {Preloader} from "../common/Preloader/Preloader";
+import {Preloader} from "../../common/Preloader/Preloader";
 import Users from "./Users";
 
 

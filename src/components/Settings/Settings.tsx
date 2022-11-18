@@ -8,7 +8,6 @@ import portalGunOn from '../../assets/png/portalGunOn.png'
 export const Settings = () => {
 
     const [switchGun, setSwitchGun] = useState(false)
-
     const turnOnPortal = switchGun ? s.portalOn : s.portalGif
 
     return (

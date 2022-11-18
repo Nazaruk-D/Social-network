@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "./RoutesApp.module.scss";
-import {Preloader} from "../common/Preloader/Preloader";
+import {Preloader} from "../../common/Preloader/Preloader";
 import UsersContainer from "../Users/UsersContainer";
 import {News} from "../News/News";
 import {Music} from "../Music/Music";
