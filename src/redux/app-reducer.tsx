@@ -1,4 +1,4 @@
-import {AppThunk} from "./redux-store";
+import {AppThunk} from "./store";
 import {getAuthUserData} from "./auth-reducer";
 
 export type InitialStateType = {

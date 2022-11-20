@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {AppStateType} from "../../redux/redux-store";
+import {AppStateType} from "../../redux/store";
 import {deleteMessage, InitialStateType, sendMessageCreator} from "../../redux/dialogs-reducer";
 import {compose, Dispatch} from "redux";
 import {Dialogs} from "./Dialogs";

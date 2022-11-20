@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
-import {AppStateType} from "../../redux/redux-store";
+import {AppStateType} from "../../redux/store";
 import {LoginReduxForm} from "./LoginForm/LoginForm";
 import s from './Login.module.scss'
 import {routes} from "../NavBar/Nav/routes";

@@ -6,7 +6,7 @@ import JerryAva from '../assets/png/JerryAva.webp'
 import SummerAva from '../assets/png/SummerAva.png'
 import MortyAva from '../assets/png/MortyAva.webp'
 import RickAva from '../assets/png/RickAva.webp'
-import {AppThunk} from "./redux-store";
+import {AppThunk} from "./store";
 
 
 let initialState = {

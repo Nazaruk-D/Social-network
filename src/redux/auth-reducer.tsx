@@ -1,5 +1,5 @@
 import {authAPI} from "../api/api";
-import {AppThunk} from "./redux-store";
+import {AppThunk} from "./store";
 import {stopSubmit} from "redux-form";
 import {Dispatch} from "redux";
 
