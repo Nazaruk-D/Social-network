@@ -1,24 +1,6 @@
 import {v1} from "uuid";
 import {formatDate} from "../utils/formatDate/formatDate";
 
-export type Message = {
-    idMessage: string
-    message: string
-    dataMessage: string
-    myPost: boolean
-}
-
-export type DialogsDataType = {
-    id: string
-    name: string
-    messages: Message[]
-    ava: string
-}
-
-
-export type InitialStateType = DialogsDataType[]
-
-type ActionTypes = ReturnType<typeof sendMessageCreator> | ReturnType<typeof deleteMessage>
 
 export let initialState: InitialStateType = [
     {
@@ -69,13 +51,11 @@ export let initialState: InitialStateType = [
 
 
 export const dialogsReducer = (state: InitialStateType = initialState, action: ActionTypes): InitialStateType => {
-
     switch (action.type) {
-        case "SEND-MESSAGE":
+        case "DIALOGS/SEND-MESSAGE":
             let newMessage = {idMessage: v1(), message: action.newMessageBody, dataMessage: formatDate(new Date()), myPost: true}
             return state.map( u => u.id === action.userId ? {...u, messages: [...u.messages, newMessage]} : u)
-        case "DELETE-MESSAGE": {
-            debugger
+        case "DIALOGS/DELETE-MESSAGE": {
             return state.map( u => u.id === action.friendsId ? {...u, messages: u.messages.filter(m => m.idMessage !== action.messageId)} : u)
         }
         default:
@@ -84,14 +64,36 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: A
 }
 
 
-
+//Actions
 export const sendMessageCreator = (newMessageBody: string, userId: string) => ({
-    type: "SEND-MESSAGE",
+    type: "DIALOGS/SEND-MESSAGE",
     newMessageBody,
     userId
 } as const)
+
 export const deleteMessage = (friendsId: string, messageId: string) => ({
-    type: "DELETE-MESSAGE",
+    type: "DIALOGS/DELETE-MESSAGE",
     friendsId,
     messageId
 } as const)
+
+
+//Types
+export type Message = {
+    idMessage: string
+    message: string
+    dataMessage: string
+    myPost: boolean
+}
+
+export type DialogsDataType = {
+    id: string
+    name: string
+    messages: Message[]
+    ava: string
+}
+
+
+export type InitialStateType = DialogsDataType[]
+
+type ActionTypes = ReturnType<typeof sendMessageCreator> | ReturnType<typeof deleteMessage>

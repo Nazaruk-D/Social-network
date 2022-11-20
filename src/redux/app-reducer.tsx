@@ -1,7 +1,5 @@
-import {authAPI} from "../api/api";
 import {AppThunk} from "./redux-store";
-import {stopSubmit} from "redux-form";
-import {getAuthUserData, setAuthUserData} from "./auth-reducer";
+import {getAuthUserData} from "./auth-reducer";
 
 export type InitialStateType = {
     initialized: boolean

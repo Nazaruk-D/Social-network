@@ -8,42 +8,6 @@ import MortyAva from '../assets/png/MortyAva.webp'
 import RickAva from '../assets/png/RickAva.webp'
 import {AppThunk} from "./redux-store";
 
-export type profilePagePropsType = {
-    postData: postDataPropsType []
-    profile: ProfileType
-    status: string
-}
-
-export type postDataPropsType = {
-    id: string
-    name: string
-    message: string
-    likesCount: number
-    avatar: string
-}
-
-export type ProfileType = {
-    "aboutMe": string,
-    "contacts": {
-        "facebook": string,
-        "website": string,
-        "vk": string,
-        "twitter": string,
-        "instagram": string,
-        "youtube": string ,
-        "github": string,
-        "mainLink": string
-    },
-    "lookingForAJob": boolean,
-    "lookingForAJobDescription": string,
-    "fullName": string,
-    "userId": number,
-    "photos": {
-        "small": string,
-        "large": string
-    }
-} | null
-
 
 let initialState = {
     postData: [
@@ -89,97 +53,144 @@ let initialState = {
 
 export const profileReducer = (state: profilePagePropsType = initialState, action: ActionType): profilePagePropsType => {
     switch (action.type) {
-        case "ADD-POST":
+        case "PROFILE/ADD-POST":
             let newPost: postDataPropsType = {
                 id: v1(),
                 name: "",
                 message: action.newPostText,
                 likesCount: 0,
                 avatar: action.ava
-
             }
             return {
                 ...state,
                 postData: [newPost, ...state.postData]
             }
-        case "SET-USER-PROFILE":
+        case "PROFILE/SET-USER-PROFILE":
             return {...state, profile: action.profile}
-        case "SET-STATUS":
+        case "PROFILE/SET-STATUS":
             return {...state, status: action.status}
-        case "ADD-LIKE":
+        case "PROFILE/ADD-LIKE":
             debugger
-            if(action.userId === "RickCheater") {
-                return {...state, postData: state.postData.map( p => p.id === action.userId ? {...p, likesCount: p.likesCount + Math.ceil(Math.random() * 100) } : p)}
+            if (action.userId === "RickCheater") {
+                return {
+                    ...state,
+                    postData: state.postData.map(p => p.id === action.userId ? {
+                        ...p,
+                        likesCount: p.likesCount + Math.ceil(Math.random() * 100)
+                    } : p)
+                }
             } else {
-                return {...state, postData: state.postData.map( p => p.id === action.userId ? {...p, likesCount: p.likesCount + 1} : p)}
+                return {
+                    ...state,
+                    postData: state.postData.map(p => p.id === action.userId ? {...p, likesCount: p.likesCount + 1} : p)
+                }
             }
-        case "SAVE-PHOTO":
+        case "PROFILE/SAVE-PHOTO":
             return {...state, profile: {...state.profile!, photos: action.photo}}
         default:
             return state;
     }
+}
+
+//Actions
+export const addPostAC = (newPostText: string, ava: string) => ({type: "PROFILE/ADD-POST", newPostText, ava} as const)
+export const addLike = (userId: string) => ({type: "PROFILE/ADD-LIKE", userId} as const)
+export const setUserProfile = (profile: ProfileType) => ({type: "PROFILE/SET-USER-PROFILE", profile} as const)
+export const setStatusProfile = (status: string) => ({type: "PROFILE/SET-STATUS", status} as const)
+export const savePhotoSuccess = (photo: { large: string, small: string }) => ({type: "PROFILE/SAVE-PHOTO", photo} as const)
+
+
+//Thunks
+export const setUserProfileThunk = (userId: string) => async (dispatch: Dispatch) => {
+    try {
+        const response = await profileAPI.getProfile(userId)
+        dispatch(setUserProfile(response))
+    } catch (err) {
+        console.log(err)
+    }
 
 }
 
-export const addPostAC = (newPostText: string, ava: string) => ({type: "ADD-POST", newPostText, ava} as const)
-export const addLike = (userId: string) => {
-    debugger
-    return ({type: "ADD-LIKE", userId} as const)
-}
-export const setUserProfile = (profile: ProfileType) => ({type: "SET-USER-PROFILE", profile} as const)
-export const setStatusProfile = (status: string) => ({type: "SET-STATUS", status} as const)
-export const savePhotoSuccess = (photo: {large: string, small: string}) => ({type: "SAVE-PHOTO", photo} as const)
-
-export const setUserProfileThunk = (userId: string) => (dispatch: Dispatch) => {
-    debugger
-    profileAPI.getProfile(userId)
-        .then(data => {
-            debugger
-            console.log(data)
-            dispatch(setUserProfile(data))
-        })
+export const updateProfileDataThunk = (data: ProfileDataTypeServer, userId: string): AppThunk => async (dispatch) => {
+    try {
+        await profileAPI.updateProfileData(data)
+        await dispatch(setUserProfileThunk(userId))
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-export const updateProfileDataThunk = (data: ProfileDataTypeServer, userId: string): AppThunk => (dispatch) => {
-    debugger
-    profileAPI.updateProfileData(data)
-        .then(data => {
-            debugger
-            console.log(data)
-            console.log(userId)
-            dispatch(setUserProfileThunk(userId))
-        })
+export const getStatus = (userId: string) => async (dispatch: Dispatch) => {
+    try {
+        const response = await profileAPI.getStatus(userId)
+        dispatch(setStatusProfile(response.data))
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-export const getStatus = (userId: string) => (dispatch: Dispatch) => {
-    profileAPI.getStatus(userId)
-        .then(response => {
-            debugger
-            console.log(response)
-            dispatch(setStatusProfile(response.data))
-        })
+export const updateStatus = (status: string) => async (dispatch: Dispatch) => {
+    try {
+        const response = await profileAPI.updateStatus(status)
+        if (response.data.resultCode === 0) {
+            dispatch(setStatusProfile(status))
+        }
+    } catch (err) {
+        console.log(err)
+    }
+
 }
 
-export const updateStatus = (status: string) => (dispatch: Dispatch) => {
-    profileAPI.updateStatus(status)
-        .then(response => {
-            debugger
-            console.log(response)
-            if (response.data.resultCode === 0) {
-                dispatch(setStatusProfile(status))
-            }
-        })
+export const savePhoto = (file: any) => async (dispatch: Dispatch) => {
+    try {
+        const response = await profileAPI.savePhoto(file)
+        if (response.data.resultCode === 0) {
+            dispatch(savePhotoSuccess(response.data.data.photos))
+        }
+    } catch (err) {
+        console.log(err)
+    }
+
 }
 
-export const savePhoto = (file: any) => (dispatch: Dispatch) => {
-    profileAPI.savePhoto(file)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(savePhotoSuccess(response.data.data.photos))
-            }
-        })
+
+
+//Types
+export type profilePagePropsType = {
+    postData: postDataPropsType []
+    profile: ProfileType
+    status: string
 }
 
+export type postDataPropsType = {
+    id: string
+    name: string
+    message: string
+    likesCount: number
+    avatar: string
+}
+
+export type ProfileType = {
+    "aboutMe": string,
+    "contacts": {
+        "facebook": string,
+        "website": string,
+        "vk": string,
+        "twitter": string,
+        "instagram": string,
+        "youtube": string,
+        "github": string,
+        "mainLink": string
+    },
+    "lookingForAJob": boolean,
+    "lookingForAJobDescription": string,
+    "fullName": string,
+    "userId": number,
+    "photos": {
+        "small": string,
+        "large": string
+    }
+} | null
 
 export type ActionType =
     ReturnType<typeof addPostAC>

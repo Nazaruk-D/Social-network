@@ -2,24 +2,6 @@ import {authAPI} from "../api/api";
 import {AppThunk} from "./redux-store";
 import {stopSubmit} from "redux-form";
 import {Dispatch} from "redux";
-import {toggleIsFetching} from "./users-reducer";
-
-export type setUserDataType = {
-    type: "SET-USER-DATA",
-    data: {
-        userId: number,
-        email: string,
-        login: string
-    }
-}
-
-export type InitialStateType = {
-    id: number | null,
-    email: null | string,
-    login: null | string,
-    isAuth: boolean,
-    isFetching: boolean
-}
 
 export let initialState = {
     id: null,
@@ -29,24 +11,25 @@ export let initialState = {
     isFetching: false
 }
 
-export type actionType = ReturnType<typeof setAuthUserData>
-
 
 export const authReducer = (state: InitialStateType = initialState, action: actionType): InitialStateType => {
     switch (action.type) {
-        case "SET-USER-DATA":
+        case "AUTH/SET-USER-DATA":
             return {...state, ...action.payload}
         default:
             return state;
     }
 }
 
+
+//Actions
 export const setAuthUserData = (id: number | null, email: string | null, login: string | null, isAuth: boolean) => ({
-    type: "SET-USER-DATA",
+    type: "AUTH/SET-USER-DATA",
     payload: {id, email, login, isAuth}
 } as const)
 
 
+//Thunks
 export const getAuthUserData = () => async (dispatch: Dispatch) => {
     try {
         // dispatch(toggleIsFetching(true))
@@ -93,3 +76,22 @@ export const logout = (): AppThunk => async (dispatch) => {
 }
 
 
+//Types
+export type InitialStateType = {
+    id: number | null,
+    email: null | string,
+    login: null | string,
+    isAuth: boolean,
+    isFetching: boolean
+}
+
+export type actionType = ReturnType<typeof setAuthUserData>
+
+// export type setUserDataType = {
+//     type: "SET-USER-DATA",
+//     data: {
+//         userId: number,
+//         email: string,
+//         login: string
+//     }
+// }

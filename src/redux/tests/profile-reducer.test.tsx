@@ -1,4 +1,4 @@
-import {addPostAC, profilePagePropsType, profileReducer} from "./profile-reducer";
+import {addPostAC, profilePagePropsType, profileReducer} from "../profile-reducer";
 import {v1} from "uuid";
 
 let startState: profilePagePropsType;
