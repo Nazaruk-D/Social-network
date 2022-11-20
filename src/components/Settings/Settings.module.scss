@@ -11,17 +11,25 @@
     position: relative;
     @include flex(row, center, center, wrap);
 
+    .wall {
+      width: 700px;
+      position: absolute;
+      z-index: 0;
+    }
+
     .portalGif {
       width: 0px;
       margin-left: 150px;
       transition: width 2s ease-in-out;
+      z-index: 1;
     }
 
     .portalOn {
-      width: 550px;
+      width: 450px;
       margin-left: 150px;
       transition: width 2s ease-in-out;
       cursor: url('./../../assets/png/cursor.png'), default;
+      z-index: 1;
     }
 
     .portalGun {
@@ -34,3 +42,9 @@
     }
   }
 }
+
+
+
+
+
+

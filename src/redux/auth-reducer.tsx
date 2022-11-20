@@ -2,6 +2,7 @@ import {authAPI} from "../api/api";
 import {AppThunk} from "./redux-store";
 import {stopSubmit} from "redux-form";
 import {Dispatch} from "redux";
+import {toggleIsFetching} from "./users-reducer";
 
 export type setUserDataType = {
     type: "SET-USER-DATA",
@@ -21,11 +22,6 @@ export type InitialStateType = {
 }
 
 export let initialState = {
-    // id: "25415",
-    // email: 'nazaruk-dima@mail.ru',
-    // login: 'Nazaruk-D',
-    // isAuth: false,
-    // isFetching: false
     id: null,
     email: "",
     login: "",
@@ -33,68 +29,67 @@ export let initialState = {
     isFetching: false
 }
 
-export type actionType = ReturnType<typeof setAuthUserData> | ReturnType<typeof setUserId>
+export type actionType = ReturnType<typeof setAuthUserData>
 
 
 export const authReducer = (state: InitialStateType = initialState, action: actionType): InitialStateType => {
     switch (action.type) {
         case "SET-USER-DATA":
-            debugger
             return {...state, ...action.payload}
-        case "SET-USER-ID":
-            return {...state, id: action.userId}
         default:
             return state;
     }
 }
 
-export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean) => ({
+export const setAuthUserData = (id: number | null, email: string | null, login: string | null, isAuth: boolean) => ({
     type: "SET-USER-DATA",
-    payload: {userId, email, login, isAuth}
+    payload: {id, email, login, isAuth}
 } as const)
 
-export const setUserId = (userId: number | null) => ({type: "SET-USER-ID", userId} as const)
 
 export const getAuthUserData = () => async (dispatch: Dispatch) => {
-// this.props.toggleIsFetching(true)
-    let response = await authAPI.auth()
-    if (response.data.resultCode === 0) {
-        debugger
-        console.log(response.data)
-        let {id, email, login} = response.data.data;
-        dispatch(setAuthUserData(id, email, login, true))
-        dispatch(setUserId(id))  // почему в стэйт не приходит id вместе со всей payload??
-
+    try {
+        // dispatch(toggleIsFetching(true))
+        const response = await authAPI.auth()
+        if (response.data.resultCode === 0) {
+            const {id, email, login} = response.data.data;
+            dispatch(setAuthUserData(id, email, login, true))
+        }
+        // dispatch(toggleIsFetching(false))
+    } catch (err) {
+        console.log(err)
     }
-// this.props.toggleIsFetching(false)
 }
 
 export const login = (mail: string, password: string, rememberMe: boolean = false) => async (dispatch: any) => {
-    let response = await authAPI.login(mail, password, rememberMe)
+    try {
+        const response = await authAPI.login(mail, password, rememberMe)
         if (response.data.resultCode === 0) {
-            debugger
-            console.log(response.data.data.userId)
             dispatch(getAuthUserData())
-            dispatch(setUserId(response.data.data.userId)) // при логине всё то же самое нужно делать, дублировать action с установкой id
         } else {
-            let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
-            dispatch = (stopSubmit("login", {_error: message}))
+            const message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
+            dispatch(stopSubmit("login", {_error: message}))
         }
+    } catch (err) {
+        console.log(err)
+    }
+
 }
 
-
 export const logout = (): AppThunk => async (dispatch) => {
-// this.props.toggleIsFetching(true)
-    let response = await authAPI.logout()
-    setTimeout(() => {
-        if (response.data.resultCode === 0) {
-            dispatch(setAuthUserData(null, null, null, false))
-            dispatch(getAuthUserData())
-            // dispatch(setUserId(null))
-        }
-    }, 2000)
-
-// this.props.toggleIsFetching(false)
+    try {
+        // dispatch(toggleIsFetching(true))
+        const response = await authAPI.logout()
+        setTimeout(() => {
+            if (response.data.resultCode === 0) {
+                dispatch(setAuthUserData(null, null, null, false))
+                dispatch(getAuthUserData())
+            }
+        }, 2000)
+        // dispatch(toggleIsFetching(false))
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 
