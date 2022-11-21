@@ -13,7 +13,7 @@ import {
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
-import {ProfileDataTypeServer} from "../../api/api";
+import {ProfileDataTypeServer} from "../../api/profileAPI";
 
 
 type PathParamType = {

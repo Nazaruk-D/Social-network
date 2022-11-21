@@ -4,7 +4,7 @@ import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import {ProfileDataForm} from "./ProfileDataForm/ProfileDataForm";
 import {ProfileData} from "./ProfileData/ProfileData";
 import {ProfileType} from "../../../../redux/profile-reducer";
-import {ProfileDataTypeServer} from "../../../../api/api";
+import {ProfileDataTypeServer} from "../../../../api/profileAPI";
 
 
 type ProfileDescriptionPropsType = {

@@ -1,5 +1,5 @@
-import {usersAPI} from "../api/api";
 import {Dispatch} from "redux";
+import {usersAPI} from "../api/usersAPI";
 
 
 export let initialState = {

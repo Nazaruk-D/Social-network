@@ -1,7 +1,7 @@
-import {authAPI} from "../api/api";
 import {AppThunk} from "./store";
 import {stopSubmit} from "redux-form";
 import {Dispatch} from "redux";
+import {authAPI} from "../api/authAPI";
 
 export let initialState = {
     id: null,

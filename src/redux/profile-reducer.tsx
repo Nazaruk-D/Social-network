@@ -1,12 +1,12 @@
 import {v1} from "uuid";
 import {Dispatch} from "redux";
-import {profileAPI, ProfileDataTypeServer} from "../api/api";
 import BethAva from '../assets/png/BethAva.webp'
 import JerryAva from '../assets/png/JerryAva.webp'
 import SummerAva from '../assets/png/SummerAva.png'
 import MortyAva from '../assets/png/MortyAva.webp'
 import RickAva from '../assets/png/RickAva.webp'
 import {AppThunk} from "./store";
+import {profileAPI, ProfileDataTypeServer} from "../api/profileAPI";
 
 
 let initialState = {

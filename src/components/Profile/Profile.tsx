@@ -4,7 +4,7 @@ import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./Myposts/MyPostsContainer";
 import {ProfileType} from "../../redux/profile-reducer";
 import {Preloader} from "../../common/Preloader/Preloader";
-import {ProfileDataTypeServer} from "../../api/api";
+import {ProfileDataTypeServer} from "../../api/profileAPI";
 
 type ProfileTypeProps = {
     profile: ProfileType

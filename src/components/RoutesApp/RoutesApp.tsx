@@ -7,6 +7,7 @@ import {Music} from "../Music/Music";
 import {Settings} from "../Settings/Settings";
 import Login from "../Login/Login";
 import {Route} from "react-router-dom";
+import {routes} from "../../routes/routes";
 
 const RoutesApp = () => {
 
@@ -15,21 +16,21 @@ const RoutesApp = () => {
 
     return (
         <div className={s.main}>
-            <Route path="/dialogs/:userId?" render={() => {
+            <Route path={routes.dialogs} render={() => {
                 return <React.Suspense fallback={<Preloader/>}>
                     <DialogsContainer/>
                 </React.Suspense>
             }}/>
-            <Route path="/profile/:userId?" render={() => {
+            <Route path={routes.profile} render={() => {
                 return <React.Suspense fallback={<Preloader/>}>
                     <ProfileContainer/>
                 </React.Suspense>
             }}/>
-            <Route path="/users" render={() => <UsersContainer/>}/>
-            <Route path="/news" render={() => <News/>}/>
-            <Route path="/music" render={() => <Music/>}/>
-            <Route path="/settings" render={() => <Settings/>}/>
-            <Route path="/login" render={() => <Login/>}/>
+            <Route path={routes.users} render={() => <UsersContainer/>}/>
+            <Route path={routes.news} render={() => <News/>}/>
+            <Route path={routes.music} render={() => <Music/>}/>
+            <Route path={routes.settings} render={() => <Settings/>}/>
+            <Route path={routes.login} render={() => <Login/>}/>
         </div>
     );
 };

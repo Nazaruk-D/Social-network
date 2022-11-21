@@ -2,9 +2,9 @@ import React from "react";
 import s from "./ProfileInfo.module.scss";
 import {ProfileType} from "../../../redux/profile-reducer";
 import 'react-image-crop/src/ReactCrop.scss'
-import {ProfileDataTypeServer} from "../../../api/api";
 import Avatar from "./Avatar/Avatar";
 import ProfileDescription from "./ProfileDescription/ProfileDescription";
+import {ProfileDataTypeServer} from "../../../api/profileAPI";
 
 
 type ProfileInfoType = {

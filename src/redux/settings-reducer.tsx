@@ -1,6 +1,6 @@
-import {usersAPI} from "../api/api";
 import {setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching} from "./users-reducer";
 import {AppThunk} from "./store";
+import {usersAPI} from "../api/usersAPI";
 
 
 let initialState = {

@@ -20,8 +20,6 @@ export const initializeApp = (): AppThunk => async (dispatch) => {
     try {
         await dispatch(getAuthUserData())
         await dispatch(initializedSuccess())
-        await dispatch(initializedSuccess())
-
     } catch (err) {
         console.log(err)
     }
