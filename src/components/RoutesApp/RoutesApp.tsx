@@ -6,8 +6,9 @@ import {News} from "../News/News";
 import {Music} from "../Music/Music";
 import {Settings} from "../Settings/Settings";
 import Login from "../Login/Login";
-import {Route} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import {routes} from "../../routes/routes";
+import PageNotFound from "../PageNotFound/PageNotFound";
 
 const RoutesApp = () => {
 
@@ -16,21 +17,26 @@ const RoutesApp = () => {
 
     return (
         <div className={s.main}>
-            <Route path={routes.dialogs} render={() => {
-                return <React.Suspense fallback={<Preloader/>}>
-                    <DialogsContainer/>
-                </React.Suspense>
-            }}/>
-            <Route path={routes.profile} render={() => {
-                return <React.Suspense fallback={<Preloader/>}>
-                    <ProfileContainer/>
-                </React.Suspense>
-            }}/>
-            <Route path={routes.users} render={() => <UsersContainer/>}/>
-            <Route path={routes.news} render={() => <News/>}/>
-            <Route path={routes.music} render={() => <Music/>}/>
-            <Route path={routes.settings} render={() => <Settings/>}/>
-            <Route path={routes.login} render={() => <Login/>}/>
+            <Switch>
+                <Route path={'/'} exact render={() => <Redirect to={routes.login}/>}/>
+                <Route path={routes.dialogs} render={() => {
+                    return <React.Suspense fallback={<Preloader/>}>
+                        <DialogsContainer/>
+                    </React.Suspense>
+                }}/>
+                <Route path={routes.profile} render={() => {
+                    return <React.Suspense fallback={<Preloader/>}>
+                        <ProfileContainer/>
+                    </React.Suspense>
+                }}/>
+                <Route path={routes.users} render={() => <UsersContainer/>}/>
+                <Route path={routes.news} render={() => <News/>}/>
+                <Route path={routes.music} render={() => <Music/>}/>
+                <Route path={routes.settings} render={() => <Settings/>}/>
+                <Route path={routes.login} render={() => <Login/>}/>
+                <Route path="/404" render={() => <PageNotFound/>}/>
+                <Route render={() => <PageNotFound/>}/>
+            </Switch>
         </div>
     );
 };
