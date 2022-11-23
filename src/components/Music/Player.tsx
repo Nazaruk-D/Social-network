@@ -40,6 +40,7 @@ const Player: FC<PlayerPropsType> = ({
     const playPause = () => {
         setIsPlaying(!isPlaying)
     }
+
     const skipBack = () => {
         const index = songs.findIndex(x => x.name === currentSong.name)
         if (random) {
@@ -52,6 +53,7 @@ const Player: FC<PlayerPropsType> = ({
         audioElem.current.currentTime = 0;
         setIsPlaying(true)
     }
+
     const skipNext = () => {
         const index = songs.findIndex(x => x.name === currentSong.name)
         if (random) {
@@ -64,10 +66,12 @@ const Player: FC<PlayerPropsType> = ({
         audioElem.current.currentTime = 0;
         setIsPlaying(true)
     }
+
     const repeatSong = () => {
         setRepeat(!repeat)
         setRandom(false)
     }
+
     const randomSong = () => {
         setRandom(!random)
         setRepeat(false)
@@ -98,7 +102,6 @@ const Player: FC<PlayerPropsType> = ({
     }
 
 
-    //UseEffects
     //To automatically start playing the next song
     useEffect(() => {
         if (repeat && currentSong.progress === 100) {
@@ -112,6 +115,7 @@ const Player: FC<PlayerPropsType> = ({
             }, 100)
         }
     }, [setCurrentSong, currentSong])
+
     useEffect(() => {
         const index = songs.findIndex(x => x.name === currentSong.name)
         if (currentSong.progress === 100) {
@@ -133,11 +137,8 @@ const Player: FC<PlayerPropsType> = ({
         minutesTimeTrack(currentTime)
     }, [currentSong.progress])
 
-
-    // Controlling button styles
     const isRepeat = repeat ? {color: "cyan"} : {}
     const isRandom = random ? {color: "cyan"} : {}
-
 
     return (
         <div className={s.playerContainer}>

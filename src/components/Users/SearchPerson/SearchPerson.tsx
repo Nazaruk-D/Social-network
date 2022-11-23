@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
 import useDebounce from "../useDebounce/useDebounce";
 import s from "./SearchPerson.module.scss"
-import MainButton from "../../../common/MainButton/MainButton";
+import MainButton from "../../common/MainButton/MainButton";
 
 type InputPropsType = {
     findPerson: (term: string) => void

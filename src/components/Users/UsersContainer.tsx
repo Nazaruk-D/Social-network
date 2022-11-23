@@ -18,7 +18,7 @@ import {
     getTotalUsersCount,
     getUsers
 } from "../../redux/selectors/user-selectors";
-import {Preloader} from "../../common/Preloader/Preloader";
+import {Preloader} from "../common/Preloader/Preloader";
 import Users from "./Users";
 
 
@@ -59,7 +59,6 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
 
     findPerson = (term: string) => {
         this.props.getUsersThunk(this.props.currentPage, this.props.pageSize, term)
-        // this.props.setCurrentPage(this.props.currentPage)
     }
 
 
@@ -67,7 +66,6 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
 
         return <div className={s.usersBlock}>
             {this.props.isFetching
-                // ? <MoonLoader color={"#b70000"} size={50}/>
                 ? <Preloader/>
                 : <Users totalItemsCount={this.props.totalUsersCount}
                          pageSize={this.props.pageSize}

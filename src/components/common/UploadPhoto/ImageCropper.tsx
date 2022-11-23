@@ -64,8 +64,6 @@ const ImageCropper: FC<ImageCropperPropsType> = ({ image, onCropDone, onCropCanc
                     <input type="radio" value={16 / 9} name="ratio" /> 16:9
                     <input type="radio" value={3 / 1} name="ratio" /> 3:1
                 </div>
-
-
                 <div className={s.buttons}>
                     <button className={s.button} onClick={onCropCancel}>
                         Cancel

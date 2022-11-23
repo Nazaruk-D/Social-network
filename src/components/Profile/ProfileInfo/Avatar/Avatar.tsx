@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
 import s from "./Avatar.module.scss"
-import UploadPhoto from "../../../../common/UploadPhoto/UploadPhoto";
-import ZoomPhoto from "../../../../common/ZoomPhoto/ZoomPhoto";
+import UploadPhoto from "../../../common/UploadPhoto/UploadPhoto";
+import ZoomPhoto from "../../../common/ZoomPhoto/ZoomPhoto";
 import {getRandomArrayElement} from "../../../Users/getRandomArrayElement";
 import {ProfileType} from "../../../../redux/profile-reducer";
 

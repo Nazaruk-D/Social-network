@@ -11,7 +11,7 @@ type MessageProps = {
 }
 
 export const Messages: React.FC<MessageProps> = (props) => {
-    let {userId} = useParams<{ userId: string }>()
+    const {userId} = useParams<{ userId: string }>()
 
     const deleteMessage = (friendsId: string, messageId: string) => {
         props.deleteMessage(friendsId, messageId)

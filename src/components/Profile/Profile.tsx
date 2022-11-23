@@ -3,7 +3,7 @@ import s from "./Profile.module.scss";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./Myposts/MyPostsContainer";
 import {ProfileType} from "../../redux/profile-reducer";
-import {Preloader} from "../../common/Preloader/Preloader";
+import {Preloader} from "../common/Preloader/Preloader";
 import {ProfileDataTypeServer} from "../../api/profileAPI";
 
 type ProfileTypeProps = {

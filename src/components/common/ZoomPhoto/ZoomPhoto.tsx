@@ -14,7 +14,6 @@ const ZoomPhoto: React.FC<ZoomPhotoPropsType> = ({setZoomPhoto, img}) => {
                 style={{fontSize: "22px"}}/></div>
             <img src={img} alt="zoom Photo" className={s.zoomPhoto}/>
         </div>
-
     );
 };
 

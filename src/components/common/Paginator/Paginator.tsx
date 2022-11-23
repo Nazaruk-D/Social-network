@@ -31,17 +31,12 @@ const Paginator: React.FC<PaginatorPropsType> = React.memo(({
     }
 
     const choosePage = (p: number) => {
-        console.log(portionNumber)
-        // setPortionNumber(portionNumber)
         onPageChanged(p)
     }
 
     useEffect(()=>{
         setPortionNumber(portionNumber)
-        console.log(portionNumber)
     },[])
-
-    console.log("Paginator")
 
     return (
         <div className={s.paginatorBlock}>
@@ -53,7 +48,6 @@ const Paginator: React.FC<PaginatorPropsType> = React.memo(({
                     .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                     .map((p, index) => <span key={index}
                                              className={currentPage === p ? s.selectedPage : s.page}
-                                             // onClick={() => onPageChanged(p)}>{p}</span>)}
                                              onClick={()=>choosePage(p)}>{p}</span>)}
             </div>
             {portionCount > portionNumber &&

@@ -32,7 +32,6 @@ const FileInput: FC<FileInputPropsType> = ({ onImageSelected }) => {
         onChange={handleOnChange}
         style={{ display: "none" }}
       />
-
       <button className="btn" onClick={onChooseImg}>
         Choose Image
       </button>

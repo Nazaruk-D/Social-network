@@ -4,7 +4,6 @@ import './Stone.css';
 import {GoPrimitiveDot} from "react-icons/go";
 
 
-
 const Stone = () => {
 
     document.onmousemove = (event) => {

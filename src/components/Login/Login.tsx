@@ -10,7 +10,8 @@ import {routes} from "../NavBar/Nav/routes";
 
 const Login = (props: any) => {
     const onSubmit = (formData: any) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        debugger
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
     if (props.isAuth) {
@@ -42,8 +43,8 @@ type mapStateToPropsType = {
 
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
     }
-
 }
+
 export default connect(mapStateToProps, {login})(Login)

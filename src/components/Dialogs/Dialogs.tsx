@@ -4,7 +4,7 @@ import {DialogsDataType, InitialStateType} from "../../redux/dialogs-reducer";
 import {useParams} from "react-router-dom";
 import {Messages} from "./DialogsComponents/Message/Message";
 import {FriendsList} from "./DialogsComponents/FriendsList/FriendsList";
-import {AddMessageForm} from "../../common/AddMessageForm/AddMessageForm";
+import {AddMessageForm} from "../common/AddMessageForm/AddMessageForm";
 
 export type DialogTypeProps = {
     SendMessage: (values: string, userId: string) => void
@@ -14,7 +14,7 @@ export type DialogTypeProps = {
 
 
 export const Dialogs: React.FC<DialogTypeProps> = (props) => {
-    let {userId} = useParams<{ userId: string }>()
+    const {userId} = useParams<{ userId: string }>()
 
     const addNewMessage = (values: string) => {
         props.SendMessage(values, userId)
@@ -24,13 +24,13 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
         props.DeleteMessage(friendsId, messageId)
     }
 
-    let dialogElements = props.dialogs.map((dialog: DialogsDataType) => <div key={dialog.id}><FriendsList
+    const dialogElements = props.dialogs.map((dialog: DialogsDataType) => <div key={dialog.id}><FriendsList
         name={dialog.name}
         id={dialog.id}
         ava={dialog.ava}/>
     </div>)
 
-    let messages = props.dialogs.map((dialog: DialogsDataType, index) => dialog.id === userId
+    const messages = props.dialogs.map((dialog: DialogsDataType, index) => dialog.id === userId
         ? <div key={index}><Messages messages={dialog.messages} deleteMessage={deleteMessage}/></div>
         : null
     )

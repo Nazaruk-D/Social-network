@@ -16,10 +16,6 @@ import {compose} from "redux";
 import {ProfileDataTypeServer} from "../../api/profileAPI";
 
 
-type PathParamType = {
-    userId: number | null
-}
-
 type MapStatePropsType = {
     profile: ProfileType
     status: string

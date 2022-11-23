@@ -1,5 +1,5 @@
-@import '../../common/styles/scss/variables';
-@import '../../common/styles/scss/mixins';
+@import '../../assets/styles/scss/variables';
+@import '../../assets/styles/scss/mixins';
 
 .musicContainer {
   @include flex(column, flex-start, center, nowrap);

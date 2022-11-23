@@ -1,14 +1,14 @@
 import React from 'react';
 import s from "./RoutesApp.module.scss";
-import {Preloader} from "../../common/Preloader/Preloader";
+import {Preloader} from "../common/Preloader/Preloader";
 import UsersContainer from "../Users/UsersContainer";
 import {News} from "../News/News";
 import {Music} from "../Music/Music";
 import {Settings} from "../Settings/Settings";
 import Login from "../Login/Login";
 import {Redirect, Route, Switch} from "react-router-dom";
-import {routes} from "../../routes/routes";
 import PageNotFound from "../PageNotFound/PageNotFound";
+import {routes} from "../../enums/routes";
 
 const RoutesApp = () => {
 

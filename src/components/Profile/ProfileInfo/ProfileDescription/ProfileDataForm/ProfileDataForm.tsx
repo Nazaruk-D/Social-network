@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
-import MainButton from "../../../../../common/MainButton/MainButton";
+import MainButton from "../../../../common/MainButton/MainButton";
 import {ProfileType} from "../../../../../redux/profile-reducer";
-import {FormInput} from "../../../../../common/FormInput/FormInput";
+import {FormInput} from "../../../../common/FormInput/FormInput";
 import {ProfileDataTypeServer} from "../../../../../api/profileAPI";
 
 type ProfileDataFormPropsType = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "./Preloader.module.scss"
-import gif from "../../assets/gif/gif5.gif";
+import gif from "../../../assets/gif/gif5.gif";
 
 export const Preloader = () => {
     return (
@@ -9,7 +9,6 @@ export const Preloader = () => {
                 <div className={s.vision2}></div>
                 <img src={gif} alt="loading..." className={s.crazySun}/>
                 <div className={s.vision}></div>
-
             </div>
         </div>
     );
