@@ -12,6 +12,7 @@ const Login = (props: any) => {
     const onSubmit = (formData: any) => {
         debugger
         props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
+        formData.captcha = "";
     }
 
     if (props.isAuth) {
