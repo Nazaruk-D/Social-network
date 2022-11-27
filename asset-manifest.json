@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/Social-network/static/css/main.ce1defd1.css",
-    "main.js": "/Social-network/static/js/main.30ae4481.js",
+    "main.css": "/Social-network/static/css/main.9186c7db.css",
+    "main.js": "/Social-network/static/js/main.b845ab6d.js",
     "static/css/587.0dc2570c.chunk.css": "/Social-network/static/css/587.0dc2570c.chunk.css",
     "static/js/587.29e86d0a.chunk.js": "/Social-network/static/js/587.29e86d0a.chunk.js",
     "static/css/987.752fbef1.chunk.css": "/Social-network/static/css/987.752fbef1.chunk.css",
-    "static/js/987.fdbaed55.chunk.js": "/Social-network/static/js/987.fdbaed55.chunk.js",
+    "static/js/987.5993e1c3.chunk.js": "/Social-network/static/js/987.5993e1c3.chunk.js",
     "static/js/649.343f7547.chunk.js": "/Social-network/static/js/649.343f7547.chunk.js",
     "static/js/856.0215d9bd.chunk.js": "/Social-network/static/js/856.0215d9bd.chunk.js",
+    "static/media/Garage.png": "/Social-network/static/media/Garage.0732fc6495db5c35ef70.png",
     "static/media/gif3.gif": "/Social-network/static/media/gif3.d86695657fc92277b64f.gif",
     "static/media/i9.png": "/Social-network/static/media/i9.7483bb1e9abacd78fdc3.png",
+    "static/media/Rick.png": "/Social-network/static/media/Rick.11ec463b8a2c302ec1cb.png",
     "static/media/stone.png": "/Social-network/static/media/stone.431b03427472eb2fb5e5.png",
     "static/media/header.png": "/Social-network/static/media/header.7b3360846c8a3363d841.png",
     "static/media/portalGunOn.png": "/Social-network/static/media/portalGunOn.bc99028f134e4fda1ccc.png",
@@ -17,6 +19,7 @@
     "static/media/like.png": "/Social-network/static/media/like.3bd2642bff63c07e1428.png",
     "static/media/gif5.gif": "/Social-network/static/media/gif5.0b51250c57ce43dfec74.gif",
     "static/media/Login.png": "/Social-network/static/media/Login.41d8f11122b85d64afd4.png",
+    "static/media/portalGunWithShodow.png": "/Social-network/static/media/portalGunWithShodow.dae8680cd7817c42a39e.png",
     "static/media/30.png": "/Social-network/static/media/30.7925901c8bc88ab1ad5d.png",
     "static/media/25.png": "/Social-network/static/media/25.e59d696cf30dbbfc9113.png",
     "static/media/portalGun.png": "/Social-network/static/media/portalGun.472fa0a7f8db3280fa91.png",
@@ -59,17 +62,17 @@
     "static/media/JerryAva.webp": "/Social-network/static/media/JerryAva.eb61e871c936b560682d.webp",
     "static/media/35.webp": "/Social-network/static/media/35.fab6f2fb3de0af922ae5.webp",
     "index.html": "/Social-network/index.html",
-    "main.ce1defd1.css.map": "/Social-network/static/css/main.ce1defd1.css.map",
-    "main.30ae4481.js.map": "/Social-network/static/js/main.30ae4481.js.map",
+    "main.9186c7db.css.map": "/Social-network/static/css/main.9186c7db.css.map",
+    "main.b845ab6d.js.map": "/Social-network/static/js/main.b845ab6d.js.map",
     "587.0dc2570c.chunk.css.map": "/Social-network/static/css/587.0dc2570c.chunk.css.map",
     "587.29e86d0a.chunk.js.map": "/Social-network/static/js/587.29e86d0a.chunk.js.map",
     "987.752fbef1.chunk.css.map": "/Social-network/static/css/987.752fbef1.chunk.css.map",
-    "987.fdbaed55.chunk.js.map": "/Social-network/static/js/987.fdbaed55.chunk.js.map",
+    "987.5993e1c3.chunk.js.map": "/Social-network/static/js/987.5993e1c3.chunk.js.map",
     "649.343f7547.chunk.js.map": "/Social-network/static/js/649.343f7547.chunk.js.map",
     "856.0215d9bd.chunk.js.map": "/Social-network/static/js/856.0215d9bd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce1defd1.css",
-    "static/js/main.30ae4481.js"
+    "static/css/main.9186c7db.css",
+    "static/js/main.b845ab6d.js"
   ]
 }
