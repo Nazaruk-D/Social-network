@@ -61,7 +61,6 @@ export const MyPosts: React.FC<MyPostPropType> = React.memo((props) => {
         props.addPost(values, avatar)
     }
 
-
     return (
         <div className={s.myPostContainer}>
             <div className={s.addForm}>

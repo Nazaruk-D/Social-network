@@ -78,7 +78,6 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                          myFriend={this.myFriend}
                          findPerson={this.findPerson}
                          myProfileId={this.props.myProfileId!}
-
                 />
             }
 

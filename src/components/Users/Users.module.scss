@@ -2,15 +2,17 @@
 @import '../../assets/styles/scss/mixins';
 
 .usersContainer {
+  height: 100%;
   margin-top: 15px;
   margin-left: 20px;
+  @include flex(column, flex-start, flex-start, wrap);
 
-
-  .paginatorBlock {
+  .searchBlock {
     @include flex(row, space-between, center, wrap);
     width: 95%;
     height: 35px;
     //background-color: red;
+    //justify-content: space-evenly;
 
     .sortBlock{
       @include flex(row, space-between, center, wrap);
@@ -27,10 +29,11 @@
     padding-bottom: 5px;
     padding-left: 20px;
     box-sizing: border-box;
+    margin-bottom: 10px;
 
     .user {
       width: 46%;
-      margin-top: 10px;
+      margin-top: 2px;
       margin-right: 5px;
       //background-color: black;
       padding: 8px;

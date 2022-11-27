@@ -8,7 +8,8 @@ export let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
-    followingInProgress: []
+    followingInProgress: [],
+    forSearchPerson: ""
 }
 
 export const usersReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
@@ -25,6 +26,9 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
             return {...state, totalUsersCount: action.totalCount}
         case "USERS/TOGGLE-IS-FETCHING":
             return {...state, isFetching: action.isFetching}
+        case "USERS/SEARCH":
+            debugger
+            return {...state, forSearchPerson: action.search}
         case "USERS/FOLLOWING-IN-PROGRESS":
             return {
                 ...state,
@@ -42,6 +46,7 @@ export const setUsers = (users: UsersType[]) => ({type: "USERS/SET-USERS", users
 export const setCurrentPage = (currentPage: number) => ({type: "USERS/SET-CURRENT-PAGE", currentPage} as const)
 export const setTotalUsersCount = (totalCount: number) => ({type: "USERS/SET-TOTAL-USER-COUNT", totalCount} as const)
 export const toggleIsFetching = (isFetching: boolean) => ({type: "USERS/TOGGLE-IS-FETCHING", isFetching} as const)
+export const searchPerson = (search: string) => ({type: "USERS/SEARCH", search} as const)
 export const toggleIsFollowingProgress = (followingInProgress: boolean, userId: number) => ({
     type: "USERS/FOLLOWING-IN-PROGRESS",
     followingInProgress,
@@ -89,8 +94,18 @@ export const unfollow = (userId: number) => async (dispatch: Dispatch) => {
     } catch (err) {
         console.log(err)
     }
-
 }
+
+// export const searchTC = (text: string) => async (dispatch: Dispatch) => {
+//     try {
+//         const data = await usersAPI.getUsers(1, 10, text)
+//         if (data.resultCode === 0) {
+//             dispatch(searchPerson(text))
+//         }
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
 
 //Types
 export type UsersType = {
@@ -112,6 +127,7 @@ export type InitialStateType = {
     currentPage: number
     isFetching: boolean
     followingInProgress: any
+    forSearchPerson: string
 }
 
 export type ActionType =
@@ -122,4 +138,5 @@ export type ActionType =
     | ReturnType<typeof setTotalUsersCount>
     | ReturnType<typeof toggleIsFetching>
     | ReturnType<typeof toggleIsFollowingProgress>
+    | ReturnType<typeof searchPerson>
 

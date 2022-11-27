@@ -36,13 +36,10 @@ const Users: React.FC<UsersPropsType> = React.memo ( ({
                                              myProfileId
                                          }) => {
 
-    console.log("User")
     return (
         <div className={s.usersContainer}>
-            <div className={s.paginatorBlock}>
+            <div className={s.searchBlock}>
                 <SearchPerson findPerson={findPerson}/>
-                <Paginator currentPage={currentPage} totalItemsCount={totalItemsCount} pageSize={pageSize}
-                           onPageChanged={onPageChanged} portionSize={10}/>
                 <div className={s.sortBlock}>
                     <MainButton onClick={() => myFriend(true)} nameButton={"my friends"}/>
                     <MainButton onClick={() => onPageChanged(1)} nameButton={"all people"}/>
@@ -77,6 +74,8 @@ const Users: React.FC<UsersPropsType> = React.memo ( ({
                     </div>
                 )}
             </div>
+            <Paginator currentPage={currentPage} totalItemsCount={totalItemsCount} pageSize={pageSize}
+                       onPageChanged={onPageChanged} portionSize={10}/>
         </div>
     );
 });

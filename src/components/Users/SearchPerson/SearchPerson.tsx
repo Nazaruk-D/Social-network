@@ -1,7 +1,9 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import useDebounce from "../useDebounce/useDebounce";
 import s from "./SearchPerson.module.scss"
 import MainButton from "../../common/MainButton/MainButton";
+import {getUsersThunk} from "../../../redux/users-reducer";
+import {useAppDispatch} from "../../../redux/store";
 
 type InputPropsType = {
     findPerson: (term: string) => void
@@ -13,36 +15,20 @@ const SearchPerson: FC<InputPropsType> = ({findPerson}) => {
     const debouncedValue = useDebounce(value, 500)
 
 
-    // useEffect(() => {
-    //     debugger
-    //     const newSettings = {
-    //         currentPage: 1,
-    //         pageSize: 10,
-    //         term: debouncedValue,
-    //     }
-    //     dispatch(getUsersThunk(newSettings))
-    //     console.log(debouncedValue)
-    // }, [debouncedValue])
-
-
-    //
-    // useEffect(()=>{
-    //     setValue2(debouncedValue)
-    // }, [debouncedValue])
-
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.value)
+    }
+
+    const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            findPerson(value)
+        }
     }
 
     const onClickHandler = () => {
         findPerson(debouncedValue)
     }
 
-    const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
-            findPerson(e.currentTarget.value)
-        }
-    }
 
     return (
         <div>
