@@ -3,7 +3,12 @@ ___
 
 ## Description
 
-This is a project that simulates part of the work of a social network. <br/> The functionality was made based on the capabilities of the server.
+This is a project that simulates part of the work of a social network. <br/> 
+The functionality was made based on the capabilities of the server.<br/>
+The design is made in the style of Rick and Morty.<br/>
+
+[//]: # (<img style="border-radius: 20px" width="400px" src="src/assets/gif/gif1.gif">)
+
 
 Application functionality: <br/>
 + Loginization <br/>
@@ -19,7 +24,7 @@ Application functionality: <br/>
 + and other
 
 
-The application was written using class components, as well as functional components with hooks.
+For the purpose of familiarization the application was written using class components, as well as functional components with hooks.
 ___
 
 
@@ -31,7 +36,7 @@ ___
 <img align="left" alt="JavaScript" width="50px" style="padding-right: 15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg"/>
 <img align="left" alt="JavaScript" width="50px" style="padding-right: 15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"/>
 <img align="left" alt="JavaScript" width="50px" style="padding-right: 15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"/>
-
+<div style="margin-bottom: 40px"></div>
 <br/>
 
 ___
@@ -42,78 +47,58 @@ For testing, you can use a special account: <br/>
 Login - <b>free@samuraijs.com</b><br/>
 Password - <b>free</b>  <br/>
 
-<img width="450px" src="https://sun9-52.userapi.com/impg/UDsx5r08U4dZJfkR97kqI-P1rLGgaG17rMx3lg/0SCzfBxY_ss.jpg?size=2560x1419&quality=96&sign=e09b6f97ff4b33632da558ed6fab70be&type=album">
+<img width="650px" src="https://sun9-52.userapi.com/impg/UDsx5r08U4dZJfkR97kqI-P1rLGgaG17rMx3lg/0SCzfBxY_ss.jpg?size=2560x1419&quality=96&sign=e09b6f97ff4b33632da558ed6fab70be&type=album">
 
 
+The following libraries are installed in this project:
 
 
-[//]: # (![kartinka]&#40;https://www.shkolazhizni.ru/img/content/i156/156707_or.jpg&#41;)
-[//]: # (# Привет, Самурай! )
+- **antd** 
 
-[//]: # ()
-[//]: # (Друзья, для вас мы специально подготовили этот репозиторий. Здесь вы можете взять полностью подготовленный проект для "Пути самурая", где установлены ВСЕ библиотеки нужных версий.)
+- **axios** 
 
-[//]: # (В процессе прохождения видео-уроков вам не нужно устанавливать пакеты. Просто провейряйте, что библиотека есть в package.json.)
+- **classnames**
 
-[//]: # (В случае, если ее вы не найдете или заметите неправильную ее работу &#40;отличную от Диминой версии&#41;, )
+- **formik**
 
-[//]: # (просим вас написать об этом в Telegram `Валере Сафронову &#40;@safronman&#41;` или `Марго &#40;@margokomilfo&#41;`.)
+- **gh-pages**
 
-[//]: # ()
-[//]: # (Успехов и позитивного настроения, ребята!!! Летим!🚀🚀🚀)
+- **jest**
 
-[//]: # ()
-[//]: # (В этом стартовом проекте установлены следующие библиотеки)
+- **react** and **@types/react**
 
-[//]: # ()
-[//]: # (- **antd** )
+- **react-dom** and **@types/react-dom**
 
-[//]: # (- **axios** )
+- **react-redux** and **@types/react-redux**
 
-[//]: # (- **classnames**)
+- **react-router-dom** and **@types/react-router-dom**
 
-[//]: # (- **formik**)
+- **react-scripts** 
 
-[//]: # (- **gh-pages**)
+- **react-test-renderer** and **@types/react-test-renderer**
 
-[//]: # (- **jest**)
+- **redux**
 
-[//]: # (- **react** and **@types/react**)
+- **redux-form** and **@types/redux-form**
 
-[//]: # (- **react-dom** and **@types/react-dom**)
+- **redux-thunk**
 
-[//]: # (- **react-redux** and **@types/react-redux**)
+- **reselect**
 
-[//]: # (- **react-router-dom** and **@types/react-router-dom**)
+- **typescript** 
 
-[//]: # (- **react-scripts** )
+- **uuid** and **@types/uuid**
 
-[//]: # (- **react-test-renderer** and **@types/react-test-renderer**)
+<img style="border-radius: 20px" width="400px" src="src/assets/gif/gif1.gif">
 
-[//]: # (- **redux**)
+## How to start a project
 
-[//]: # (- **redux-form** and **@types/redux-form**)
+After git clone 'link' install all dependencies from package.json:
 
-[//]: # (- **redux-thunk**)
+### `yarn`
 
-[//]: # (- **reselect**)
 
-[//]: # (- **typescript** )
+and then run the project:
 
-[//]: # (- **uuid** and **@types/uuid**)
+### `yarn start`
 
-[//]: # ()
-[//]: # (После git clone 'link' установите все зависимости из package.json:)
-
-[//]: # (### `yarn`)
-
-[//]: # ()
-[//]: # (а потом запустите проект:)
-
-[//]: # (### `yarn start`)
-
-[//]: # ()
-[//]: # ()
-[//]: # (<hr>)
-
-[//]: # (To learn React, check out the [React documentation]&#40;https://reactjs.org/&#41;.)
