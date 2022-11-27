@@ -39,7 +39,7 @@ ___
 <div style="margin-bottom: 40px"></div>
 <br/>
 
-___
+[//]: # (___)
 
 ## Loginization
 
@@ -47,7 +47,7 @@ For testing, you can use a special account: <br/>
 Login - <b>free@samuraijs.com</b><br/>
 Password - <b>free</b>  <br/>
 
-<img width="650px" src="https://sun9-52.userapi.com/impg/UDsx5r08U4dZJfkR97kqI-P1rLGgaG17rMx3lg/0SCzfBxY_ss.jpg?size=2560x1419&quality=96&sign=e09b6f97ff4b33632da558ed6fab70be&type=album">
+<img width="800px" src="https://sun9-52.userapi.com/impg/UDsx5r08U4dZJfkR97kqI-P1rLGgaG17rMx3lg/0SCzfBxY_ss.jpg?size=2560x1419&quality=96&sign=e09b6f97ff4b33632da558ed6fab70be&type=album">
 
 
 The following libraries are installed in this project:
@@ -88,8 +88,9 @@ The following libraries are installed in this project:
 - **typescript** 
 
 - **uuid** and **@types/uuid**
+- **sass**
 
-<img style="border-radius: 20px" width="400px" src="src/assets/gif/gif1.gif">
+<img style="border-radius: 20px" src="src/assets/gif/gif1.gif">
 
 ## How to start a project
 
