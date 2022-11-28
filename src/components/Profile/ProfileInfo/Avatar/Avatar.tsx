@@ -4,6 +4,7 @@ import UploadPhoto from "../../../common/UploadPhoto/UploadPhoto";
 import ZoomPhoto from "../../../common/ZoomPhoto/ZoomPhoto";
 import {getRandomArrayElement} from "../../../Users/getRandomArrayElement";
 import {ProfileType} from "../../../../redux/profile-reducer";
+import RickAva from "../../../../assets/png/Rick.png"
 
 type AvatarPropsType = {
     profile: ProfileType
@@ -16,7 +17,8 @@ const Avatar: FC<AvatarPropsType> = ({profile, isOwner, savePhoto}) => {
     const [uploadPhoto, setUploadPhoto] = useState(false)
     const [zoomPhoto, setZoomPhoto] = useState(false)
 
-    const avatar = profile?.photos.large !== null ? profile?.photos.large : getRandomArrayElement()
+    // const avatar = profile?.photos.large !== null ? profile?.photos.large : getRandomArrayElement()
+    const avatar = profile?.photos.large !== null ? profile?.photos.large : RickAva
 
     return (
         <div className={s.avatarBlock}>
