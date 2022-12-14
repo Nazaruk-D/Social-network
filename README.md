@@ -6,6 +6,7 @@ ___
 This is a project that simulates part of the work of a social network. <br/> 
 The functionality was made based on the capabilities of the server.<br/>
 The design is made in the style of Rick and Morty.<br/>
+Demo: https://nazaruk-d.github.io/Social-network <br/>
 
 [//]: # (<img style="border-radius: 20px" width="400px" src="src/assets/gif/gif1.gif">)
 
