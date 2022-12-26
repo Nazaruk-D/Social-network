@@ -56,13 +56,9 @@ const UploadPhoto: FC<UploadPhotoPropsType> = ({savePhoto, setUploadPhoto}) => {
         const response = await fetch(imageURL);
         // here image is url/location of image
         const blob = await response.blob();
-        // const file = new File([blob], 'image.jpg', {type: blob.type});
-        var image = new Image();
+        const image = new Image();
         image.src = imageURL
-        console.log(image)
         const file = new File([blob], 'image.jpg', {type: blob.type});
-        // {type: 'image/jpg'}
-        console.log(file)
         savePhoto(file)
         setUploadPhoto(false)
     }

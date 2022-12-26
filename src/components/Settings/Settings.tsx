@@ -18,13 +18,18 @@ export const Settings = () => {
     return (
         <div className={s.settingsContainer}>
             <div className={s.portalBlock}>
-                {/*<a href={"https://nazaruk-d.github.io/Portfolio/#"}>*/}
+                <a href={"https://nazaruk-d.github.io/Portfolio/#"}>
                     <img src={rickGif} alt="Rick" className={turnOnPortal}/>
-                    <img src={garage} alt="Garage" className={s.garage}/>
-                {/*</a>*/}
+                </a>
+                <img src={garage} alt="Garage" className={s.garage}/>
+
                 {switchGun
-                    ? <img src={portalGunOn} alt="portalGun" className={s.portalGun} onClick={() => setSwitchGun(!switchGun)} onMouseEnter={()=>setPortalGunShadow(true)} onMouseLeave={()=>setPortalGunShadow(false)}/>
-                    : <img src={portalGunOffWithShadow} alt="portalGun" className={s.portalGun} onClick={() => setSwitchGun(!switchGun)} onMouseEnter={()=>setPortalGunShadow(true)} onMouseLeave={()=>setPortalGunShadow(false)}/>
+                    ? <img src={portalGunOn} alt="portalGun" className={s.portalGun}
+                           onClick={() => setSwitchGun(!switchGun)} onMouseEnter={() => setPortalGunShadow(true)}
+                           onMouseLeave={() => setPortalGunShadow(false)}/>
+                    : <img src={portalGunOffWithShadow} alt="portalGun" className={s.portalGun}
+                           onClick={() => setSwitchGun(!switchGun)} onMouseEnter={() => setPortalGunShadow(true)}
+                           onMouseLeave={() => setPortalGunShadow(false)}/>
                 }
             </div>
         </div>

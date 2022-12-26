@@ -18,3 +18,4 @@ export const FriendsList: React.FC<FriendsListProps> = ({name,ava,id}) => {
         </div>
     )
 }
+

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './Dialogs.module.scss'
-import {DialogsDataType, InitialStateType} from "../../redux/dialogs-reducer";
+import {DialogsDataType, fetchChat, InitialStateType} from "../../redux/dialogs-reducer";
 import {useParams} from "react-router-dom";
 import {Messages} from "./DialogsComponents/Message/Message";
 import {FriendsList} from "./DialogsComponents/FriendsList/FriendsList";
 import {AddMessageForm} from "../common/AddMessageForm/AddMessageForm";
+import {useAppDispatch} from "../../redux/store";
+import {formatDate} from "../../utils/formatDate/formatDate";
 
 export type DialogTypeProps = {
     SendMessage: (values: string, userId: string) => void
@@ -15,6 +17,8 @@ export type DialogTypeProps = {
 
 export const Dialogs: React.FC<DialogTypeProps> = (props) => {
     const {userId} = useParams<{ userId: string }>()
+
+
 
     const addNewMessage = (values: string) => {
         props.SendMessage(values, userId)
@@ -35,6 +39,35 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
         : null
     )
 
+
+    const dispatch = useAppDispatch()
+    const [ws, setWS] = useState<any>(null)
+    const [users, setUsers] = useState<any>([])
+
+    if (ws) {
+        ws.onmessage = (messageEvent: any) => {
+            debugger
+            let messages = JSON.parse(messageEvent.data)
+            setUsers([...users, ...messages])
+
+        }
+    }
+
+    useEffect(() => {
+        let localWS = new WebSocket("wss://social-network.samuraijs.com/handlers/ChatHandler.ashx")
+        setWS(localWS)
+    }, [])
+
+    useEffect(() => {
+        const newArr = users.map((u:any, index: number) => ({idMessage: index, userName: u.userName, message: u.message, dataMessage: formatDate(new Date()), myPost: u.userId === 25415}))
+        dispatch(fetchChat(newArr))
+    }, [users, dispatch])
+
+
+    const addNewMessageWS = (values: string) => {
+        ws.send(values)
+    }
+
     return (
         <div className={s.dialogsContainer}>
             <div className={s.friendsList}>
@@ -42,8 +75,11 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
                 {dialogElements}
             </div>
             <div className={s.messages}>
-                    {messages}
-                {userId && <AddMessageForm onSubmit={addNewMessage}/>}
+                {messages}
+                {userId === "all"
+                    ? <AddMessageForm onSubmit={addNewMessageWS}/>
+                    : <AddMessageForm onSubmit={addNewMessage}/>
+                }
             </div>
         </div>
     )

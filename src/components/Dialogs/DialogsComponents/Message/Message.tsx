@@ -19,24 +19,43 @@ export const Messages: React.FC<MessageProps> = (props) => {
 
     return (
         <div className={s.messageContainer}>
-            {props.messages.map((m) => m.myPost
-                ? <div className={s.myMessageBlock} key={m.idMessage}>
-                    <div className={s.myMessage}
-                    >
-                        <div>{m.message}</div>
-                        <div className={s.data}>{m.dataMessage}</div>
+            {userId !== "all"
+                ? props.messages.map((m) => m.myPost
+                    ? <div className={s.myMessageBlock} key={m.idMessage}>
+                        <div className={s.myMessage}
+                        >
+                            <div>{m.message}</div>
+                            <div className={s.data}>{m.dataMessage}</div>
+                        </div>
+                        <div className={s.delete} onClick={() => deleteMessage(userId, m.idMessage)}>
+                            <MdDeleteForever style={{fontSize: "20px"}}/>
+                        </div>
                     </div>
-                    <div className={s.delete} onClick={() => deleteMessage(userId, m.idMessage)}>
-                        <MdDeleteForever style={{fontSize: "20px"}}/>
+                    : <div className={s.friendsMessageBlock} key={m.idMessage}>
+                        <div className={s.friendsMessage}>
+                            <div>{m.message}</div>
+                            <div className={s.data}>{m.dataMessage}</div>
+                        </div>
                     </div>
-                </div>
-                : <div className={s.friendsMessageBlock} key={m.idMessage}>
-                    <div className={s.friendsMessage}>
-                        <div>{m.message}</div>
-                        <div className={s.data}>{m.dataMessage}</div>
+                ).reverse()
+                : props.messages.map((m) => m.myPost
+                    ? <div className={s.myMessageBlock} key={m.idMessage}>
+                        <div className={s.myMessage}
+                        >
+                            <div>{m.message}</div>
+                            <div className={s.data}>{m.userName}</div>
+                        </div>
                     </div>
-                </div>
-            ).reverse()}
+                    : <div className={s.friendsMessageBlock} key={m.idMessage}>
+                        <div className={s.friendsMessage}>
+                            <div>{m.message}</div>
+                            <div className={s.data}>{m.userName}</div>
+                        </div>
+                    </div>
+                ).reverse()
+            }
+
+
         </div>
     )
 }
