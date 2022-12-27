@@ -7,7 +7,6 @@ export type AddMessageFormType = {
     onSubmit: (values: string) => void
 }
 
-
 export const AddMessageForm: React.FC<AddMessageFormType> = (props) => {
     const [value, setValue] = useState("")
 

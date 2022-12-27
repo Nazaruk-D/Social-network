@@ -19,7 +19,7 @@ export const Messages: React.FC<MessageProps> = (props) => {
 
     return (
         <div className={s.messageContainer}>
-            {userId !== "all"
+            {userId !== "webSocket"
                 ? props.messages.map((m) => m.myPost
                     ? <div className={s.myMessageBlock} key={m.idMessage}>
                         <div className={s.myMessage}
@@ -54,8 +54,6 @@ export const Messages: React.FC<MessageProps> = (props) => {
                     </div>
                 ).reverse()
             }
-
-
         </div>
     )
 }

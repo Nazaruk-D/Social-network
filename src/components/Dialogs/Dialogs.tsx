@@ -8,38 +8,15 @@ import {AddMessageForm} from "../common/AddMessageForm/AddMessageForm";
 import {useAppDispatch} from "../../redux/store";
 import {formatDate} from "../../utils/formatDate/formatDate";
 
+
 export type DialogTypeProps = {
     SendMessage: (values: string, userId: string) => void
     DeleteMessage: (friendsId: string, messageId: string) => void
     dialogs: InitialStateType
 }
 
-
 export const Dialogs: React.FC<DialogTypeProps> = (props) => {
     const {userId} = useParams<{ userId: string }>()
-
-
-
-    const addNewMessage = (values: string) => {
-        props.SendMessage(values, userId)
-    }
-
-    const deleteMessage = (friendsId: string, messageId: string) => {
-        props.DeleteMessage(friendsId, messageId)
-    }
-
-    const dialogElements = props.dialogs.map((dialog: DialogsDataType) => <div key={dialog.id}><FriendsList
-        name={dialog.name}
-        id={dialog.id}
-        ava={dialog.ava}/>
-    </div>)
-
-    const messages = props.dialogs.map((dialog: DialogsDataType, index) => dialog.id === userId
-        ? <div key={index}><Messages messages={dialog.messages} deleteMessage={deleteMessage}/></div>
-        : null
-    )
-
-
     const dispatch = useAppDispatch()
     const [ws, setWS] = useState<any>(null)
     const [users, setUsers] = useState<any>([])
@@ -68,6 +45,25 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
         ws.send(values)
     }
 
+    const addNewMessage = (values: string) => {
+        props.SendMessage(values, userId)
+    }
+
+    const deleteMessage = (friendsId: string, messageId: string) => {
+        props.DeleteMessage(friendsId, messageId)
+    }
+
+    const dialogElements = props.dialogs.map((dialog: DialogsDataType) => <div key={dialog.id}><FriendsList
+        name={dialog.name}
+        id={dialog.id}
+        ava={dialog.ava}/>
+    </div>)
+
+    const messages = props.dialogs.map((dialog: DialogsDataType, index) => dialog.id === userId
+        ? <div key={index}><Messages messages={dialog.messages} deleteMessage={deleteMessage}/></div>
+        : null
+    )
+
     return (
         <div className={s.dialogsContainer}>
             <div className={s.friendsList}>
@@ -76,10 +72,8 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
             </div>
             <div className={s.messages}>
                 {messages}
-                {userId === "all"
-                    ? <AddMessageForm onSubmit={addNewMessageWS}/>
-                    : <AddMessageForm onSubmit={addNewMessage}/>
-                }
+                {userId === "webSocket" && <AddMessageForm onSubmit={addNewMessageWS}/> }
+                {userId && userId !== "webSocket"  && <AddMessageForm onSubmit={addNewMessage}/>}
             </div>
         </div>
     )
