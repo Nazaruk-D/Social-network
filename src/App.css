@@ -1,26 +1,5 @@
-.app-wrapper {
-    /*display: grid;*/
-    /*width: 1200px;*/
-    /*margin-left: 200px;*/
-    /*grid-template-rows: 65px 1fr;*/
-    /*grid-template-columns: 125px 1100px;*/
-    /*grid-template-areas:*/
-  /*        "header header"*/
-  /*"nav profile";*/
-    /*background-image: url('./assets/png/backGroundImg.png');*/
-}
-
-
 .app-wrapper-content{
     grid-area: profile;
     background-color: #bcbcca;
     box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
-
-
 }
-
-img{
-    /*z-index: 0;*/
-}
-
-

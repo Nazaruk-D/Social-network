@@ -3,19 +3,17 @@
 
 .usersContainer {
   height: 100%;
-  margin-top: 15px;
+  margin-top: 35px;
   margin-left: 20px;
-  @include flex(column, flex-start, flex-start, wrap);
+  @include flex(column, flex-start, flex-start, nowrap);
 
   .searchBlock {
-    @include flex(row, space-between, center, wrap);
+    @include flex(row, space-between, center, nowrap);
     width: 95%;
     height: 35px;
-    //background-color: red;
-    //justify-content: space-evenly;
 
     .sortBlock{
-      @include flex(row, space-between, center, wrap);
+      @include flex(row, space-between, center, nowrap);
       width: 190px;
     }
   }
@@ -35,24 +33,21 @@
       width: 46%;
       margin-top: 2px;
       margin-right: 5px;
-      //background-color: black;
       padding: 8px;
-      @include flex(row, flex-start, center, wrap);
+      @include flex(row, flex-start, center, nowrap);
 
       .avatar {
-        @include flex(row, center, center, wrap);
+        @include flex(row, center, center, nowrap);
 
         .avatarImg {
           width: 80px;
           height: 80px;
           border-radius: 50%;
-          //margin-top: 20px;
           object-fit: cover;
           margin-right: 15px;
 
         }
       }
-
 
       .informBlock {
         width: 200px;

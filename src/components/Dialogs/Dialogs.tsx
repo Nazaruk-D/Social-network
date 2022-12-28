@@ -23,10 +23,8 @@ export const Dialogs: React.FC<DialogTypeProps> = (props) => {
 
     if (ws) {
         ws.onmessage = (messageEvent: any) => {
-            debugger
             let messages = JSON.parse(messageEvent.data)
             setUsers([...users, ...messages])
-
         }
     }
 

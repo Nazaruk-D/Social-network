@@ -2,16 +2,23 @@
   display: flex;
   justify-content: center;
 
+
   .img {
     position: absolute;
-    bottom: 0;
+    bottom: -10px;
     width: 325px;
+    @media screen and (max-height: 750px) {
+      bottom: 20px;
+    }
   }
 
   .loginBlock {
     position: absolute;
-    right: 0;
-    top: -70px;
+    right: 40px;
+    bottom: -10px;
+    @media screen and (max-height: 750px) {
+      bottom: 20px;
+    }
 
     .logPNG {
       width: 150px;

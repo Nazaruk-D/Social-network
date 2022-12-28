@@ -5,7 +5,6 @@
 .input {
   @include text(15px, 15px, 400);
   @include scrollBar();
-  //width: 60%;
   height: 6px;
   background-color: rgba(26, 26, 26, 0.9);
   color: $textColor;

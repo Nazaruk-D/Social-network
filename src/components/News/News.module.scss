@@ -2,11 +2,13 @@
 @import '../../assets/styles/scss/mixins';
 
 .newsContainer {
-  @include flex(column, center, flex-start, wrap);
+  @include flex(column, center, flex-start, nowrap);
   height: 98%;
+  //background-color: red;
+  margin-left: -60px;
 
   .newsBlock {
-    @include flex(row, space-evenly, center, wrap);
+    @include flex(row, space-evenly, center, nowrap);
     height: 90%;
     width: 100%;
   }
@@ -15,7 +17,5 @@
     @include flex(column, center, center, wrap);
     width: 100%;
 
-    .newsButton {
-    }
   }
 }

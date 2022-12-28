@@ -3,7 +3,7 @@
 
 
 .dialogsContainer {
-  @include flex(row, flex-start, flex-start, wrap);
+  @include flex(row, flex-start, flex-start, nowrap);
   height: 85%;
   margin-top: 50px;
   margin-left: 38px;
