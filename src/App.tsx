@@ -20,21 +20,33 @@ class App extends React.Component<UsersContainerPropsType> {
     render() {
 
         if (!this.props.initialized) {
-            return <div style={{height:'100vh'}}><Preloader/></div>
+            return <div style={{height: '100vh'}}><Preloader type={"start"}/></div>
         }
 
         return (
             <div className={s.app}>
-                <div className={s.appContainer}>
-                    <div className={s.headerContainer}>
-                        <HeaderContainer/>
-                    </div>
-                    <div className={s.bodyContainer}>
-                        <NavBar/>
-                        <RoutesApp/>
-                    </div>
-                </div>
-                <div className={s.background}></div>
+                {window.innerWidth > 1200
+                    ? <>
+                        <div className={s.appContainer}>
+                            <div className={s.headerContainer}>
+                                <HeaderContainer/>
+                            </div>
+                            <div className={s.bodyContainer}>
+                                <NavBar/>
+                                <RoutesApp/>
+                            </div>
+                        </div>
+                        <div className={s.background}></div>
+                    </>
+                    : <>
+                        <div className={s.auxiliaryMessage}>
+                            <span> This site is not adapted for mobile devices and screens with a resolution already 1200px.</span>
+                            <span> Please, for further viewing, open this site from your computer.</span>
+                        </div>
+                        <div className={s.auxiliaryBackground}></div>
+                    </>
+                }
+
             </div>
         );
     }
